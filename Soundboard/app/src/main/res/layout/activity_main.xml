@@ -9,14 +9,12 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
-        android:layout_width="100dp"
-        android:layout_height="712dp"
+        android:layout_width="130dp"
+        android:layout_height="347dp"
         android:background="?android:attr/windowBackground"
-
         app:menu="@menu/bottom_nav_menu"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-68dp" />
+         />
 
     <fragment
         android:id="@+id/nav_host_fragment_activity_main"
