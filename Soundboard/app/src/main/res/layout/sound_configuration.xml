@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/main_menu"
+        android:layout_width="185dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#BABABA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.widget.Button
+            android:id="@+id/pageSoundboard"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:backgroundTint="#9B9090"
+            android:background="@drawable/btns_menu"
+            android:text="Soundboard"/>
+
+        <android.widget.Button
+            android:id="@+id/pageMyTracks"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:backgroundTint="#9B9090"
+            android:background="@drawable/btns_menu"
+            android:text="My tracks"/>
+
+        <android.widget.Button
+            android:id="@+id/pageConfigureSounds"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:backgroundTint="#9B9090"
+            android:background="@drawable/btns_menu"
+            android:text="Configure sounds"/>
+
+        <android.widget.Button
+            android:id="@+id/pageHelp"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:backgroundTint="#9B9090"
+            android:background="@drawable/btns_menu"
+            android:text="Help"/>
+
+        <android.widget.Button
+            android:id="@+id/pageAboutDevs"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:backgroundTint="#9B9090"
+            android:background="@drawable/btns_menu"
+            android:text="about devs"/>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/boardField"
+        android:layout_width="767dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/upperToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:background="#D9D9D9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.widget.Button
+                android:id="@+id/btnPlayPause"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginVertical="12dp"
+                android:background="@drawable/btns_menu"
+                android:backgroundTint="#787878"
+                android:contentDescription="set_1"
+                android:text="Set 1"
+                android:src="@drawable/vec_play_pause" />
+
+            <android.widget.Button
+                android:id="@+id/btnStop"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginVertical="12dp"
+                android:background="@drawable/btns_menu"
+                android:backgroundTint="#787878"
+                android:contentDescription="set_2"
+                android:text="Set 2"
+                android:src="@drawable/vec_stop" />
+
+            <android.widget.Button
+                android:id="@+id/btnRecord"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginVertical="12dp"
+                android:background="@drawable/btns_menu"
+                android:backgroundTint="#787878"
+                android:text="Set 3"
+                android:contentDescription="set_3" />
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/keyGrid"
+            android:layout_width="match_parent"
+            android:layout_height="367dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/upperToolbar">
+
+            <LinearLayout
+                android:id="@+id/row1"
+                android:layout_width="640dp"
+                android:layout_height="80dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <android.widget.ImageButton
+                    android:id="@+id/key_1_1"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginHorizontal="25dp"
+                    android:src="@drawable/vec_trash"
+                    android:contentDescription="key_1_1"
+                    android:background="@drawable/btns_keypads"/>
+
+
+                <android.widget.ImageButton
+                    android:id="@+id/key_1_2"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginHorizontal="25dp"
+                    android:src="@drawable/vec_plus"
+                    android:contentDescription="key_1_2"
+                    android:background="@drawable/btns_keypads"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row2"
+                android:layout_width="640dp"
+                android:layout_height="80dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row3"
+                android:layout_width="640dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="30dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
