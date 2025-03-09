@@ -14,12 +14,55 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
+        <android.widget.Button
+            android:id="@+id/pageSoundboard"
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:layout_marginTop="15dp"
             android:layout_marginHorizontal="15dp"
-            android:background="@drawable/menu_btns"/>
+            android:backgroundTint="#9B9090"
+            android:background="@drawable/btns_menu"
+            android:text="Soundboard"/>
+
+        <android.widget.Button
+            android:id="@+id/pageMyTracks"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:backgroundTint="#9B9090"
+            android:background="@drawable/btns_menu"
+            android:text="My tracks"/>
+
+        <android.widget.Button
+            android:id="@+id/pageConfigureSounds"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:backgroundTint="#9B9090"
+            android:background="@drawable/btns_menu"
+            android:text="Configure sounds"/>
+
+        <android.widget.Button
+            android:id="@+id/pageHelp"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:backgroundTint="#9B9090"
+            android:background="@drawable/btns_menu"
+            android:text="Help"/>
+
+        <android.widget.Button
+            android:id="@+id/pageAboutDevs"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:backgroundTint="#9B9090"
+            android:background="@drawable/btns_menu"
+            android:text="about devs"/>
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,25 +76,173 @@
         <LinearLayout
             android:id="@+id/upperToolbar"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="80dp"
             android:orientation="horizontal"
             android:background="#D9D9D9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <android.widget.ImageButton
+                android:id="@+id/btnPlayPause"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginVertical="12dp"
+                android:layout_marginHorizontal="12dp"
+                android:backgroundTint="#787878"
+                android:src="@drawable/vec_play_pause"
+                android:contentDescription="play pause"
+                android:background="@drawable/btns_menu"/>
+
+            <android.widget.ImageButton
+                android:id="@+id/btnStop"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginVertical="12dp"
+                android:layout_marginHorizontal="12dp"
+                android:backgroundTint="#787878"
+                android:src="@drawable/vec_stop"
+                android:contentDescription="stop"
+                android:background="@drawable/btns_menu"/>
+
+            <android.widget.Button
+                android:id="@+id/btnRecord"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginVertical="12dp"
+                android:layout_marginHorizontal="12dp"
+                android:backgroundTint="#787878"
+                android:contentDescription="record"
+                android:background="@drawable/btns_menu"/>
+
+            <android.widget.Button
+                android:id="@+id/btnDrums"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginVertical="12dp"
+                android:layout_marginHorizontal="12dp"
+                android:backgroundTint="#787878"
+                android:contentDescription="drums"
+                android:background="@drawable/btns_menu"/>
+
+            <android.widget.Button
+                android:id="@+id/btnKeys"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginVertical="12dp"
+                android:layout_marginHorizontal="12dp"
+                android:backgroundTint="#787878"
+                android:contentDescription="keys"
+                android:background="@drawable/btns_menu"/>
+
+            <android.widget.Button
+                android:id="@+id/btnSet1"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginVertical="12dp"
+                android:layout_marginHorizontal="12dp"
+                android:backgroundTint="#787878"
+                android:contentDescription="set1"
+                android:background="@drawable/btns_menu"/>
+
+            <android.widget.Button
+                android:id="@+id/btnSet2"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginVertical="12dp"
+                android:layout_marginHorizontal="12dp"
+                android:backgroundTint="#787878"
+                android:contentDescription="set2"
+                android:background="@drawable/btns_menu"/>
+
+            <android.widget.Button
+                android:id="@+id/btnSet3"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginVertical="12dp"
+                android:layout_marginHorizontal="12dp"
+                android:backgroundTint="#787878"
+                android:contentDescription="set3"
+                android:background="@drawable/btns_menu"/>
+
+            <android.widget.Button
+                android:id="@+id/btnDelete"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginVertical="12dp"
+                android:layout_marginHorizontal="12dp"
+                android:backgroundTint="#787878"
+                android:contentDescription="delete"
+                android:background="@drawable/btns_menu"/>
+
+
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/macrosBar"
-            android:layout_width="66dp"
-            android:layout_height="367dp"
+            android:layout_width="76dp"
+            android:layout_height="347dp"
             android:background="#BABABA"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/upperToolbar">
 
+
+            <android.widget.ImageButton
+                android:id="@+id/btnMacros1"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginHorizontal="12dp"
+                android:backgroundTint="#D9D9D9"
+                android:src="@drawable/vec_macros_1"
+                android:contentDescription="macros1"
+                android:background="@drawable/btns_macros"/>
+
+            <android.widget.ImageButton
+                android:id="@+id/btnMacros2"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginHorizontal="12dp"
+                android:backgroundTint="#D9D9D9"
+                android:src="@drawable/vec_macros_1"
+                android:contentDescription="macros2"
+                android:background="@drawable/btns_macros"/>
+
+            <android.widget.ImageButton
+                android:id="@+id/btnMacros3"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginHorizontal="12dp"
+                android:backgroundTint="#D9D9D9"
+                android:src="@drawable/vec_macros_1"
+                android:contentDescription="macros3"
+                android:background="@drawable/btns_macros"/>
+
+            <android.widget.ImageButton
+                android:id="@+id/btnMacros4"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginHorizontal="12dp"
+                android:backgroundTint="#D9D9D9"
+                android:src="@drawable/vec_macros_1"
+                android:contentDescription="macros4"
+                android:background="@drawable/btns_macros"/>
+
+            <android.widget.ImageButton
+                android:id="@+id/btnMacros5"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginHorizontal="12dp"
+                android:backgroundTint="#D9D9D9"
+                android:src="@drawable/vec_macros_1"
+                android:contentDescription="macros5"
+                android:background="@drawable/btns_macros"/>
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -78,35 +269,35 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginHorizontal="25dp"
-                    android:background="@drawable/rounded_keypads"/>
+                    android:background="@drawable/btns_keypads"/>
 
                 <TextView
                     android:id="@+id/key_1_2"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginHorizontal="25dp"
-                    android:background="@drawable/rounded_keypads"/>
+                    android:background="@drawable/btns_keypads"/>
 
                 <TextView
                     android:id="@+id/key_1_3"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginHorizontal="25dp"
-                    android:background="@drawable/rounded_keypads" />
+                    android:background="@drawable/btns_keypads" />
 
                 <TextView
                     android:id="@+id/key_1_4"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginHorizontal="25dp"
-                    android:background="@drawable/rounded_keypads" />
+                    android:background="@drawable/btns_keypads" />
 
                 <TextView
                     android:id="@+id/key_1_5"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginHorizontal="25dp"
-                    android:background="@drawable/rounded_keypads"/>
+                    android:background="@drawable/btns_keypads"/>
 
             </LinearLayout>
 
@@ -125,35 +316,35 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginHorizontal="25dp"
-                    android:background="@drawable/rounded_keypads" />
+                    android:background="@drawable/btns_keypads" />
 
                 <TextView
                     android:id="@+id/key_2_2"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginHorizontal="25dp"
-                    android:background="@drawable/rounded_keypads" />
+                    android:background="@drawable/btns_keypads" />
 
                 <TextView
                     android:id="@+id/key_2_3"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginHorizontal="25dp"
-                    android:background="@drawable/rounded_keypads" />
+                    android:background="@drawable/btns_keypads" />
 
                 <TextView
                     android:id="@+id/key_2_4"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginHorizontal="25dp"
-                    android:background="@drawable/rounded_keypads" />
+                    android:background="@drawable/btns_keypads" />
 
                 <TextView
                     android:id="@+id/key_2_5"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginHorizontal="25dp"
-                    android:background="@drawable/rounded_keypads" />
+                    android:background="@drawable/btns_keypads" />
 
             </LinearLayout>
 
@@ -172,35 +363,35 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginHorizontal="25dp"
-                    android:background="@drawable/rounded_keypads" />
+                    android:background="@drawable/btns_keypads" />
 
                 <TextView
                     android:id="@+id/key_3_2"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginHorizontal="25dp"
-                    android:background="@drawable/rounded_keypads" />
+                    android:background="@drawable/btns_keypads" />
 
                 <TextView
                     android:id="@+id/key_3_3"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginHorizontal="25dp"
-                    android:background="@drawable/rounded_keypads" />
+                    android:background="@drawable/btns_keypads" />
 
                 <TextView
                     android:id="@+id/key_3_4"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginHorizontal="25dp"
-                    android:background="@drawable/rounded_keypads" />
+                    android:background="@drawable/btns_keypads" />
 
                 <TextView
                     android:id="@+id/key_3_5"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginHorizontal="25dp"
-                    android:background="@drawable/rounded_keypads" />
+                    android:background="@drawable/btns_keypads" />
 
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
