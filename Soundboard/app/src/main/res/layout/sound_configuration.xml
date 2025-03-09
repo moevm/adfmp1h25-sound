@@ -144,7 +144,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginHorizontal="25dp"
-                    android:src="@drawable/vec_trash"
+                    android:src="@drawable/vec_trash_big"
                     android:contentDescription="key_1_1"
                     android:background="@drawable/btns_keypads"/>
 

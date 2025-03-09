@@ -105,7 +105,7 @@
                 android:contentDescription="stop"
                 android:background="@drawable/btns_menu"/>
 
-            <android.widget.Button
+            <android.widget.ImageButton
                 android:id="@+id/btnRecord"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
@@ -113,9 +113,10 @@
                 android:layout_marginHorizontal="12dp"
                 android:backgroundTint="#787878"
                 android:contentDescription="record"
+                android:src="@drawable/vec_record"
                 android:background="@drawable/btns_menu"/>
 
-            <android.widget.Button
+            <android.widget.ImageButton
                 android:id="@+id/btnDrums"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
@@ -123,9 +124,10 @@
                 android:layout_marginHorizontal="12dp"
                 android:backgroundTint="#787878"
                 android:contentDescription="drums"
+                android:src="@drawable/vec_drums"
                 android:background="@drawable/btns_menu"/>
 
-            <android.widget.Button
+            <android.widget.ImageButton
                 android:id="@+id/btnKeys"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
@@ -133,9 +135,10 @@
                 android:layout_marginHorizontal="12dp"
                 android:backgroundTint="#787878"
                 android:contentDescription="keys"
+                android:src="@drawable/vec_piano"
                 android:background="@drawable/btns_menu"/>
 
-            <android.widget.Button
+            <android.widget.ImageButton
                 android:id="@+id/btnSet1"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
@@ -143,9 +146,10 @@
                 android:layout_marginHorizontal="12dp"
                 android:backgroundTint="#787878"
                 android:contentDescription="set1"
+                android:src="@drawable/vec_number_one"
                 android:background="@drawable/btns_menu"/>
 
-            <android.widget.Button
+            <android.widget.ImageButton
                 android:id="@+id/btnSet2"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
@@ -153,9 +157,10 @@
                 android:layout_marginHorizontal="12dp"
                 android:backgroundTint="#787878"
                 android:contentDescription="set2"
+                android:src="@drawable/vec_number_two"
                 android:background="@drawable/btns_menu"/>
 
-            <android.widget.Button
+            <android.widget.ImageButton
                 android:id="@+id/btnSet3"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
@@ -163,9 +168,10 @@
                 android:layout_marginHorizontal="12dp"
                 android:backgroundTint="#787878"
                 android:contentDescription="set3"
+                android:src="@drawable/vec_number_three"
                 android:background="@drawable/btns_menu"/>
 
-            <android.widget.Button
+            <android.widget.ImageButton
                 android:id="@+id/btnDelete"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
@@ -173,6 +179,7 @@
                 android:layout_marginHorizontal="12dp"
                 android:backgroundTint="#787878"
                 android:contentDescription="delete"
+                android:src="@drawable/vec_trash_small"
                 android:background="@drawable/btns_menu"/>
 
 
@@ -194,7 +201,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginVertical="10dp"
-                android:layout_marginHorizontal="12dp"
+                android:layout_marginHorizontal="14dp"
                 android:backgroundTint="#D9D9D9"
                 android:src="@drawable/vec_macros_1"
                 android:contentDescription="macros1"
@@ -205,7 +212,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginVertical="10dp"
-                android:layout_marginHorizontal="12dp"
+                android:layout_marginHorizontal="14dp"
                 android:backgroundTint="#D9D9D9"
                 android:src="@drawable/vec_macros_1"
                 android:contentDescription="macros2"
@@ -216,7 +223,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginVertical="10dp"
-                android:layout_marginHorizontal="12dp"
+                android:layout_marginHorizontal="14dp"
                 android:backgroundTint="#D9D9D9"
                 android:src="@drawable/vec_macros_1"
                 android:contentDescription="macros3"
@@ -227,7 +234,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginVertical="10dp"
-                android:layout_marginHorizontal="12dp"
+                android:layout_marginHorizontal="14dp"
                 android:backgroundTint="#D9D9D9"
                 android:src="@drawable/vec_macros_1"
                 android:contentDescription="macros4"
@@ -238,7 +245,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginVertical="10dp"
-                android:layout_marginHorizontal="12dp"
+                android:layout_marginHorizontal="14dp"
                 android:backgroundTint="#D9D9D9"
                 android:src="@drawable/vec_macros_1"
                 android:contentDescription="macros5"
@@ -247,8 +254,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/keyGrid"
-            android:layout_width="701dp"
-            android:layout_height="367dp"
+            android:layout_width="691dp"
+            android:layout_height="347dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/macrosBar"
             app:layout_constraintStart_toStartOf="parent"
