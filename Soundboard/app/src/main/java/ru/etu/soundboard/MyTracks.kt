@@ -8,13 +8,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class SoundConfiguration : AppCompatActivity() {
+class MyTracks : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.sound_configuration)
-
-        val buttonPlayer = findViewById<Button>(R.id.pageSoundboard)
-        buttonPlayer.setOnClickListener {
+        setContentView(R.layout.my_tracks)
+        val buttonMain = findViewById<Button>(R.id.pageSoundboard)
+        buttonMain.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
@@ -25,9 +24,9 @@ class SoundConfiguration : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val buttonMyTracks = findViewById<Button>(R.id.pageMyTracks)
-        buttonMyTracks.setOnClickListener {
-            val intent = Intent(this, MyTracks::class.java)
+        val buttonConf = findViewById<Button>(R.id.pageConfigureSounds)
+        buttonConf.setOnClickListener {
+            val intent = Intent(this, SoundConfiguration::class.java)
             startActivity(intent)
         }
     }

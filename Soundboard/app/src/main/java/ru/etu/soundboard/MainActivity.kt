@@ -28,9 +28,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val buttonPlayer = findViewById<Button>(R.id.pageConfigureSounds)
-        buttonPlayer.setOnClickListener {
+        val buttonConf = findViewById<Button>(R.id.pageConfigureSounds)
+        buttonConf.setOnClickListener {
             val intent = Intent(this, SoundConfiguration::class.java)
+            startActivity(intent)
+        }
+
+        val buttonMyTracks = findViewById<Button>(R.id.pageMyTracks)
+        buttonMyTracks.setOnClickListener {
+            val intent = Intent(this, MyTracks::class.java)
             startActivity(intent)
         }
         /*val navView: NavigationView = binding.navView
