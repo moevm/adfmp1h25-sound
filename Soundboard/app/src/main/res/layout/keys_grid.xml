@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="691dp"
+        android:layout_height="347dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="640dp"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/key_1_1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/btns_keypads"/>
+
+            <TextView
+                android:id="@+id/key_1_2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/btns_keypads"/>
+
+            <TextView
+                android:id="@+id/key_1_3"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/btns_keypads" />
+
+            <TextView
+                android:id="@+id/key_1_4"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/btns_keypads" />
+
+            <TextView
+                android:id="@+id/key_1_5"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/btns_keypads"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="640dp"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/key_2_1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/btns_keypads" />
+
+            <TextView
+                android:id="@+id/key_2_2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/btns_keypads" />
+
+            <TextView
+                android:id="@+id/key_2_3"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/btns_keypads" />
+
+            <TextView
+                android:id="@+id/key_2_4"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/btns_keypads" />
+
+            <TextView
+                android:id="@+id/key_2_5"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/btns_keypads" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="640dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/key_3_1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/btns_keypads" />
+
+            <TextView
+                android:id="@+id/key_3_2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/btns_keypads" />
+
+            <TextView
+                android:id="@+id/key_3_3"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/btns_keypads" />
+
+            <TextView
+                android:id="@+id/key_3_4"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/btns_keypads" />
+
+            <TextView
+                android:id="@+id/key_3_5"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/btns_keypads" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

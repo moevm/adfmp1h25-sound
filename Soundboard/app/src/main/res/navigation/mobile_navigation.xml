@@ -9,11 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="ru.etu.soundboard.ui.home.HomeFragment"
         android:label="home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/keys_grid" />
 
     <fragment
         android:id="@+id/navigation_about_devs"
         android:name="ru.etu.soundboard.ui.about_devs.AboutDevsFragment"
         android:label="about devs"
-        tools:layout="@layout/fragment_about_devs" />
+        tools:layout="@layout/about_devs" />
 </navigation>

@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".ui.about_devs.AboutDevsFragment">
 
+    <include layout="@layout/side_menu"
+        android:id="@+id/main_menu"
+        android:layout_width="185dp"
+        android:layout_height="match_parent"/>
 
     <TextView
         android:id="@+id/text_dashboard_egor"
