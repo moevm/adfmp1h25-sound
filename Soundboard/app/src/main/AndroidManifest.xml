@@ -12,7 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Soundboard"
         tools:targetApi="31">
-
+        <activity
+            android:name=".SoundConfiguration"
+            android:exported="false"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".Player"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".AboutDevs"
+            android:exported="true"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

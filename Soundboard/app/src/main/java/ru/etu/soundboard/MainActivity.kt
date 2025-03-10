@@ -1,6 +1,8 @@
 package ru.etu.soundboard
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -20,6 +22,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val buttonDevs = findViewById<Button>(R.id.pageAboutDevs)
+        buttonDevs.setOnClickListener {
+            val intent = Intent(this, AboutDevs::class.java)
+            startActivity(intent)
+        }
+
+        val buttonPlayer = findViewById<Button>(R.id.pageConfigureSounds)
+        buttonPlayer.setOnClickListener {
+            val intent = Intent(this, SoundConfiguration::class.java)
+            startActivity(intent)
+        }
         /*val navView: NavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
