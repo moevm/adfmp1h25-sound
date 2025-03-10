@@ -169,7 +169,7 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/btns_keypads"
+                    android:background="@color/white"
                     android:contentDescription="delete_track"
                     android:src="@drawable/vec_trash_small"
                     app:layout_constraintStart_toStartOf="parent"
@@ -181,7 +181,7 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/btns_keypads"
+                    android:background="@color/white"
                     android:contentDescription="skip_back"
                     android:src="@drawable/vec_skip"/>
 
@@ -191,7 +191,7 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/btns_keypads"
+                    android:background="@color/white"
                     android:contentDescription="play"
                     android:src="@drawable/vec_play_circle"/>
 
@@ -201,7 +201,7 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/btns_keypads"
+                    android:background="@color/white"
                     android:contentDescription="skip_ahead"
                     android:src="@drawable/vec_skip"
                     android:rotation="180"/>
@@ -212,7 +212,7 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/btns_keypads"
+                    android:background="@color/white"
                     android:contentDescription="share"
                     android:src="@drawable/vec_share"
                     android:rotation="180"/>
