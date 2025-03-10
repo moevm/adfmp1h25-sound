@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/main_menu"
+        android:layout_width="185dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#BABABA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.widget.Button
+            android:id="@+id/pageSoundboard"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:backgroundTint="#9B9090"
+            android:background="@drawable/btns_menu"
+            android:text="Soundboard"/>
+
+        <android.widget.Button
+            android:id="@+id/pageMyTracks"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:backgroundTint="#9B9090"
+            android:background="@drawable/btns_menu"
+            android:text="My tracks"/>
+
+        <android.widget.Button
+            android:id="@+id/pageConfigureSounds"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:backgroundTint="#9B9090"
+            android:background="@drawable/btns_menu"
+            android:text="Configure sounds"/>
+
+        <android.widget.Button
+            android:id="@+id/pageHelp"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:backgroundTint="#9B9090"
+            android:background="@drawable/btns_menu"
+            android:text="Help"/>
+
+        <android.widget.Button
+            android:id="@+id/pageAboutDevs"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:backgroundTint="#9B9090"
+            android:background="@drawable/btns_menu"
+            android:text="about devs"/>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/boardField"
+        android:layout_width="767dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/upperToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.search.SearchBar
+            android:id="@+id/search_bar"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="160dp"
+            android:backgroundTint="#D9D9D9"
+            android:hint="search..." />
+
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/keyGrid"
+            android:layout_width="match_parent"
+            android:layout_height="347dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/upperToolbar">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/song_1"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_width="700dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/layout_song"
+                        android:orientation="horizontal">
+
+                        <android.widget.ImageButton
+                            android:id="@+id/icon_song_1"
+                            android:layout_marginVertical="10dp"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginHorizontal="25dp"
+                            android:background="@drawable/layout_song_icon"
+                            android:contentDescription="icon_song_1"
+                            android:src="@drawable/vec_music_small" />
+                        
+                        <TextView
+                            android:id="@+id/songName"
+                            android:layout_width="220dp"
+                            android:layout_height="35dp"
+                            android:layout_marginVertical="25dp"
+                            android:layout_marginRight="25dp"
+                            android:text="Пластинки.mp3"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/release"
+                            android:layout_width="110dp"
+                            android:layout_height="35dp"
+                            android:layout_marginVertical="25dp"
+                            android:layout_marginRight="25dp"
+                            android:text="30/07/2024"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/duration"
+                            android:layout_width="50dp"
+                            android:layout_height="35dp"
+                            android:layout_marginVertical="25dp"
+                            android:layout_marginLeft="120dp"
+                            android:text="3:20"
+                            android:textSize="20dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

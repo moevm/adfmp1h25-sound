@@ -105,7 +105,7 @@
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:layout_margin="20dp"
-                    android:src="@drawable/vec_music" />
+                    android:src="@drawable/vec_music_big" />
             </LinearLayout>
 
             <TextView
