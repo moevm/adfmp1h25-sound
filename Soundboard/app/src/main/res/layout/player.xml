@@ -155,10 +155,68 @@
                 app:layout_constraintTop_toBottomOf="@+id/slider" />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_width="300dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="-15dp"
                 android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/textView1" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView1">
+
+                <android.widget.ImageButton
+                    android:id="@+id/delete_track"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btns_keypads"
+                    android:contentDescription="delete_track"
+                    android:src="@drawable/vec_trash_small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.widget.ImageButton
+                    android:id="@+id/skip_back"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btns_keypads"
+                    android:contentDescription="skip_back"
+                    android:src="@drawable/vec_skip"/>
+
+                <android.widget.ImageButton
+                    android:id="@+id/play"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btns_keypads"
+                    android:contentDescription="play"
+                    android:src="@drawable/vec_play_circle"/>
+
+                <android.widget.ImageButton
+                    android:id="@+id/skip_ahead"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btns_keypads"
+                    android:contentDescription="skip_ahead"
+                    android:src="@drawable/vec_skip"
+                    android:rotation="180"/>
+
+                <android.widget.ImageButton
+                    android:id="@+id/share"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btns_keypads"
+                    android:contentDescription="share"
+                    android:src="@drawable/vec_share"
+                    android:rotation="180"/>
+            </LinearLayout>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
