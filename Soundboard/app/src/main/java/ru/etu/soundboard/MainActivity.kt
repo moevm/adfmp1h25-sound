@@ -42,7 +42,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        mainPage_backend
         btnKey_1_1 = findViewById(R.id.key_1_1)
 
         riff_sound = MediaPlayer.create(this, R.raw.lok)
