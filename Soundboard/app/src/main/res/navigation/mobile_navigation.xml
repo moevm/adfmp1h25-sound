@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="ru.etu.soundboard.ui.home.HomeFragment"
+        android:label="home"
+        tools:layout="@layout/keys_grid" />
+
+    <fragment
+        android:id="@+id/navigation_about_devs"
+        android:name="ru.etu.soundboard.ui.about_devs.AboutDevsFragment"
+        android:label="about devs"
+        tools:layout="@layout/about_devs" />
+</navigation>

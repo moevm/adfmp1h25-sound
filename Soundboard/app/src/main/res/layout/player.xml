@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/side_menu"
+        android:id="@+id/main_menu"
+        android:layout_width="185dp"
+        android:layout_height="match_parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/boardField"
+        android:layout_width="767dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.widget.ImageButton
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/btns_keypads"
+            android:contentDescription="back"
+            android:src="@drawable/vec_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="240dp">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:background="@drawable/ic_track"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="20dp"
+                    android:src="@drawable/vec_music_big" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="70dp"
+                android:layout_height="20dp"
+                android:text="vonny.mp3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/slider"
+                android:layout_width="700dp"
+                android:layout_height="10dp"
+                android:contentDescription="timeline"
+                android:value="30"
+                android:valueFrom="0"
+                android:valueTo="100"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:thumbColor="@color/black"
+                app:thumbHeight="10dp"
+                app:thumbWidth="10dp"
+                app:trackColor="#D9D9D9"
+                app:trackHeight="5dp" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="-15dp"
+                android:text="0:00"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/slider" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="48dp"
+                android:layout_marginTop="-15dp"
+                android:text="5:00"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/slider" />
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="-15dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView1">
+
+                <android.widget.ImageButton
+                    android:id="@+id/delete_track"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:contentDescription="delete_track"
+                    android:src="@drawable/vec_trash_small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.widget.ImageButton
+                    android:id="@+id/skip_back"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:contentDescription="skip_back"
+                    android:src="@drawable/vec_skip"/>
+
+                <android.widget.ImageButton
+                    android:id="@+id/play"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:contentDescription="play"
+                    android:src="@drawable/vec_play_circle"/>
+
+                <android.widget.ImageButton
+                    android:id="@+id/skip_ahead"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:contentDescription="skip_ahead"
+                    android:src="@drawable/vec_skip"
+                    android:rotation="180"/>
+
+                <android.widget.ImageButton
+                    android:id="@+id/share"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:contentDescription="share"
+                    android:src="@drawable/vec_share"
+                    android:rotation="180"/>
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
