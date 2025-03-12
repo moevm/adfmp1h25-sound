@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <android.widget.ImageButton
-            android:id="@+id/back"
+            android:id="@+id/backButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
