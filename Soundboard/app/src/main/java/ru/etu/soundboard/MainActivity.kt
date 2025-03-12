@@ -3,6 +3,7 @@ package ru.etu.soundboard
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        mainPage_backend
         btnKey_1_1 = findViewById(R.id.key_1_1)
 
         riff_sound = MediaPlayer.create(this, R.raw.lok)
@@ -48,6 +50,9 @@ class MainActivity : AppCompatActivity() {
         btnKey_1_1.setOnClickListener {
             soundPlayKey(riff_sound)
         }
+        
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        actionBar?.hide()
     }
 
     private fun soundPlayKey(sound : MediaPlayer) {
