@@ -1,20 +1,21 @@
 package ru.etu.soundboard
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.Button
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.navigation.NavigationView
 import ru.etu.soundboard.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    private lateinit var riff_sound: MediaPlayer
+
+    private lateinit var btnKey_1_1: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,17 +40,18 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, MyTracks::class.java)
             startActivity(intent)
         }
-        /*val navView: NavigationView = binding.navView
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home, R.id.navigation_about_devs
-            )
-        )
-       // setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)*/
+        btnKey_1_1 = findViewById(R.id.key_1_1)
+
+        riff_sound = MediaPlayer.create(this, R.raw.lok)
+
+        btnKey_1_1.setOnClickListener {
+            soundPlayKey(riff_sound)
+        }
     }
+
+    private fun soundPlayKey(sound : MediaPlayer) {
+        sound.start()
+    }
+
 }
