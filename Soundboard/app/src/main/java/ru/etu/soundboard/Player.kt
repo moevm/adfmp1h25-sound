@@ -45,6 +45,12 @@ class Player : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val buttonHelp = findViewById<Button>(R.id.pageHelp)
+        buttonHelp.setOnClickListener {
+            val intent = Intent(this, Help::class.java)
+            startActivity(intent)
+        }
+
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         actionBar?.hide()
     }

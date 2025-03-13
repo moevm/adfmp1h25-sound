@@ -6,10 +6,10 @@ import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
-class AboutDevs : AppCompatActivity() {
+class Help : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.about_devs)
+        setContentView(R.layout.help_page)
 
         val buttonMain = findViewById<Button>(R.id.pageSoundboard)
         buttonMain.setOnClickListener {
@@ -26,12 +26,6 @@ class AboutDevs : AppCompatActivity() {
         val buttonConf = findViewById<Button>(R.id.pageConfigureSounds)
         buttonConf.setOnClickListener {
             val intent = Intent(this, SoundConfiguration::class.java)
-            startActivity(intent)
-        }
-
-        val buttonHelp = findViewById<Button>(R.id.pageHelp)
-        buttonHelp.setOnClickListener {
-            val intent = Intent(this, Help::class.java)
             startActivity(intent)
         }
 

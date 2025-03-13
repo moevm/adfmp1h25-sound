@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        println("Here")
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -38,6 +40,12 @@ class MainActivity : AppCompatActivity() {
         val buttonMyTracks = findViewById<Button>(R.id.pageMyTracks)
         buttonMyTracks.setOnClickListener {
             val intent = Intent(this, MyTracks::class.java)
+            startActivity(intent)
+        }
+
+        val buttonHelp = findViewById<Button>(R.id.pageHelp)
+        buttonHelp.setOnClickListener {
+            val intent = Intent(this, Help::class.java)
             startActivity(intent)
         }
 
