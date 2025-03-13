@@ -14,9 +14,11 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private lateinit var riff_sound: MediaPlayer
+    private lateinit var cOne_sound: MediaPlayer
+    private lateinit var dOne_sound: MediaPlayer
 
     private lateinit var btnKey_1_1: TextView
+    private lateinit var btnKey_1_2: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,11 +45,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnKey_1_1 = findViewById(R.id.key_1_1)
+        btnKey_1_2 = findViewById(R.id.key_1_2)
 
-        riff_sound = MediaPlayer.create(this, R.raw.lok)
+        cOne_sound = MediaPlayer.create(this, R.raw.c1)
+        dOne_sound = MediaPlayer.create(this, R.raw.c1)
 
         btnKey_1_1.setOnClickListener {
-            soundPlayKey(riff_sound)
+            soundPlayKey(cOne_sound)
+        }
+
+        btnKey_1_2.setOnClickListener {
+            soundPlayKey(dOne_sound)
         }
         
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
