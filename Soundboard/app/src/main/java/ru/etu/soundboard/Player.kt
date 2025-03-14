@@ -5,15 +5,21 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class Player : AppCompatActivity() {
+    var songName: String? = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        songName = intent.getStringExtra("name")
         setContentView(R.layout.player)
+        val textView: TextView = findViewById(R.id.textView) as TextView
+        textView.text = songName
+
 
         val buttonMain = findViewById<Button>(R.id.pageSoundboard)
         buttonMain.setOnClickListener {
