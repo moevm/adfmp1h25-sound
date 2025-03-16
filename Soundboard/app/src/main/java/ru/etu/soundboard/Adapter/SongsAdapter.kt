@@ -23,6 +23,7 @@ class SongsAdapter(private val arrayList: ArrayList<SongModel>, private val cont
         val imageView: ImageView = itemView.findViewById(R.id.icon_song_1)
         val songName: TextView = itemView.findViewById(R.id.songName)
         val dateRelease: TextView = itemView.findViewById(R.id.release)
+        val duration: TextView = itemView.findViewById(R.id.duration)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -40,7 +41,8 @@ class SongsAdapter(private val arrayList: ArrayList<SongModel>, private val cont
 
 
         holder.songName.text = arrayList[position].name
-        holder.dateRelease.text = arrayList[position].date.toString()
+        holder.dateRelease.text = arrayList[position].date
+        holder.duration.text = arrayList[position].duration
 
         holder.itemView.setOnClickListener {
 
