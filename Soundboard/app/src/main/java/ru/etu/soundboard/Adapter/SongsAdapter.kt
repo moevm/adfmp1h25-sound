@@ -47,7 +47,7 @@ class SongsAdapter(private val arrayList: ArrayList<SongModel>, private val cont
         holder.itemView.setOnClickListener {
 
             val intent = Intent(context, Player::class.java)
-            intent.putExtra("name", holder.songName.text.toString())
+            intent.putExtra("position", position)
             context!!.startActivity(intent)
         }
     }

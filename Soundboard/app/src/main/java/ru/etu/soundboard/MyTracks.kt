@@ -85,6 +85,7 @@ class MyTracks : AppCompatActivity() {
         if (permission.isNotEmpty()) {
             ActivityCompat.requestPermissions(this, permission.toTypedArray(), 8)
         }
+
     }
     private fun hasPermission(): Boolean {
         return ActivityCompat.checkSelfPermission(
@@ -148,7 +149,7 @@ class MyTracks : AppCompatActivity() {
 
         // a List has sortby method in which we can sort a list of object with respect to a
         // parameter of the object, in this case it is sorted w.r.t. name
-        list.sortBy { it.name }
+        list.sortBy { it.date }
         audioCursor?.close()
 
         return list
