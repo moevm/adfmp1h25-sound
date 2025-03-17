@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.text.format.DateFormat
 import android.util.Log
+import android.view.Menu
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -20,17 +21,23 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.search.SearchBar
 import ru.etu.soundboard.Adapter.SongsAdapter
 import ru.etu.soundboard.Model.SongModel
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.Date
 import java.util.Locale
+import androidx.appcompat.widget.SearchView
+
+
 
 class MyTracks : AppCompatActivity() {
     private lateinit var linearLayoutManager: LinearLayoutManager
     var audioList: ArrayList<SongModel> = ArrayList()
+    lateinit var search: SearchView
     lateinit var listView: RecyclerView
+    lateinit var adapter: SongsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,9 +49,12 @@ class MyTracks : AppCompatActivity() {
         listView.layoutManager = linearLayoutManager
         audioList.addAll(getAudioFiles())
 
-        val adapter = SongsAdapter(audioList, this)
+        adapter = SongsAdapter(audioList, this)
         listView.adapter = adapter
         listView.setHasFixedSize(true)
+        setSupportActionBar(findViewById(R.id.toolbar))
+
+
 
         val buttonMain = findViewById<Button>(R.id.pageSoundboard)
         buttonMain.setOnClickListener {
@@ -74,6 +84,37 @@ class MyTracks : AppCompatActivity() {
         actionBar?.hide()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+
+        // Настройка SearchView
+        val searchItem = menu.findItem(R.id.action_search)
+        val searchView = searchItem.actionView as SearchView
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterSongs(newText.orEmpty())
+                return true
+            }
+        })
+
+        return true
+    }
+
+    private fun filterSongs(query: String) {
+        val filteredList = if (query.isEmpty()) {
+            getAudioFiles() // Если запрос пустой, показываем все песни
+        } else {
+            audioList.filter {
+                it.name.contains(query, ignoreCase = true) // Фильтруем по названию песни
+            }
+        }
+        adapter.updateList(filteredList) // Обновляем список в адаптере
+    }
 
 
     private fun requestPermission() {

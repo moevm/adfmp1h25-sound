@@ -22,6 +22,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import ru.etu.soundboard.Model.SongModel
 import java.io.File
 import java.text.SimpleDateFormat
@@ -38,6 +39,7 @@ class Player : AppCompatActivity() {
     private lateinit var previous: ImageView
     private lateinit var next: ImageView
     private lateinit var share: ImageButton
+    private lateinit var firstSongUri: Uri
     private lateinit var back: ImageView
     private lateinit var seekBar: SeekBar
     private lateinit var trash: ImageButton
@@ -53,6 +55,7 @@ class Player : AppCompatActivity() {
         setContentView(R.layout.player)
         list = getAudioFiles()
         position = intent.getIntExtra("position", -1)
+        firstSongUri = intent.getStringExtra("uri")!!.toUri()
         songName = findViewById(R.id.textView)
         play_pause = findViewById(R.id.play)
         previous = findViewById(R.id.skip_back)
@@ -64,10 +67,8 @@ class Player : AppCompatActivity() {
         startTime = findViewById(R.id.textView1)
         endTime = findViewById(R.id.textView2)
 
-        uri = list[position].songUri
-        setLayout(songName)
-
-        playMedia(uri)
+        uri = firstSongUri//list[position].songUri
+        playMedia(firstSongUri, intent.getStringExtra("name")!!)
 
         play_pause.setOnClickListener {
             if (mediaPlayer!!.isPlaying) {
@@ -217,8 +218,8 @@ class Player : AppCompatActivity() {
         startActivity(Intent.createChooser(shareIntent, "Share this file using :"))
     }
 
-    private fun setLayout(song: TextView) {
-        song.text = list[position].name
+    private fun setLayout(song: TextView, text: String) {
+        song.text = text
     }
 
 
@@ -300,8 +301,11 @@ class Player : AppCompatActivity() {
         return String.format("%02d:%02d", minutes, seconds)
     }
 
-    private fun playMedia(uri: Uri) {
-        setLayout(songName)
+    private fun playMedia(uri: Uri, first_song_name: String?) {
+        if (first_song_name == null)
+            setLayout(songName, list[position].name)
+        else
+            setLayout(songName, first_song_name)
         try {
             if (mediaPlayer != null) {
                 mediaPlayer = MediaPlayer().apply {
@@ -347,14 +351,14 @@ class Player : AppCompatActivity() {
             mediaPlayer!!.release()
 
             position = checkPosition(position, true)
-            playMedia(list[position].songUri)
+            playMedia(list[position].songUri, null)
         } else {
             mediaPlayer!!.stop()
             mediaPlayer!!.reset()
             mediaPlayer!!.release()
 
             position = checkPosition(position, false)
-            playMedia(list[position].songUri)
+            playMedia(list[position].songUri, null)
         }
     }
 }
