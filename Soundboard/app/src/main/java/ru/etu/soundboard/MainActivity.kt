@@ -23,6 +23,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        println("Here")
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -43,12 +45,19 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, MyTracks::class.java)
             startActivity(intent)
         }
+        
+        val buttonHelp = findViewById<Button>(R.id.pageHelp)
+        buttonHelp.setOnClickListener {
+            val intent = Intent(this, Help::class.java)
+            startActivity(intent)
+        }
+
 
         btnKey_1_1 = findViewById(R.id.key_1_1)
         btnKey_1_2 = findViewById(R.id.key_1_2)
 
         cOne_sound = MediaPlayer.create(this, R.raw.c1)
-        dOne_sound = MediaPlayer.create(this, R.raw.c1)
+        dOne_sound = MediaPlayer.create(this, R.raw.d1)
 
         btnKey_1_1.setOnClickListener {
             soundPlayKey(cOne_sound)
@@ -58,6 +67,7 @@ class MainActivity : AppCompatActivity() {
             soundPlayKey(dOne_sound)
         }
         
+
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         actionBar?.hide()
     }
