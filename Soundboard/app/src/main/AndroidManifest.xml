@@ -29,6 +29,10 @@
             android:exported="true"
             android:screenOrientation="landscape" />
         <activity
+            android:name=".Help"
+            android:exported="true"
+            android:screenOrientation="landscape" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="landscape">
