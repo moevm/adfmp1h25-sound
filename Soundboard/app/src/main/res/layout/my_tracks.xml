@@ -28,14 +28,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.search.SearchBar
-            android:id="@+id/search_bar"
-            android:layout_width="350dp"
-            android:layout_height="50dp"
-            android:layout_marginVertical="10dp"
-            android:layout_marginHorizontal="160dp"
-            android:backgroundTint="#D9D9D9"
-            android:hint="search..." />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/cardview_light_background"
+                app:title="Поиск трека"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
 
         </LinearLayout>

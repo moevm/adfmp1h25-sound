@@ -113,7 +113,7 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="@color/white"
+                    android:background="@color/light_background"
                     android:contentDescription="delete_track"
                     android:src="@drawable/vec_trash_small"
                     app:layout_constraintStart_toStartOf="parent"
@@ -125,7 +125,7 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="@color/white"
+                    android:background="@color/light_background"
                     android:contentDescription="skip_back"
                     android:src="@drawable/vec_skip" />
 
@@ -135,9 +135,9 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="@color/white"
+                    android:backgroundTint="@color/black"
                     android:contentDescription="play"
-                    android:src="@drawable/vec_play_circle" />
+                    android:background="@drawable/vec_play_pause" />
 
                 <android.widget.ImageButton
                     android:id="@+id/skip_ahead"
@@ -145,7 +145,7 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="@color/white"
+                    android:background="@color/light_background"
                     android:contentDescription="skip_ahead"
                     android:rotation="180"
                     android:src="@drawable/vec_skip" />
@@ -156,7 +156,7 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="@color/white"
+                    android:background="@color/light_background"
                     android:contentDescription="share"
                     android:rotation="180"
                     android:src="@drawable/vec_share" />

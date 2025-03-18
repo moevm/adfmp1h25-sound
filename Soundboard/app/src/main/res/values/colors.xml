@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green">#00FF00</color>
     <color name="dark_background">#BABABA</color>
+    <color name="light_background">#FFF7FF</color>
 </resources>
