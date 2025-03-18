@@ -1,26 +1,47 @@
 package ru.etu.soundboard
 
 import android.content.Intent
+import android.content.SharedPreferences
+import android.content.SharedPreferences.Editor
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.navigation.NavigationView
+import com.google.gson.Gson
+import ru.etu.soundboard.Adapter.FileManager
 import ru.etu.soundboard.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private var mPrefs: SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        println("Here")
+        mPrefs = getPreferences(MODE_PRIVATE)
+
+        val manager = FileManager
+        var presets = manager.getConf()
+
+        if(presets == null) {
+            val conf = readConf()
+            if (conf == null) {
+                println("Gere")
+                val data: String = manager.readFile(baseContext)
+                val gson = Gson()
+                val obj: FileManager.Configuration =
+                    gson.fromJson(data, FileManager.Configuration::class.java)
+                manager.setConf(obj)
+                saveConf(obj)
+            }
+            else {
+                manager.setConf(conf)
+            }
+            presets = manager.getConf()
+        }
+//        println(presets?.keys?.key11)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -63,5 +84,23 @@ class MainActivity : AppCompatActivity() {
         )
        // setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)*/
+    }
+
+    private fun saveConf(conf: FileManager.Configuration) {
+        val prefs = mPrefs?:return
+        val prefsEditor: Editor = prefs.edit()
+        val gson = Gson()
+        val json = gson.toJson(conf)
+        prefsEditor.putString("Configuration", json)
+        prefsEditor.apply()
+    }
+
+    private fun readConf() : FileManager.Configuration? {
+        val prefs = mPrefs?:return null
+        val gson = Gson()
+        val json = prefs.getString("Configuration", "")
+        if (json == ""){return null}
+        val obj: FileManager.Configuration = gson.fromJson(json, FileManager.Configuration::class.java)
+        return obj
     }
 }
