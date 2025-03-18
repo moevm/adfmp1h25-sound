@@ -33,11 +33,11 @@
 
         <TextView
             android:id="@+id/release"
-            android:layout_width="110dp"
+            android:layout_width="223dp"
             android:layout_height="35dp"
             android:layout_marginVertical="25dp"
             android:layout_marginRight="25dp"
-            android:text="30/07/2024"
+            android:text="30/07/2024 18:25"
             android:textSize="20dp" />
 
         <TextView
@@ -45,7 +45,6 @@
             android:layout_width="50dp"
             android:layout_height="35dp"
             android:layout_marginVertical="25dp"
-            android:layout_marginLeft="120dp"
             android:text="3:20"
             android:textSize="20dp" />
 
