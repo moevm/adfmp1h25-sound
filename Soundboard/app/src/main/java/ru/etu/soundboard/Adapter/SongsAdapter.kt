@@ -40,7 +40,7 @@ class SongsAdapter(private val arrayList: ArrayList<SongModel>, private val cont
 
 
         holder.songName.text = arrayList[position].name
-        holder.dateRelease.text = arrayList[position].date.toString()
+            // holder.dateRelease.text = arrayList[position].date.toString()
 
         holder.itemView.setOnClickListener {
 
