@@ -1,27 +1,18 @@
 package ru.etu.soundboard.Adapter
 
-//import com.google.gson.Gson
-//import com.google.gson.GsonBuilder
 import android.content.Context
-//import android.content.Context.MODE_PRIVATE
-//import android.content.SharedPreferences
-//import android.util.Log
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
 object FileManager{
     private var conf: Configuration? = null
-//    private val gson: Gson = GsonBuilder()
-//        .serializeNulls()
-//        .setPrettyPrinting()
-//        .create()
 
     data class Configuration(
         val drums: Preset,
         val keys: Preset,
-        val set1: Preset,
-        val set2: Preset,
-        val set3: Preset
+        var set1: Preset,
+        var set2: Preset,
+        var set3: Preset
     )
 
     data class Preset(
@@ -54,7 +45,6 @@ object FileManager{
     fun readFile(context: Context): String {
         try {
             val file = context.assets.open("presets.json")
-            println(file)
             val bufferedReader = BufferedReader(InputStreamReader(file))
             val stringBuilder = StringBuilder()
             bufferedReader.useLines { lines ->

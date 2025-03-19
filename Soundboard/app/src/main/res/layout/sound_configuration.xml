@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <android.widget.ImageButton
-                android:id="@+id/btnPlayPause"
+                android:id="@+id/set1"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="12dp"
@@ -39,7 +39,7 @@
                 android:src="@drawable/vec_number_one" />
 
             <android.widget.ImageButton
-                android:id="@+id/btnStop"
+                android:id="@+id/set2"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="12dp"
@@ -51,7 +51,7 @@
                 android:src="@drawable/vec_number_two" />
 
             <android.widget.ImageButton
-                android:id="@+id/btnRecord"
+                android:id="@+id/set3"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="12dp"

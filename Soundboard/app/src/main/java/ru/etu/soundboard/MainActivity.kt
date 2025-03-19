@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         if(presets == null) {
             val conf = readConf()
             if (conf == null) {
-                println("Gere")
                 val data: String = manager.readFile(baseContext)
                 val gson = Gson()
                 val obj: FileManager.Configuration =
@@ -40,8 +39,10 @@ class MainActivity : AppCompatActivity() {
                 manager.setConf(conf)
             }
             presets = manager.getConf()
+        } else {
+            manager.getConf()?.let { saveConf(it) }
         }
-//        println(presets?.keys?.key11)
+//        manager.setPreference(mPrefs)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
