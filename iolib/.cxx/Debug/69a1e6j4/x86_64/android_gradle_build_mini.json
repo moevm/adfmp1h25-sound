@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "D:\\code\\SBExamples\\oboe-main\\samples\\iolib\\src\\main\\cpp\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "C:\\Users\\EGORY\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "D:\\code\\SBExamples\\oboe-main\\samples\\iolib\\.cxx\\Debug\\69a1e6j4\\x86_64",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "C:\\Users\\EGORY\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "D:\\code\\SBExamples\\oboe-main\\samples\\iolib\\.cxx\\Debug\\69a1e6j4\\x86_64",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "iolib::@6890427a1f51a3e7e1df": {
+      "artifactName": "iolib",
+      "abi": "x86_64",
+      "output": "D:\\code\\SBExamples\\oboe-main\\samples\\iolib\\.cxx\\Debug\\69a1e6j4\\x86_64\\libiolib.a",
+      "runtimeFiles": []
+    }
+  }
+}
