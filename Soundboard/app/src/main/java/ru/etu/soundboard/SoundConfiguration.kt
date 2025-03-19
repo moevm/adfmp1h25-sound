@@ -77,6 +77,11 @@ class SoundConfiguration : AppCompatActivity() {
             set_id = 3
             swapImages()
         }
+        val saveButton = findViewById<ImageButton>(R.id.saveButton)
+        saveButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         val buttonPlayer = findViewById<Button>(R.id.pageSoundboard)
         buttonPlayer.setOnClickListener {
