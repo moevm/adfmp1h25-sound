@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <android.widget.ImageButton
-                android:id="@+id/btnPlayPause"
+                android:id="@+id/set1"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="12dp"
@@ -39,7 +39,7 @@
                 android:src="@drawable/vec_number_one" />
 
             <android.widget.ImageButton
-                android:id="@+id/btnStop"
+                android:id="@+id/set2"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="12dp"
@@ -47,20 +47,31 @@
                 android:background="@drawable/btns_menu"
                 android:backgroundTint="#787878"
                 android:contentDescription="set_2"
-                android:text="Set 2"
                 android:src="@drawable/vec_number_two" />
 
             <android.widget.ImageButton
-                android:id="@+id/btnRecord"
+                android:id="@+id/set3"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginVertical="12dp"
                 android:background="@drawable/btns_menu"
                 android:backgroundTint="#787878"
-                android:text="Set 3"
                 android:contentDescription="set_3"
                 android:src="@drawable/vec_number_three" />
+
+            <android.widget.ImageButton
+                android:id="@+id/saveButton"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginVertical="12dp"
+                android:layout_marginHorizontal="12dp"
+                android:background="@drawable/btns_menu"
+                android:backgroundTint="#787878"
+                android:contentDescription="save"
+                android:src="@drawable/vec_save"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </LinearLayout>
 
