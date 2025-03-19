@@ -1,18 +1,23 @@
 package ru.etu.soundboard
 
 import android.content.Intent
-import android.media.MediaPlayer
+import android.content.SharedPreferences
+import android.content.SharedPreferences.Editor
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
+import ru.etu.soundboard.Adapter.FileManager
+import android.media.MediaPlayer
+import android.widget.TextView
 import ru.etu.soundboard.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private var mPrefs: SharedPreferences? = null
 
     private lateinit var cOne_sound: MediaPlayer
     private lateinit var dOne_sound: MediaPlayer
@@ -23,7 +28,29 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        println("Here")
+        mPrefs = getPreferences(MODE_PRIVATE)
+
+        val manager = FileManager
+        var presets = manager.getConf()
+
+        if(presets == null) {
+            val conf = readConf()
+            if (conf == null) {
+                val data: String = manager.readFile(baseContext)
+                val gson = Gson()
+                val obj: FileManager.Configuration =
+                    gson.fromJson(data, FileManager.Configuration::class.java)
+                manager.setConf(obj)
+                saveConf(obj)
+            }
+            else {
+                manager.setConf(conf)
+            }
+            presets = manager.getConf()
+        } else {
+            manager.getConf()?.let { saveConf(it) }
+        }
+//        manager.setPreference(mPrefs)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -72,8 +99,25 @@ class MainActivity : AppCompatActivity() {
         actionBar?.hide()
     }
 
+    private fun saveConf(conf: FileManager.Configuration) {
+        val prefs = mPrefs?:return
+        val prefsEditor: Editor = prefs.edit()
+        val gson = Gson()
+        val json = gson.toJson(conf)
+        prefsEditor.putString("Configuration", json)
+        prefsEditor.apply()
+    }
+
+    private fun readConf() : FileManager.Configuration? {
+        val prefs = mPrefs?:return null
+        val gson = Gson()
+        val json = prefs.getString("Configuration", "")
+        if (json == ""){return null}
+        val obj: FileManager.Configuration = gson.fromJson(json, FileManager.Configuration::class.java)
+        return obj
+    }
+
     private fun soundPlayKey(sound : MediaPlayer) {
         sound.start()
     }
-
 }
