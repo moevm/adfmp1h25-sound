@@ -13,7 +13,6 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.plausiblesoftware.drumthumper.DrumThumperActivity.DeviceListener
 import ru.etu.soundboard.databinding.ActivityMainBinding
 import java.time.LocalDateTime
 import java.util.Timer
