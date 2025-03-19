@@ -40,12 +40,12 @@ class SongsAdapter(private val arrayList: ArrayList<SongModel>, private val cont
 
 
         holder.songName.text = arrayList[position].name
-        holder.dateRelease.text = arrayList[position].date.toString()
+            // holder.dateRelease.text = arrayList[position].date.toString()
 
         holder.itemView.setOnClickListener {
 
             val intent = Intent(context, Player::class.java)
-            intent.putExtra("position", position)
+            intent.putExtra("name", holder.songName.text.toString())
             context!!.startActivity(intent)
         }
     }
