@@ -1,0 +1,3 @@
+D:/code/SBExamples/oboe-main/samples/parselib/.cxx/Debug/dg48226g/x86_64/CMakeFiles/parselib.dir
+D:/code/SBExamples/oboe-main/samples/parselib/.cxx/Debug/dg48226g/x86_64/CMakeFiles/edit_cache.dir
+D:/code/SBExamples/oboe-main/samples/parselib/.cxx/Debug/dg48226g/x86_64/CMakeFiles/rebuild_cache.dir

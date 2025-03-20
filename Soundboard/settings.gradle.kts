@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Soundboard"
 include(":app")
- 
+include(":iolib")
+include(":parselib")
