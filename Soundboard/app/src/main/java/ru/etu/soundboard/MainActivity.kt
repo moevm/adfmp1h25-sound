@@ -158,6 +158,15 @@ class MainActivity : AppCompatActivity() {
         btnKey_1_1 = findViewById(R.id.key_1_1)
         btnKey_1_2 = findViewById(R.id.key_1_2)
 
+        //button sound example
+        mSoundPlayer.setupAudioStream()
+        mSoundPlayer.loadWavAssets(assets)
+
+        btnKey_1_1.setOnClickListener {
+            mSoundPlayer.startAudioStream()
+            mSoundPlayer.trigger(SoundPlayer.CRASHCYMBAL) // Пример воспроизведения звука бас-барабана
+        }
+        //end of example
 
         mAudioMgr = getSystemService(Context.AUDIO_SERVICE) as AudioManager
         
