@@ -19,7 +19,6 @@ class SoundConfiguration : AppCompatActivity() {
     private val manager = FileManager
     var presets = manager.getConf()
     var cur_set = presets?.set1
-    var set_id = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,19 +61,16 @@ class SoundConfiguration : AppCompatActivity() {
         val set1 = findViewById<ImageButton>(R.id.set1)
         set1.setOnClickListener{
             cur_set = presets?.set1
-            set_id = 1
             swapImages()
         }
         val set2 = findViewById<ImageButton>(R.id.set2)
         set2.setOnClickListener{
             cur_set = presets?.set2
-            set_id = 2
             swapImages()
         }
         val set3 = findViewById<ImageButton>(R.id.set3)
         set3.setOnClickListener{
             cur_set = presets?.set3
-            set_id = 3
             swapImages()
         }
         val saveButton = findViewById<ImageButton>(R.id.saveButton)

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import ru.etu.soundboard.Adapter.FileManager
 import android.media.MediaPlayer
+import android.widget.ImageButton
 import android.widget.TextView
 import ru.etu.soundboard.databinding.ActivityMainBinding
 
@@ -21,7 +22,6 @@ class MainActivity : AppCompatActivity() {
     private val manager = FileManager
     private var presets = manager.getConf()
     private var cur_set = presets?.drums
-    private var set_id = "drums"
 
     private lateinit var cOne_sound: MediaPlayer
     private lateinit var dOne_sound: MediaPlayer
@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         mPrefs = getPreferences(MODE_PRIVATE)
-        println(cur_set)
 
         if(presets == null) {
             val conf = readConf()
@@ -53,8 +52,6 @@ class MainActivity : AppCompatActivity() {
             manager.getConf()?.let { saveConf(it) }
         }
         cur_set = presets?.drums
-        set_id = "drums"
-        println(cur_set)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -83,6 +80,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val drumsButton = findViewById<ImageButton>(R.id.btnDrums)
+        drumsButton.setOnClickListener { cur_set = presets?.drums }
+        val keysButton = findViewById<ImageButton>(R.id.btnKeys)
+        keysButton.setOnClickListener { cur_set = presets?.keys }
+        val set1Button = findViewById<ImageButton>(R.id.btnSet1)
+        set1Button.setOnClickListener { cur_set = presets?.set1 }
+        val set2Button = findViewById<ImageButton>(R.id.btnSet2)
+        set2Button.setOnClickListener { cur_set = presets?.set2 }
+        val set3Button = findViewById<ImageButton>(R.id.btnSet3)
+        set3Button.setOnClickListener { cur_set = presets?.set3 }
 
         btnKey_1_1 = findViewById(R.id.key_1_1)
         btnKey_1_2 = findViewById(R.id.key_1_2)
