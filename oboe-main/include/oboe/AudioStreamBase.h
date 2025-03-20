@@ -19,8 +19,8 @@
 
 #include <memory>
 #include <string>
-#include "oboe/AudioStreamCallback.h"
-#include "oboe/Definitions.h"
+#include "AudioStreamCallback.h"
+#include "Definitions.h"
 
 namespace oboe {
 

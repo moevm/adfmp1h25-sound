@@ -19,8 +19,8 @@
 
 #include <stdint.h>
 
-#include "oboe/Definitions.h"
-#include "oboe/AudioStream.h"
+#include "Definitions.h"
+#include "AudioStream.h"
 
 namespace oboe {
 

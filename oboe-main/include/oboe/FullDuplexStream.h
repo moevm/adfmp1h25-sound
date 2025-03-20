@@ -18,9 +18,9 @@
 #define OBOE_FULL_DUPLEX_STREAM_
 
 #include <cstdint>
-#include "oboe/Definitions.h"
-#include "oboe/AudioStream.h"
-#include "oboe/AudioStreamCallback.h"
+#include "Definitions.h"
+#include "AudioStream.h"
+#include "AudioStreamCallback.h"
 
 namespace oboe {
 

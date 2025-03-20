@@ -19,7 +19,7 @@
 
 #include <sys/types.h>
 #include <ctime>
-#include "oboe/Definitions.h"
+#include "Definitions.h"
 
 namespace oboe {
 

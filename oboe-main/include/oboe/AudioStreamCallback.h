@@ -17,7 +17,7 @@
 #ifndef OBOE_STREAM_CALLBACK_H
 #define OBOE_STREAM_CALLBACK_H
 
-#include "oboe/Definitions.h"
+#include "Definitions.h"
 
 namespace oboe {
 

@@ -17,8 +17,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import ru.etu.soundboard.Adapter.FileManager
-import android.media.MediaPlayer
-import android.widget.TextView
 import ru.etu.soundboard.databinding.ActivityMainBinding
 import java.time.LocalDateTime
 import java.util.Timer

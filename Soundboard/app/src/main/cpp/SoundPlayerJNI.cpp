@@ -44,13 +44,13 @@ static SimpleMultiPlayer sDTPlayer;
 /**
  * Native (JNI) implementation of SoundPlayer.setupAudioStreamNative
  */
-JNIEXPORT void JNICALL SoundPlayer.setupAudioStramNative(
+JNIEXPORT void JNICALL Java_ru_etu_soundboard_SoundPlayer_setupAudioStreamNative(
         JNIEnv* env, jobject, jint numChannels) {
     __android_log_print(ANDROID_LOG_INFO, TAG, "%s", "init()");
     sDTPlayer.setupAudioStream(numChannels);
 }
 
-JNIEXPORT void JNICALL SoundPlayer.startAudioStreamNative(
+JNIEXPORT void JNICALL Java_ru_etu_soundboard_SoundPlayer_startAudioStreamNative(
         JNIEnv *env, jobject thiz) {
     sDTPlayer.startStream();
 }
@@ -58,7 +58,7 @@ JNIEXPORT void JNICALL SoundPlayer.startAudioStreamNative(
 /**
  * Native (JNI) implementation of DrumPlayer.teardownAudioStreamNative()
  */
-JNIEXPORT void JNICALL SoundPlayer.teardownAudioStreamNative(JNIEnv* , jobject) {
+JNIEXPORT void JNICALL Java_ru_etu_soundboard_SoundPlayer_teardownAudioStreamNative(JNIEnv* , jobject) {
     __android_log_print(ANDROID_LOG_INFO, TAG, "%s", "deinit()");
 
     // we know in this case that the sample buffers are all 1-channel, 44.1K
@@ -68,7 +68,7 @@ JNIEXPORT void JNICALL SoundPlayer.teardownAudioStreamNative(JNIEnv* , jobject) 
 /**
  * Native (JNI) implementation of SoundPlayer.loadWavAssetNative()
  */
-JNIEXPORT void JNICALL SoundPlayer.loadWavAssetNative(
+JNIEXPORT void JNICALL Java_ru_etu_soundboard_SoundPlayer_loadWavAssetNative(
         JNIEnv* env, jobject, jbyteArray bytearray, jint index, jfloat pan) {
     int len = env->GetArrayLength (bytearray);
 
@@ -94,42 +94,42 @@ JNIEXPORT void JNICALL SoundPlayer.loadWavAssetNative(
 /**
  * Native (JNI) implementation of SoundPlayer.unloadWavAssetsNative()
  */
-JNIEXPORT void JNICALL SoundPlayer.unloadWavAssetsNative(JNIEnv* env, jobject) {
+JNIEXPORT void JNICALL Java_ru_etu_soundboard_SoundPlayer_unloadWavAssetsNative(JNIEnv* env, jobject) {
     sDTPlayer.unloadSampleData();
 }
 
 /**
  * Native (JNI) implementation of SoundPlayer.trigger()
  */
-JNIEXPORT void JNICALL SoundPlayer.trigger(JNIEnv* env, jobject, jint index) {
+JNIEXPORT void JNICALL Java_ru_etu_soundboard_SoundPlayer_trigger(JNIEnv* env, jobject, jint index) {
     sDTPlayer.triggerDown(index);
 }
 
 /**
  * Native (JNI) implementation of SoundPlayer.trigger()
  */
-JNIEXPORT void JNICALL SoundPlayer.stopTrigger(JNIEnv* env, jobject, jint index) {
+JNIEXPORT void JNICALL Java_ru_etu_soundboard_SoundPlayer_stopTrigger(JNIEnv* env, jobject, jint index) {
     sDTPlayer.triggerUp(index);
 }
 
 /**
  * Native (JNI) implementation of SoundPlayer.getOutputReset()
  */
-JNIEXPORT jboolean JNICALL SoundPlayer.getOutputReset(JNIEnv*, jobject) {
+JNIEXPORT jboolean JNICALL Java_ru_etu_soundboard_SoundPlayer_getOutputReset(JNIEnv*, jobject) {
     return sDTPlayer.getOutputReset();
 }
 
 /**
  * Native (JNI) implementation of SoundPlayer.clearOutputReset()
  */
-JNIEXPORT void JNICALL SoundPlayer.clearOutputReset(JNIEnv*, jobject) {
+JNIEXPORT void JNICALL Java_ru_etu_soundboard_SoundPlayer_clearOutputReset(JNIEnv*, jobject) {
     sDTPlayer.clearOutputReset();
 }
 
 /**
  * Native (JNI) implementation of SoundPlayer.restartStream()
  */
-JNIEXPORT void JNICALL SoundPlayer.restartStream(JNIEnv*, jobject) {
+JNIEXPORT void JNICALL Java_ru_etu_soundboard_SoundPlayer_restartStream(JNIEnv*, jobject) {
     sDTPlayer.resetAll();
     if (sDTPlayer.openStream() && sDTPlayer.startStream()){
         __android_log_print(ANDROID_LOG_INFO, TAG, "openStream successful");

@@ -20,9 +20,9 @@
 #include <memory>
 #include <stdint.h>
 
-#include "oboe/Definitions.h"
+#include "Definitions.h"
 
-#include "oboe/FifoControllerBase.h"
+#include "FifoControllerBase.h"
 
 namespace oboe {
 

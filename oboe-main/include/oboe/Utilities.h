@@ -20,7 +20,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <string>
-#include "oboe/Definitions.h"
+#include "Definitions.h"
 
 namespace oboe {
 

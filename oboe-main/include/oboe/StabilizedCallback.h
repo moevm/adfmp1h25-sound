@@ -18,7 +18,7 @@
 #define OBOE_STABILIZEDCALLBACK_H
 
 #include <cstdint>
-#include "oboe/AudioStream.h"
+#include "AudioStream.h"
 
 namespace oboe {
 
