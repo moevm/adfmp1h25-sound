@@ -18,6 +18,10 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var mPrefs: SharedPreferences? = null
+    private val manager = FileManager
+    private var presets = manager.getConf()
+    private var cur_set = presets?.drums
+    private var set_id = "drums"
 
     private lateinit var cOne_sound: MediaPlayer
     private lateinit var dOne_sound: MediaPlayer
@@ -29,9 +33,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         mPrefs = getPreferences(MODE_PRIVATE)
-
-        val manager = FileManager
-        var presets = manager.getConf()
+        println(cur_set)
 
         if(presets == null) {
             val conf = readConf()
@@ -50,7 +52,9 @@ class MainActivity : AppCompatActivity() {
         } else {
             manager.getConf()?.let { saveConf(it) }
         }
-//        manager.setPreference(mPrefs)
+        cur_set = presets?.drums
+        set_id = "drums"
+        println(cur_set)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
