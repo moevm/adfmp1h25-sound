@@ -21,10 +21,10 @@
 #include <cstdint>
 #include <ctime>
 #include <mutex>
-#include "oboe/Definitions.h"
-#include "oboe/ResultWithValue.h"
-#include "oboe/AudioStreamBuilder.h"
-#include "oboe/AudioStreamBase.h"
+#include "Definitions.h"
+#include "ResultWithValue.h"
+#include "AudioStreamBuilder.h"
+#include "AudioStreamBase.h"
 
 namespace oboe {
 

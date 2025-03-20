@@ -17,7 +17,7 @@
 #include "SampleBuffer.h"
 
 // Resampler Includes
-#include <resampler/MultiChannelResampler.h>
+#include "../../../../../oboe-main/src/flowgraph/resampler/MultiChannelResampler.h"
 
 #include "wav/WavStreamReader.h"
 

@@ -19,7 +19,7 @@
 
 #include <vector>
 
-#include <oboe/Oboe.h>
+#include "../../../../../oboe-main/include/oboe/Oboe.h"
 
 #include "OneShotSampleSource.h"
 #include "SampleBuffer.h"

@@ -24,18 +24,18 @@
  *
  */
 
-#include "oboe/Definitions.h"
-#include "oboe/ResultWithValue.h"
-#include "oboe/LatencyTuner.h"
-#include "oboe/AudioStream.h"
-#include "oboe/AudioStreamBase.h"
-#include "oboe/AudioStreamBuilder.h"
-#include "oboe/Utilities.h"
-#include "oboe/Version.h"
-#include "oboe/StabilizedCallback.h"
-#include "oboe/FifoBuffer.h"
-#include "oboe/OboeExtensions.h"
-#include "oboe/FullDuplexStream.h"
-#include "oboe/AudioClock.h"
+#include "../oboe/Definitions.h."
+#include "../oboe/ResultWithValue.h"
+#include "../oboe/LatencyTuner.h"
+#include "../oboe/AudioStream.h"
+#include "../oboe/AudioStreamBase.h"
+#include "../oboe/AudioStreamBuilder.h"
+#include "../oboe/Utilities.h"
+#include "../oboe/Version.h"
+#include "../oboe/StabilizedCallback.h"
+#include "../oboe/FifoBuffer.h"
+#include "../oboe/OboeExtensions.h"
+#include "../oboe/FullDuplexStream.h"
+#include "../oboe/AudioClock.h"
 
 #endif //OBOE_OBOE_H

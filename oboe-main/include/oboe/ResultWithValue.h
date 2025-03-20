@@ -17,7 +17,7 @@
 #ifndef OBOE_RESULT_WITH_VALUE_H
 #define OBOE_RESULT_WITH_VALUE_H
 
-#include "oboe/Definitions.h"
+#include "Definitions.h"
 #include <iostream>
 #include <sstream>
 

@@ -19,18 +19,18 @@ cmake_minimum_required(VERSION 3.4.1)
 project("soundboard")
 
 # Pull in parselib
-set (PARSELIB_DIR ../../../../parselib)
+set (PARSELIB_DIR ../../../../../parselib)
 #message("PARSELIB_DIR = " + ${PARSELIB_DIR})
 
 # Pull in iolib
-set (IOLIB_DIR ../../../../iolib)
+set (IOLIB_DIR ../../../../../iolib)
 #message("IOLIB_DIR = " + ${IOLIB_DIR})
 
 # Set the path to the Oboe library directory
-set (OBOE_DIR ../../../../)
+set (OBOE_DIR ../../../../../oboe-main)
 #message("OBOE_DIR = " + ${OBOE_DIR})
 
-#add_subdirectory(${OBOE_DIR} ./oboe-bin)
+add_subdirectory(${OBOE_DIR} ./oboe-bin)
 
 # include folders
 #include_directories(
@@ -57,7 +57,7 @@ add_library(soundboard SHARED
         )
 
 # Find the Oboe package
-find_package (oboe REQUIRED CONFIG)
+# find_package (oboe REQUIRED CONFIG)
 
 # Enable optimization flags: if having problems with source level debugging,
 # disable -Ofast ( and debug ), re-enable after done debugging.
@@ -71,7 +71,7 @@ target_link_libraries( # Specifies the target library.
         parselib
         -Wl,--no-whole-archive
 
-        oboe::oboe
+        oboe
 
         # Links the target library to the log library
         # included in the NDK.

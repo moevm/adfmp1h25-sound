@@ -17,9 +17,9 @@
 #ifndef OBOE_STREAM_BUILDER_H_
 #define OBOE_STREAM_BUILDER_H_
 
-#include "oboe/Definitions.h"
-#include "oboe/AudioStreamBase.h"
-#include "oboe/Utilities.h"
+#include "Definitions.h"
+#include "AudioStreamBase.h"
+#include "Utilities.h"
 #include "ResultWithValue.h"
 
 namespace oboe {
