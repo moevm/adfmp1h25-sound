@@ -2,17 +2,15 @@ package ru.etu.soundboard
 
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.SharedPreferences.Editor
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.google.gson.Gson
 import ru.etu.soundboard.Adapter.FileManager
+import java.io.File
 
 class SoundConfiguration : AppCompatActivity() {
     private var mPrefs: SharedPreferences? = null
@@ -73,6 +71,10 @@ class SoundConfiguration : AppCompatActivity() {
             cur_set = presets?.set3
             swapImages()
         }
+
+        val pickButton = findViewById<ImageButton>(R.id.pickerButton)
+        pickButton.setOnClickListener { showFilePicker() }
+
         val saveButton = findViewById<ImageButton>(R.id.saveButton)
         saveButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
@@ -149,6 +151,27 @@ class SoundConfiguration : AppCompatActivity() {
         } else {
             key.setImageResource(R.drawable.vec_trash_big)
             return "test"
+        }
+    }
+
+    private fun showFilePicker(){
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.type = "*/wav"
+        intent.addCategory(Intent.CATEGORY_OPENABLE)
+        try {
+            startActivityForResult(Intent.createChooser(intent, "Select a file"), 100)
+        } catch (exception: Exception) {
+            Toast.makeText(this, "Something gone wrong...", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    @Deprecated("Deprecated in Kotlin")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?){
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 100 && resultCode == RESULT_OK && data != null){
+            val uri: Uri? = data.data
+            val path = uri?.path.toString()
+            println(path)
         }
     }
 
