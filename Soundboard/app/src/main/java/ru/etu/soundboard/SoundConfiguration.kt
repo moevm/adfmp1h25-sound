@@ -16,65 +16,30 @@ class SoundConfiguration : AppCompatActivity() {
     private val manager = FileManager
     var presets = manager.getConf()
     var cur_set = presets?.set1
-    val getContent1 = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+    var cur_key = ""
+    val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         val path = uri.toString()
-        if(uri != null) { setButton!!.setImageResource(R.drawable.vec_trash_big); cur_set!!.key11 = path }
-    }
-    val getContent2 = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        val path = uri.toString()
-        if(uri != null) { setButton!!.setImageResource(R.drawable.vec_trash_big); cur_set!!.key12 = path }
-    }
-    val getContent3 = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        val path = uri.toString()
-        if(uri != null) { setButton!!.setImageResource(R.drawable.vec_trash_big); cur_set!!.key13 = path }
-    }
-    val getContent4 = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        val path = uri.toString()
-        if(uri != null) { setButton!!.setImageResource(R.drawable.vec_trash_big); cur_set!!.key14 = path }
-    }
-    val getContent5 = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        val path = uri.toString()
-        if(uri != null) { setButton!!.setImageResource(R.drawable.vec_trash_big); cur_set!!.key15 = path }
-    }
-    val getContent6 = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        val path = uri.toString()
-        if(uri != null) { setButton!!.setImageResource(R.drawable.vec_trash_big); cur_set!!.key21 = path }
-    }
-    val getContent7 = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        val path = uri.toString()
-        if(uri != null) { setButton!!.setImageResource(R.drawable.vec_trash_big); cur_set!!.key22 = path }
-    }
-    val getContent8 = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        val path = uri.toString()
-        if(uri != null) { setButton!!.setImageResource(R.drawable.vec_trash_big); cur_set!!.key23 = path }
-    }
-    val getContent9 = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        val path = uri.toString()
-        if(uri != null) { setButton!!.setImageResource(R.drawable.vec_trash_big); cur_set!!.key24 = path }
-    }
-    val getContent10 = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        val path = uri.toString()
-        if(uri != null) { setButton!!.setImageResource(R.drawable.vec_trash_big); cur_set!!.key25 = path }
-    }
-    val getContent11 = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        val path = uri.toString()
-        if(uri != null) { setButton!!.setImageResource(R.drawable.vec_trash_big); cur_set!!.key31 = path }
-    }
-    val getContent12 = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        val path = uri.toString()
-        if(uri != null) { setButton!!.setImageResource(R.drawable.vec_trash_big); cur_set!!.key32 = path }
-    }
-    val getContent13 = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        val path = uri.toString()
-        if(uri != null) { setButton!!.setImageResource(R.drawable.vec_trash_big); cur_set!!.key33 = path }
-    }
-    val getContent14 = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        val path = uri.toString()
-        if(uri != null) { setButton!!.setImageResource(R.drawable.vec_trash_big); cur_set!!.key34 = path }
-    }
-    val getContent15 = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        val path = uri.toString()
-        if(uri != null) { setButton!!.setImageResource(R.drawable.vec_trash_big); cur_set!!.key35 = path }
+        if(uri != null){
+            setButton!!.setImageResource(R.drawable.vec_trash_big)
+            when (cur_key){
+                "key11" -> cur_set!!.key11 = path
+                "key12" -> cur_set!!.key12 = path
+                "key13" -> cur_set!!.key13 = path
+                "key14" -> cur_set!!.key14 = path
+                "key15" -> cur_set!!.key15 = path
+                "key21" -> cur_set!!.key21 = path
+                "key22" -> cur_set!!.key22 = path
+                "key23" -> cur_set!!.key23 = path
+                "key24" -> cur_set!!.key24 = path
+                "key25" -> cur_set!!.key25 = path
+                "key31" -> cur_set!!.key31 = path
+                "key32" -> cur_set!!.key32 = path
+                "key33" -> cur_set!!.key33 = path
+                "key34" -> cur_set!!.key34 = path
+                "key35" -> cur_set!!.key35 = path
+            }
+        }
+        cur_key = ""
     }
     var setButton: ImageButton? = null
 
@@ -87,63 +52,63 @@ class SoundConfiguration : AppCompatActivity() {
         val key11 = findViewById<ImageButton>(R.id.key_1_1)
         key11.setOnClickListener {
             if(cur_set!!.key11 != ""){ key11.setImageResource(R.drawable.vec_plus); cur_set!!.key11 = ""
-            } else { setButton = key11; getContent1.launch("audio/*") } }
+            } else { setButton = key11; cur_key = "key11"; getContent.launch("audio/*") } }
         val key12 = findViewById<ImageButton>(R.id.key_1_2)
         key12.setOnClickListener {
             if(cur_set!!.key12 != ""){ key12.setImageResource(R.drawable.vec_plus); cur_set!!.key12 = ""
-            } else { setButton = key12; getContent2.launch("audio/*") } }
+            } else { setButton = key12; cur_key = "key12"; getContent.launch("audio/*") } }
         val key13 = findViewById<ImageButton>(R.id.key_1_3)
         key13.setOnClickListener {
             if(cur_set!!.key13 != ""){ key13.setImageResource(R.drawable.vec_plus); cur_set!!.key13 = ""
-            } else { setButton = key13; getContent3.launch("audio/*") } }
+            } else { setButton = key13; cur_key = "key13"; getContent.launch("audio/*") } }
         val key14 = findViewById<ImageButton>(R.id.key_1_4)
         key14.setOnClickListener {
             if(cur_set!!.key14 != ""){ key14.setImageResource(R.drawable.vec_plus); cur_set!!.key14 = ""
-            } else { setButton = key14; getContent4.launch("audio/*") } }
+            } else { setButton = key14; cur_key = "key14"; getContent.launch("audio/*") } }
         val key15 = findViewById<ImageButton>(R.id.key_1_5)
         key15.setOnClickListener {
             if(cur_set!!.key15 != ""){ key15.setImageResource(R.drawable.vec_plus); cur_set!!.key15 = ""
-            } else { setButton = key15; getContent5.launch("audio/*") } }
+            } else { setButton = key15; cur_key = "key15"; getContent.launch("audio/*") } }
         val key21 = findViewById<ImageButton>(R.id.key_2_1)
         key21.setOnClickListener {
             if(cur_set!!.key21 != ""){ key21.setImageResource(R.drawable.vec_plus); cur_set!!.key21 = ""
-            } else { setButton = key21; getContent6.launch("audio/*") } }
+            } else { setButton = key21; cur_key = "key21"; getContent.launch("audio/*") } }
         val key22 = findViewById<ImageButton>(R.id.key_2_2)
         key22.setOnClickListener {
             if(cur_set!!.key22 != ""){ key22.setImageResource(R.drawable.vec_plus); cur_set!!.key22 = ""
-            } else { setButton = key22; getContent7.launch("audio/*") } }
+            } else { setButton = key22; cur_key = "key22"; getContent.launch("audio/*") } }
         val key23 = findViewById<ImageButton>(R.id.key_2_3)
         key23.setOnClickListener {
             if(cur_set!!.key23 != ""){ key23.setImageResource(R.drawable.vec_plus); cur_set!!.key23 = ""
-            } else { setButton = key23; getContent8.launch("audio/*") } }
+            } else { setButton = key23; cur_key = "key23"; getContent.launch("audio/*") } }
         val key24 = findViewById<ImageButton>(R.id.key_2_4)
         key24.setOnClickListener {
             if(cur_set!!.key24 != ""){ key24.setImageResource(R.drawable.vec_plus); cur_set!!.key24 = ""
-            } else { setButton = key24; getContent9.launch("audio/*") } }
+            } else { setButton = key24; cur_key = "key24"; getContent.launch("audio/*") } }
         val key25 = findViewById<ImageButton>(R.id.key_2_5)
         key25.setOnClickListener {
             if(cur_set!!.key25 != ""){ key25.setImageResource(R.drawable.vec_plus); cur_set!!.key25 = ""
-            } else { setButton = key25; getContent10.launch("audio/*") } }
+            } else { setButton = key25; cur_key = "key25"; getContent.launch("audio/*") } }
         val key31 = findViewById<ImageButton>(R.id.key_3_1)
         key31.setOnClickListener {
             if(cur_set!!.key31 != ""){ key31.setImageResource(R.drawable.vec_plus); cur_set!!.key31 = ""
-            } else { setButton = key31; getContent11.launch("audio/*") } }
+            } else { setButton = key31; cur_key = "key31"; getContent.launch("audio/*") } }
         val key32 = findViewById<ImageButton>(R.id.key_3_2)
         key32.setOnClickListener {
             if(cur_set!!.key32 != ""){ key32.setImageResource(R.drawable.vec_plus); cur_set!!.key32 = ""
-            } else { setButton = key32; getContent12.launch("audio/*") } }
+            } else { setButton = key32; cur_key = "key32"; getContent.launch("audio/*") } }
         val key33 = findViewById<ImageButton>(R.id.key_3_3)
         key33.setOnClickListener {
             if(cur_set!!.key33 != ""){ key33.setImageResource(R.drawable.vec_plus); cur_set!!.key33 = ""
-            } else { setButton = key33; getContent13.launch("audio/*") } }
+            } else { setButton = key33; cur_key = "key33"; getContent.launch("audio/*") } }
         val key34 = findViewById<ImageButton>(R.id.key_3_4)
         key34.setOnClickListener {
             if(cur_set!!.key34 != ""){ key34.setImageResource(R.drawable.vec_plus); cur_set!!.key34 = ""
-            } else { setButton = key34; getContent14.launch("audio/*") } }
+            } else { setButton = key34; cur_key = "key34"; getContent.launch("audio/*") } }
         val key35 = findViewById<ImageButton>(R.id.key_3_5)
         key35.setOnClickListener {
             if(cur_set!!.key35 != ""){ key35.setImageResource(R.drawable.vec_plus); cur_set!!.key35 = ""
-            } else { setButton = key35; getContent15.launch("audio/*") } }
+            } else { setButton = key35; cur_key = "key35"; getContent.launch("audio/*") } }
         swapImages()
 
         val set1 = findViewById<ImageButton>(R.id.set1)
