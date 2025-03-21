@@ -5,7 +5,6 @@ import android.content.Intent
 import android.media.AudioDeviceCallback
 import android.media.AudioDeviceInfo
 import android.media.AudioManager
-import android.media.MediaPlayer
 import android.content.SharedPreferences
 import android.content.SharedPreferences.Editor
 import android.os.Bundle
@@ -23,12 +22,15 @@ import java.util.Timer
 import kotlin.concurrent.schedule
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),
+    TriggerPad.SoundPadTriggerListener,
+    View.OnClickListener
+    {
 
     private lateinit var binding: ActivityMainBinding
     private var mPrefs: SharedPreferences? = null
 
-    private val TAG = "SoundBoardActivity"
+    private val TAG = "MainActivity"
 
     private var mAudioMgr: AudioManager? = null
 
@@ -41,8 +43,6 @@ class MainActivity : AppCompatActivity() {
 
     private var mDeviceListener: DeviceListener = DeviceListener()
 
-    private lateinit var btnKey_1_1: TextView
-    private lateinit var btnKey_1_2: TextView
 
     init {
         // Load the library containing the a native code including the JNI  functions
@@ -124,12 +124,8 @@ class MainActivity : AppCompatActivity() {
         } else {
             manager.getConf()?.let { saveConf(it) }
         }
-//        manager.setPreference(mPrefs)
 
-
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
+        /*
         val buttonDevs = findViewById<Button>(R.id.pageAboutDevs)
         buttonDevs.setOnClickListener {
             val intent = Intent(this, AboutDevs::class.java)
@@ -152,22 +148,7 @@ class MainActivity : AppCompatActivity() {
         buttonHelp.setOnClickListener {
             val intent = Intent(this, Help::class.java)
             startActivity(intent)
-        }
-
-
-        btnKey_1_1 = findViewById(R.id.key_1_1)
-        btnKey_1_2 = findViewById(R.id.key_1_2)
-
-        //button sound example
-        mSoundPlayer.setupAudioStream()
-        //mSoundPlayer.loadWavAssets(assets) // это берём из папки ассетс
-        mSoundPlayer.loadWavAssetsFromStorage() // это типо из любой папки берём
-
-        btnKey_1_1.setOnClickListener {
-            mSoundPlayer.startAudioStream()
-            mSoundPlayer.trigger(SoundPlayer.HIHATCLOSED)
-        }
-        //end of example
+        }*/
 
         mAudioMgr = getSystemService(Context.AUDIO_SERVICE) as AudioManager
         
@@ -183,6 +164,7 @@ class MainActivity : AppCompatActivity() {
         mSoundPlayer.setupAudioStream()
 
         mSoundPlayer.loadWavAssets(getAssets())
+        // mSoundPlayer.loadWavAssetsFromStorage() // это типо из любой папки берём
 
         mSoundPlayer.startAudioStream()
 
@@ -195,10 +177,12 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
 
         // UI
-        //setContentView(R.layout.drumthumper_activity)
+        setContentView(R.layout.activity_main)
 
         // "Kick" drum
-        // findViewById<TriggerPad>(R.id.kickPad).addListener(this)
+
+        findViewById<TriggerPad>(R.id.key_1_1).addListener(this)
+        findViewById<TriggerPad>(R.id.key_1_2).addListener(this)
     }
 
     override fun onStop() {
@@ -216,12 +200,7 @@ class MainActivity : AppCompatActivity() {
     //
     // DrumPad.DrumPadTriggerListener
     //
-    public fun triggerDown(pad: TriggerPad.DrumPadTriggerListener) {
-        // trigger the sound based on the pad
-        /*when (pad.id) {
-            R.id.kickPad -> mSoundPlayer.trigger(SoundPlayer.BASSDRUM)
-        }*/
-    }
+
 
     private fun saveConf(conf: FileManager.Configuration) {
         val prefs = mPrefs?:return
@@ -241,8 +220,44 @@ class MainActivity : AppCompatActivity() {
         return obj
     }
 
-    private fun soundPlayKey(sound : MediaPlayer) {
-        sound.start()
+    override fun triggerDown(pad: TriggerPad) {
+        // trigger the sound based on the pad
+        when (pad.id) {
+            R.id.key_1_1 -> mSoundPlayer.trigger(SoundPlayer.BASSDRUM)
+            R.id.key_1_2 -> mSoundPlayer.trigger(SoundPlayer.HIHATCLOSED)
+
+        }
     }
+
+    override fun triggerUp(pad: TriggerPad) {
+
+    }
+
+
+
+    override fun onClick(view: View?) {
+        when (view?.id) {
+            R.id.pageAboutDevs -> {
+                Log.i(TAG, "ebat'")
+                println("ebat")
+                val intent = Intent(this, AboutDevs::class.java)
+                startActivity(intent)
+            }
+            R.id.pageConfigureSounds -> {
+                val intent = Intent(this, SoundConfiguration::class.java)
+                startActivity(intent)
+            }
+            R.id.pageMyTracks -> {
+                val intent = Intent(this, MyTracks::class.java)
+                startActivity(intent)
+            }
+            R.id.pageHelp -> {
+                val intent = Intent(this, Help::class.java)
+                startActivity(intent)
+            }
+
+        }
+    }
+
 
 }

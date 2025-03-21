@@ -2,16 +2,11 @@ package ru.etu.soundboard
 
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.SharedPreferences.Editor
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.google.gson.Gson
 import ru.etu.soundboard.Adapter.FileManager
 
 class SoundConfiguration : AppCompatActivity() {

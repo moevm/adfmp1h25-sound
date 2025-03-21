@@ -1,22 +1,15 @@
 package ru.etu.soundboard
 
 import android.content.Intent
-import android.database.Cursor
-import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.View
 import android.widget.Button
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.etu.soundboard.Adapter.SongsAdapter
 import ru.etu.soundboard.Model.SongModel
 import java.time.LocalDate
-import java.util.Date
 
 class MyTracks : AppCompatActivity() {
     private lateinit var linearLayoutManager: LinearLayoutManager

@@ -20,16 +20,35 @@ class TriggerPad: View {
     val DISPLAY_ROUND_RECT  = 0x00000002
 
     private var mDisplayFlags = DISPLAY_ROUND_RECT
+    private var mText = "SoundPad"
 
-    interface DrumPadTriggerListener {
+    interface SoundPadTriggerListener {
         fun triggerDown(pad: TriggerPad)
         fun triggerUp(pad: TriggerPad)
     }
 
-    var mListeners = ArrayList<DrumPadTriggerListener>()
+    var mListeners = ArrayList<SoundPadTriggerListener>()
 
     constructor(context: Context) : super(context)
 
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
+        extractAttributes(attrs)
+    }
+
+    constructor(context: Context, attrs: AttributeSet, defStyle: Int): super(context, attrs, defStyle) {
+        extractAttributes(attrs)
+    }
+
+    //
+    // Attributes
+    //
+    private fun extractAttributes(attrs: AttributeSet) {
+        val xmlns = "http://schemas.android.com/apk/res/android"
+        val textVal = attrs.getAttributeValue(xmlns, "text")
+        if (textVal != null) {
+            mText = textVal
+        }
+    }
     //
     // Input Routines
     //
@@ -53,7 +72,7 @@ class TriggerPad: View {
     //
     // Event Listeners
     //
-    fun addListener(listener: DrumPadTriggerListener) {
+    fun addListener(listener: SoundPadTriggerListener) {
         mListeners.add(listener)
     }
 
