@@ -1,26 +1,26 @@
 {
   "drums": {
-    "key11": "test",
-    "key12": "",
-    "key13": "",
-    "key14": "",
-    "key15": "",
-    "key21": "",
-    "key22": "",
-    "key23": "",
-    "key24": "",
-    "key25": "",
-    "key31": "",
-    "key32": "",
-    "key33": "",
-    "key34": "",
-    "key35": ""
+    "key11": "CrashCymbal.wav",
+    "key12": "HiHat_Closed.wav",
+    "key13": "KickDrum.wav",
+    "key14": "SnareDrum.wav",
+    "key15": "HiHat_Open.wav",
+    "key21": "LowTom.wav",
+    "key22": "MidTom.wav",
+    "key23": "RideCymbal.wav",
+    "key24": "sticks.wav",
+    "key25": "hiHat1.wav",
+    "key31": "hiHat2.wav",
+    "key32": "drumRiff1.wav",
+    "key33": "drumRiff2.wav",
+    "key34": "prodigy.wav",
+    "key35": "pau.wav"
   },
   "keys": {
-    "key11": "test",
+    "key11": "",
     "key12": "",
-    "key13": "",
-    "key14": "",
+    "key13": "MidTom.wav",
+    "key14": "LowTom.wav",
     "key15": "",
     "key21": "",
     "key22": "",
@@ -34,8 +34,8 @@
     "key35": ""
   },
   "set1": {
-    "key11": "test",
-    "key12": "test",
+    "key11": "",
+    "key12": "",
     "key13": "",
     "key14": "",
     "key15": "",
@@ -44,22 +44,22 @@
     "key23": "",
     "key24": "",
     "key25": "",
-    "key31": "test",
-    "key32": "test",
+    "key31": "",
+    "key32": "",
     "key33": "",
     "key34": "",
     "key35": ""
   },
   "set2": {
-    "key11": "test",
+    "key11": "",
     "key12": "",
     "key13": "",
-    "key14": "test",
+    "key14": "",
     "key15": "",
     "key21": "",
     "key22": "",
     "key23": "",
-    "key24": "test",
+    "key24": "",
     "key25": "",
     "key31": "",
     "key32": "",
@@ -68,7 +68,7 @@
     "key35": ""
   },
   "set3": {
-    "key11": "test",
+    "key11": "",
     "key12": "",
     "key13": "",
     "key14": "",
@@ -80,8 +80,8 @@
     "key25": "",
     "key31": "",
     "key32": "",
-    "key33": "test",
+    "key33": "",
     "key34": "",
-    "key35": "test"
+    "key35": ""
   }
 }

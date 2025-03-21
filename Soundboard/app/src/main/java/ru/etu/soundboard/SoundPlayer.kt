@@ -1,6 +1,8 @@
 package ru.etu.soundboard
 
 import android.content.res.AssetManager
+import android.net.Uri
+import ru.etu.soundboard.Adapter.FileManager
 import android.provider.MediaStore
 import android.util.Log
 import java.io.File
@@ -13,24 +15,38 @@ class SoundPlayer {
                                         // Stereo Playback, set to 1 for Mono playback
 
         // Sample Buffer IDs
-        val BASSDRUM: Int = 0
-        val SNAREDRUM: Int = 1
-        val CRASHCYMBAL: Int = 2
-        val RIDECYMBAL: Int = 3
-        val MIDTOM: Int = 4
-        val LOWTOM: Int = 5
-        val HIHATOPEN: Int = 6
-        val HIHATCLOSED: Int = 7
+        var KEY11: Int = 0
+        var KEY12: Int = 0
+        var KEY13: Int = 0
+        var KEY14: Int = 0
+        var KEY15: Int = 0
+        var KEY21: Int = 0
+        var KEY22: Int = 0
+        var KEY23: Int = 0
+        var KEY24: Int = 0
+        var KEY25: Int = 0
+        var KEY31: Int = 0
+        var KEY32: Int = 0
+        var KEY33: Int = 0
+        var KEY34: Int = 0
+        var KEY35: Int = 0
 
         // initial pan position for each drum sample
-        val PAN_BASSDRUM: Float = 0f         // Dead Center
-        val PAN_SNAREDRUM: Float = 0f    // Mostly Left
-        val PAN_CRASHCYMBAL: Float = 0f  // Mostly Left
-        val PAN_RIDECYMBAL: Float = 0f     // Hard Right
-        val PAN_MIDTOM: Float = 0f        // A little Right
-        val PAN_LOWTOM: Float = 0f        // Mostly Right
-        val PAN_HIHATOPEN: Float = 0f     // Hard Left
-        val PAN_HIHATCLOSED: Float = 0f   // Hard Left
+        val PAN_KEY11: Float = 0f
+        val PAN_KEY12: Float = 0f
+        val PAN_KEY13: Float = 0f
+        val PAN_KEY14: Float = 0f
+        val PAN_KEY15: Float = 0f
+        val PAN_KEY21: Float = 0f
+        val PAN_KEY22: Float = 0f
+        val PAN_KEY23: Float = 0f
+        val PAN_KEY24: Float = 0f
+        val PAN_KEY25: Float = 0f
+        val PAN_KEY31: Float = 0f
+        val PAN_KEY32: Float = 0f
+        val PAN_KEY33: Float = 0f
+        val PAN_KEY34: Float = 0f
+        val PAN_KEY35: Float = 0f
 
         // Logging Tag
         val TAG: String = "SoundPlayer"
@@ -49,15 +65,83 @@ class SoundPlayer {
     }
 
     // asset-based samples
-    fun loadWavAssets(assetMgr: AssetManager) {
-        loadWavAsset(assetMgr, "KickDrum.wav", BASSDRUM, PAN_BASSDRUM)
-        loadWavAsset(assetMgr, "SnareDrum.wav", SNAREDRUM, PAN_SNAREDRUM)
-        loadWavAsset(assetMgr, "CrashCymbal.wav", CRASHCYMBAL, PAN_CRASHCYMBAL)
-        loadWavAsset(assetMgr, "RideCymbal.wav", RIDECYMBAL, PAN_RIDECYMBAL)
-        loadWavAsset(assetMgr, "MidTom.wav", MIDTOM, PAN_MIDTOM)
-        loadWavAsset(assetMgr, "LowTom.wav", LOWTOM, PAN_LOWTOM)
-        loadWavAsset(assetMgr, "HiHat_Open.wav", HIHATOPEN, PAN_HIHATOPEN)
-        loadWavAsset(assetMgr, "HiHat_Closed.wav", HIHATCLOSED, PAN_HIHATCLOSED)
+    fun loadWavAssets(assetMgr: AssetManager, preset: FileManager.Preset) {
+        var counter = 0
+        if(preset.key11 != "") {
+            KEY11 = counter
+            loadWavAsset(assetMgr, preset.key11, KEY11, PAN_KEY11)
+            counter+=1
+        }
+        if(preset.key12 != "") {
+            KEY12 = counter
+            loadWavAsset(assetMgr, preset.key12, KEY12, PAN_KEY12)
+            counter+=1
+        }
+        if(preset.key13 != "") {
+            KEY13 = counter
+            loadWavAsset(assetMgr, preset.key13, KEY13, PAN_KEY13)
+            counter+=1
+        }
+        if(preset.key14 != "") {
+            KEY14 = counter
+            loadWavAsset(assetMgr, preset.key14, KEY14, PAN_KEY14)
+            counter+=1
+        }
+        if(preset.key15 != "") {
+            KEY15 = counter
+            loadWavAsset(assetMgr, preset.key15, KEY15, PAN_KEY15)
+            counter+=1
+        }
+        if(preset.key21 != "") {
+            KEY21 = counter
+            loadWavAsset(assetMgr, preset.key21, KEY21, PAN_KEY21)
+            counter+=1
+        }
+        if(preset.key22 != "") {
+            KEY22 = counter
+            loadWavAsset(assetMgr, preset.key22, KEY22, PAN_KEY22)
+            counter+=1
+        }
+        if(preset.key23 != "") {
+            KEY23 = counter
+            loadWavAsset(assetMgr, preset.key23, KEY23, PAN_KEY23)
+            counter+=1
+        }
+        if(preset.key24 != "") {
+            KEY24 = counter
+            loadWavAsset(assetMgr, preset.key24, KEY24, PAN_KEY24)
+            counter+=1
+        }
+        if(preset.key25 != "") {
+            KEY25 = counter
+            loadWavAsset(assetMgr, preset.key25, KEY25, PAN_KEY25)
+            counter+=1
+        }
+        if(preset.key31 != "") {
+            KEY31 = counter
+            loadWavAsset(assetMgr, preset.key31, KEY31, PAN_KEY31)
+            counter+=1
+        }
+        if(preset.key32 != "") {
+            KEY32 = counter
+            loadWavAsset(assetMgr, preset.key32, KEY32, PAN_KEY32)
+            counter+=1
+        }
+        if(preset.key33 != "") {
+            KEY33 = counter
+            loadWavAsset(assetMgr, preset.key33, KEY33, PAN_KEY33)
+            counter+=1
+        }
+        if(preset.key34 != "") {
+            KEY34 = counter
+            loadWavAsset(assetMgr, preset.key34, KEY34, PAN_KEY34)
+            counter+=1
+        }
+        if(preset.key35 != "") {
+            KEY35 = counter
+            loadWavAsset(assetMgr, preset.key35, KEY35, PAN_KEY35)
+            counter+=1
+        }
     }
 
     fun unloadWavAssets() {
@@ -79,16 +163,23 @@ class SoundPlayer {
     }
 
     //берём файлы из папки music или из любой другой (менять soundDir)
-    fun loadWavAssetsFromStorage() {
+    fun loadWavAssetsFromStorage(preset: FileManager.Preset) {
         val soundDir = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI.toString()
-        loadWavFromFile(File(soundDir, "KickDrum.wav").absolutePath, BASSDRUM, PAN_BASSDRUM)
-        loadWavFromFile(File(soundDir, "SnareDrum.wav").absolutePath, SNAREDRUM, PAN_SNAREDRUM)
-        loadWavFromFile(File(soundDir, "CrashCymbal.wav").absolutePath, CRASHCYMBAL, PAN_CRASHCYMBAL)
-        loadWavFromFile(File(soundDir, "RideCymbal.wav").absolutePath, RIDECYMBAL, PAN_RIDECYMBAL)
-        loadWavFromFile(File(soundDir, "MidTom.wav").absolutePath, MIDTOM, PAN_MIDTOM)
-        loadWavFromFile(File(soundDir, "LowTom.wav").absolutePath, LOWTOM, PAN_LOWTOM)
-        loadWavFromFile(File(soundDir, "HiHat_Open.wav").absolutePath, HIHATOPEN, PAN_HIHATOPEN)
-        loadWavFromFile(File(soundDir, "HiHat_Closed.wav").absolutePath, HIHATCLOSED, PAN_HIHATCLOSED)
+//        if(preset.key11 != "") loadWavFromFile(preset.key11, KEY11, PAN_KEY11)
+//        if(preset.key12 != "") loadWavFromFile(preset.key12, KEY12, PAN_KEY12)
+//        if(preset.key13 != "") loadWavFromFile(preset.key13, KEY13, PAN_KEY13)
+//        if(preset.key14 != "") loadWavFromFile(preset.key14, KEY14, PAN_KEY14)
+//        if(preset.key15 != "") loadWavFromFile(preset.key15, KEY15, PAN_KEY15)
+//        if(preset.key21 != "") loadWavFromFile(preset.key21, KEY21, PAN_KEY21)
+//        if(preset.key22 != "") loadWavFromFile(preset.key22, KEY22, PAN_KEY22)
+//        if(preset.key23 != "") loadWavFromFile(preset.key23, KEY23, PAN_KEY23)
+//        if(preset.key24 != "") loadWavFromFile(preset.key24, KEY24, PAN_KEY24)
+//        if(preset.key25 != "") loadWavFromFile(preset.key25, KEY25, PAN_KEY25)
+//        if(preset.key31 != "") loadWavFromFile(preset.key31, KEY31, PAN_KEY31)
+//        if(preset.key32 != "") loadWavFromFile(preset.key32, KEY32, PAN_KEY32)
+//        if(preset.key33 != "") loadWavFromFile(preset.key33, KEY33, PAN_KEY33)
+//        if(preset.key34 != "") loadWavFromFile(preset.key34, KEY34, PAN_KEY34)
+//        if(preset.key35 != "") loadWavFromFile(preset.key35, KEY35, PAN_KEY35)
     }
 
     fun loadWavFromFile(filePath: String, index: Int, pan: Float) {

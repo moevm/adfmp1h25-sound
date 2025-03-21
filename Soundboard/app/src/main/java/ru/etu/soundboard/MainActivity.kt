@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -28,6 +29,9 @@ class MainActivity : AppCompatActivity(),
 
     private lateinit var binding: ActivityMainBinding
     private var mPrefs: SharedPreferences? = null
+    private val manager = FileManager
+    private var presets = manager.getConf()
+    private var cur_set = presets?.drums
 
     private val TAG = "MainActivity"
 
@@ -123,8 +127,12 @@ class MainActivity : AppCompatActivity(),
         } else {
             manager.getConf()?.let { saveConf(it) }
         }
+        cur_set = presets?.drums
 
-        /*
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+/*
         val buttonDevs = findViewById<Button>(R.id.pageAboutDevs)
         buttonDevs.setOnClickListener {
             val intent = Intent(this, AboutDevs::class.java)
@@ -162,8 +170,7 @@ class MainActivity : AppCompatActivity(),
 
         mSoundPlayer.setupAudioStream()
 
-        mSoundPlayer.loadWavAssets(getAssets())
-        // mSoundPlayer.loadWavAssetsFromStorage() // это типо из любой папки берём
+        mSoundPlayer.loadWavAssets(getAssets(), cur_set!!)
 
         mSoundPlayer.startAudioStream()
 
@@ -237,23 +244,23 @@ class MainActivity : AppCompatActivity(),
     override fun triggerDown(pad: TriggerPad) {
         // trigger the sound based on the pad
         when (pad.id) {
-            R.id.key_1_1 -> mSoundPlayer.trigger(SoundPlayer.BASSDRUM)
-            R.id.key_1_2 -> mSoundPlayer.trigger(SoundPlayer.CRASHCYMBAL)
-            R.id.key_1_3 -> mSoundPlayer.trigger(SoundPlayer.SNAREDRUM)
-            R.id.key_1_4 -> mSoundPlayer.trigger(SoundPlayer.HIHATOPEN)
-            R.id.key_1_5 -> mSoundPlayer.trigger(SoundPlayer.HIHATCLOSED)
+            R.id.key_1_1 -> mSoundPlayer.trigger(SoundPlayer.KEY11)
+            R.id.key_1_2 -> mSoundPlayer.trigger(SoundPlayer.KEY12)
+            R.id.key_1_3 -> mSoundPlayer.trigger(SoundPlayer.KEY13)
+            R.id.key_1_4 -> mSoundPlayer.trigger(SoundPlayer.KEY14)
+            R.id.key_1_5 -> mSoundPlayer.trigger(SoundPlayer.KEY15)
 
-            R.id.key_2_1 -> mSoundPlayer.trigger(SoundPlayer.RIDECYMBAL)
-            R.id.key_2_2 -> mSoundPlayer.trigger(SoundPlayer.LOWTOM)
-            R.id.key_2_3 -> mSoundPlayer.trigger(SoundPlayer.MIDTOM)
-            R.id.key_2_4 -> mSoundPlayer.trigger(SoundPlayer.HIHATCLOSED)
-            R.id.key_2_5 -> mSoundPlayer.trigger(SoundPlayer.BASSDRUM)
+            R.id.key_2_1 -> mSoundPlayer.trigger(SoundPlayer.KEY21)
+            R.id.key_2_2 -> mSoundPlayer.trigger(SoundPlayer.KEY22)
+            R.id.key_2_3 -> mSoundPlayer.trigger(SoundPlayer.KEY23)
+            R.id.key_2_4 -> mSoundPlayer.trigger(SoundPlayer.KEY24)
+            R.id.key_2_5 -> mSoundPlayer.trigger(SoundPlayer.KEY25)
 
-            R.id.key_3_1 -> mSoundPlayer.trigger(SoundPlayer.BASSDRUM)
-            R.id.key_3_2 -> mSoundPlayer.trigger(SoundPlayer.HIHATCLOSED)
-            R.id.key_3_3 -> mSoundPlayer.trigger(SoundPlayer.BASSDRUM)
-            R.id.key_3_4 -> mSoundPlayer.trigger(SoundPlayer.HIHATCLOSED)
-            R.id.key_3_5 -> mSoundPlayer.trigger(SoundPlayer.BASSDRUM)
+            R.id.key_3_1 -> mSoundPlayer.trigger(SoundPlayer.KEY31)
+            R.id.key_3_2 -> mSoundPlayer.trigger(SoundPlayer.KEY32)
+            R.id.key_3_3 -> mSoundPlayer.trigger(SoundPlayer.KEY33)
+            R.id.key_3_4 -> mSoundPlayer.trigger(SoundPlayer.KEY34)
+            R.id.key_3_5 -> mSoundPlayer.trigger(SoundPlayer.KEY35)
         }
     }
 
