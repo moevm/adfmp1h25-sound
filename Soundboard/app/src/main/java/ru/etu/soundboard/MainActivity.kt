@@ -23,8 +23,7 @@ import kotlin.concurrent.schedule
 
 
 class MainActivity : AppCompatActivity(),
-    TriggerPad.SoundPadTriggerListener,
-    View.OnClickListener
+    TriggerPad.SoundPadTriggerListener
     {
 
     private lateinit var binding: ActivityMainBinding
@@ -179,10 +178,25 @@ class MainActivity : AppCompatActivity(),
         // UI
         setContentView(R.layout.activity_main)
 
-        // "Kick" drum
 
         findViewById<TriggerPad>(R.id.key_1_1).addListener(this)
         findViewById<TriggerPad>(R.id.key_1_2).addListener(this)
+        findViewById<TriggerPad>(R.id.key_1_3).addListener(this)
+        findViewById<TriggerPad>(R.id.key_1_4).addListener(this)
+        findViewById<TriggerPad>(R.id.key_1_5).addListener(this)
+
+        findViewById<TriggerPad>(R.id.key_2_1).addListener(this)
+        findViewById<TriggerPad>(R.id.key_2_2).addListener(this)
+        findViewById<TriggerPad>(R.id.key_2_3).addListener(this)
+        findViewById<TriggerPad>(R.id.key_2_4).addListener(this)
+        findViewById<TriggerPad>(R.id.key_2_5).addListener(this)
+
+        findViewById<TriggerPad>(R.id.key_3_1).addListener(this)
+        findViewById<TriggerPad>(R.id.key_3_2).addListener(this)
+        findViewById<TriggerPad>(R.id.key_3_3).addListener(this)
+        findViewById<TriggerPad>(R.id.key_3_4).addListener(this)
+        findViewById<TriggerPad>(R.id.key_3_5).addListener(this)
+
     }
 
     override fun onStop() {
@@ -224,8 +238,22 @@ class MainActivity : AppCompatActivity(),
         // trigger the sound based on the pad
         when (pad.id) {
             R.id.key_1_1 -> mSoundPlayer.trigger(SoundPlayer.BASSDRUM)
-            R.id.key_1_2 -> mSoundPlayer.trigger(SoundPlayer.HIHATCLOSED)
+            R.id.key_1_2 -> mSoundPlayer.trigger(SoundPlayer.CRASHCYMBAL)
+            R.id.key_1_3 -> mSoundPlayer.trigger(SoundPlayer.SNAREDRUM)
+            R.id.key_1_4 -> mSoundPlayer.trigger(SoundPlayer.HIHATOPEN)
+            R.id.key_1_5 -> mSoundPlayer.trigger(SoundPlayer.HIHATCLOSED)
 
+            R.id.key_2_1 -> mSoundPlayer.trigger(SoundPlayer.RIDECYMBAL)
+            R.id.key_2_2 -> mSoundPlayer.trigger(SoundPlayer.LOWTOM)
+            R.id.key_2_3 -> mSoundPlayer.trigger(SoundPlayer.MIDTOM)
+            R.id.key_2_4 -> mSoundPlayer.trigger(SoundPlayer.HIHATCLOSED)
+            R.id.key_2_5 -> mSoundPlayer.trigger(SoundPlayer.BASSDRUM)
+
+            R.id.key_3_1 -> mSoundPlayer.trigger(SoundPlayer.BASSDRUM)
+            R.id.key_3_2 -> mSoundPlayer.trigger(SoundPlayer.HIHATCLOSED)
+            R.id.key_3_3 -> mSoundPlayer.trigger(SoundPlayer.BASSDRUM)
+            R.id.key_3_4 -> mSoundPlayer.trigger(SoundPlayer.HIHATCLOSED)
+            R.id.key_3_5 -> mSoundPlayer.trigger(SoundPlayer.BASSDRUM)
         }
     }
 
@@ -235,7 +263,7 @@ class MainActivity : AppCompatActivity(),
 
 
 
-    override fun onClick(view: View?) {
+    /*override fun onClick(view: View?) {
         when (view?.id) {
             R.id.pageAboutDevs -> {
                 Log.i(TAG, "ebat'")
@@ -257,7 +285,7 @@ class MainActivity : AppCompatActivity(),
             }
 
         }
-    }
+    }*/
 
 
 }
