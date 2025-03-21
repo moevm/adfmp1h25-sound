@@ -1,7 +1,9 @@
 package ru.etu.soundboard
 
 import android.content.res.AssetManager
+import android.provider.MediaStore
 import android.util.Log
+import java.io.File
 import java.io.IOException
 
 class SoundPlayer {
@@ -73,6 +75,29 @@ class SoundPlayer {
             assetFD.close()
         } catch (ex: IOException) {
             Log.i(TAG, "IOException$ex")
+        }
+    }
+
+    //берём файлы из папки music или из любой другой (менять soundDir)
+    fun loadWavAssetsFromStorage() {
+        val soundDir = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI.toString()
+        loadWavFromFile(File(soundDir, "KickDrum.wav").absolutePath, BASSDRUM, PAN_BASSDRUM)
+        loadWavFromFile(File(soundDir, "SnareDrum.wav").absolutePath, SNAREDRUM, PAN_SNAREDRUM)
+        loadWavFromFile(File(soundDir, "CrashCymbal.wav").absolutePath, CRASHCYMBAL, PAN_CRASHCYMBAL)
+        loadWavFromFile(File(soundDir, "RideCymbal.wav").absolutePath, RIDECYMBAL, PAN_RIDECYMBAL)
+        loadWavFromFile(File(soundDir, "MidTom.wav").absolutePath, MIDTOM, PAN_MIDTOM)
+        loadWavFromFile(File(soundDir, "LowTom.wav").absolutePath, LOWTOM, PAN_LOWTOM)
+        loadWavFromFile(File(soundDir, "HiHat_Open.wav").absolutePath, HIHATOPEN, PAN_HIHATOPEN)
+        loadWavFromFile(File(soundDir, "HiHat_Closed.wav").absolutePath, HIHATCLOSED, PAN_HIHATCLOSED)
+    }
+
+    fun loadWavFromFile(filePath: String, index: Int, pan: Float) {
+        try {
+            val file = File(filePath)
+            val dataBytes = file.readBytes()
+            loadWavAssetNative(dataBytes, index, pan)
+        } catch (ex: IOException) {
+            Log.i(TAG, "IOException: $ex")
         }
     }
 

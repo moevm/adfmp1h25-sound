@@ -160,11 +160,12 @@ class MainActivity : AppCompatActivity() {
 
         //button sound example
         mSoundPlayer.setupAudioStream()
-        mSoundPlayer.loadWavAssets(assets)
+        //mSoundPlayer.loadWavAssets(assets) // это берём из папки ассетс
+        mSoundPlayer.loadWavAssetsFromStorage() // это типо из любой папки берём
 
         btnKey_1_1.setOnClickListener {
             mSoundPlayer.startAudioStream()
-            mSoundPlayer.trigger(SoundPlayer.CRASHCYMBAL) // Пример воспроизведения звука бас-барабана
+            mSoundPlayer.trigger(SoundPlayer.HIHATCLOSED)
         }
         //end of example
 
