@@ -2,6 +2,7 @@ package ru.etu.soundboard
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -15,6 +16,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import ru.etu.soundboard.Adapter.FileManager
 import java.io.File
+import java.io.FileOutputStream
 
 class SoundConfiguration : AppCompatActivity(), SideButton.SideButtonListener,SideImageButton.SideButtonListener {
     private var mPrefs: SharedPreferences? = null
@@ -23,52 +25,66 @@ class SoundConfiguration : AppCompatActivity(), SideButton.SideButtonListener,Si
     var cur_set = presets?.set1
     var cur_key = ""
     val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        val path = uri.toString()
-
-        if(uri != null) {
-            uri.path?.let { Log.d("MainActivity", it) }
-//            uri.path
-//            val cursor = contentResolver.query(uri, null, null, null, null)
-//            val nameIndex = cursor?.getColumnIndex(MediaStore.Audio.Media.DATA);
-//            cursor?.moveToFirst()
-//            val fileName = nameIndex?.let { cursor.getString(it) }
-//            if (fileName != null) {
-//                Log.d("MainActivity", fileName)
-//            }
-//            contentResolver.apply {
-//                query(uri, null, null, null, null)?.use { cursor ->
-//                    val nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
-//                    cursor.moveToFirst()
-//                    cursor.getString(nameIndex)
-//                }?.let { fileName ->
-//                    Log.d("MainActivity", fileName)
-//                }
-//            }
-        }
-        Log.d("MainActivity", File(path).name)
         if(uri != null){
+            val res = getFilePathFromUri(uri)
             setButton!!.setImageResource(R.drawable.vec_trash_big)
             when (cur_key){
-                "key11" -> cur_set!!.key11 = path
-                "key12" -> cur_set!!.key12 = path
-                "key13" -> cur_set!!.key13 = path
-                "key14" -> cur_set!!.key14 = path
-                "key15" -> cur_set!!.key15 = path
-                "key21" -> cur_set!!.key21 = path
-                "key22" -> cur_set!!.key22 = path
-                "key23" -> cur_set!!.key23 = path
-                "key24" -> cur_set!!.key24 = path
-                "key25" -> cur_set!!.key25 = path
-                "key31" -> cur_set!!.key31 = path
-                "key32" -> cur_set!!.key32 = path
-                "key33" -> cur_set!!.key33 = path
-                "key34" -> cur_set!!.key34 = path
-                "key35" -> cur_set!!.key35 = path
+                "key11" -> cur_set!!.key11 = res
+                "key12" -> cur_set!!.key12 = res
+                "key13" -> cur_set!!.key13 = res
+                "key14" -> cur_set!!.key14 = res
+                "key15" -> cur_set!!.key15 = res
+                "key21" -> cur_set!!.key21 = res
+                "key22" -> cur_set!!.key22 = res
+                "key23" -> cur_set!!.key23 = res
+                "key24" -> cur_set!!.key24 = res
+                "key25" -> cur_set!!.key25 = res
+                "key31" -> cur_set!!.key31 = res
+                "key32" -> cur_set!!.key32 = res
+                "key33" -> cur_set!!.key33 = res
+                "key34" -> cur_set!!.key34 = res
+                "key35" -> cur_set!!.key35 = res
             }
         }
         cur_key = ""
     }
     var setButton: ImageButton? = null
+
+    // Функция для получения пути к файлу из Uri
+    private fun getFilePathFromUri(uri: Uri): String {
+        var filePath = ""
+        val cursor = contentResolver.query(uri, null, null, null, null)
+        cursor?.use {
+            if (it.moveToFirst()) {
+                // Попробуем получить путь из MediaStore
+                val columnIndex = it.getColumnIndex(MediaStore.Images.Media.DATA)
+                if (columnIndex != -1) {
+                    filePath = it.getString(columnIndex)
+                } else {
+                    // Если путь не найден, используем имя файла
+                    val displayNameIndex = it.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                    if (displayNameIndex != -1) {
+                        val fileName = it.getString(displayNameIndex)
+                        filePath = "${cacheDir.absolutePath}/$fileName"
+                        // Копируем файл в кэш, если нужно
+                        copyFileToCache(uri, filePath)
+                    }
+                }
+            }
+        }
+        return filePath
+    }
+
+    // Функция для копирования файла в кэш
+    private fun copyFileToCache(uri: Uri, destinationPath: String) {
+        val inputStream = contentResolver.openInputStream(uri)
+        val outputStream = FileOutputStream(destinationPath)
+        inputStream?.use { input ->
+            outputStream.use { output ->
+                input.copyTo(output)
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
