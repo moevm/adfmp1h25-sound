@@ -124,7 +124,6 @@ class MainActivity : AppCompatActivity(),
             manager.getConf()?.let { saveConf(it) }
         }
         cur_set = allPresets?.drums
-        Log.d("MainActivity", allPresets.toString())
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -162,6 +161,16 @@ class MainActivity : AppCompatActivity(),
         actionBar?.hide()
     }
 
+        val drumsButton = findViewById<ImageButton>(R.id.btnDrums)
+        drumsButton.setOnClickListener { cur_set = presets?.drums }
+        val keysButton = findViewById<ImageButton>(R.id.btnKeys)
+        keysButton.setOnClickListener { cur_set = presets?.keys }
+        val set1Button = findViewById<ImageButton>(R.id.btnSet1)
+        set1Button.setOnClickListener { cur_set = presets?.set1 }
+        val set2Button = findViewById<ImageButton>(R.id.btnSet2)
+        set2Button.setOnClickListener { cur_set = presets?.set2 }
+        val set3Button = findViewById<ImageButton>(R.id.btnSet3)
+        set3Button.setOnClickListener { cur_set = presets?.set3 }
 
     override fun onStart() {
         super.onStart()
