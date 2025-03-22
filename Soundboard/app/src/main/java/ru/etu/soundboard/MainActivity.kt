@@ -338,9 +338,23 @@ class MainActivity : AppCompatActivity(),
                 mSoundPlayer.unloadWavAssets()
                 mSoundPlayer.loadWavAssets(getAssets(), cur_set!!)
             }
+            R.id.btnSet1 -> {
+                cur_set = this.allPresets?.set1
+                mSoundPlayer.unloadWavAssets()
+                mSoundPlayer.loadWavAssetsFromStorage(cur_set!!)
+            }
+            R.id.btnSet2 -> {
+                cur_set = this.allPresets?.set2
+                mSoundPlayer.unloadWavAssets()
+                mSoundPlayer.loadWavAssetsFromStorage(cur_set!!)
+            }
+            R.id.btnSet3 -> {
+                cur_set = this.allPresets?.set3
+                mSoundPlayer.unloadWavAssets()
+                mSoundPlayer.loadWavAssetsFromStorage(cur_set!!)
+            }
             R.id.btnDelete -> {
-//                val intent = Intent(this, Help::class.java)
-//                startActivity(intent)
+
             }
         }
     }

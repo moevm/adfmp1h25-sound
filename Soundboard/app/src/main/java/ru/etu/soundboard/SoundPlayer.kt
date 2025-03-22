@@ -66,7 +66,6 @@ class SoundPlayer {
 
     // asset-based samples
     fun loadWavAssets(assetMgr: AssetManager, preset: FileManager.Preset) {
-        println(preset.key14)
         var counter = 0
         Log.d("kek", preset.key11)
         if(preset.key11 != "") {
@@ -181,22 +180,83 @@ class SoundPlayer {
 
     //берём файлы из папки music или из любой другой (менять soundDir)
     fun loadWavAssetsFromStorage(preset: FileManager.Preset) {
-        val soundDir = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI.toString()
-//        if(preset.key11 != "") loadWavFromFile(preset.key11, KEY11, PAN_KEY11)
-//        if(preset.key12 != "") loadWavFromFile(preset.key12, KEY12, PAN_KEY12)
-//        if(preset.key13 != "") loadWavFromFile(preset.key13, KEY13, PAN_KEY13)
-//        if(preset.key14 != "") loadWavFromFile(preset.key14, KEY14, PAN_KEY14)
-//        if(preset.key15 != "") loadWavFromFile(preset.key15, KEY15, PAN_KEY15)
-//        if(preset.key21 != "") loadWavFromFile(preset.key21, KEY21, PAN_KEY21)
-//        if(preset.key22 != "") loadWavFromFile(preset.key22, KEY22, PAN_KEY22)
-//        if(preset.key23 != "") loadWavFromFile(preset.key23, KEY23, PAN_KEY23)
-//        if(preset.key24 != "") loadWavFromFile(preset.key24, KEY24, PAN_KEY24)
-//        if(preset.key25 != "") loadWavFromFile(preset.key25, KEY25, PAN_KEY25)
-//        if(preset.key31 != "") loadWavFromFile(preset.key31, KEY31, PAN_KEY31)
-//        if(preset.key32 != "") loadWavFromFile(preset.key32, KEY32, PAN_KEY32)
-//        if(preset.key33 != "") loadWavFromFile(preset.key33, KEY33, PAN_KEY33)
-//        if(preset.key34 != "") loadWavFromFile(preset.key34, KEY34, PAN_KEY34)
-//        if(preset.key35 != "") loadWavFromFile(preset.key35, KEY35, PAN_KEY35)
+        var counter = 0
+        Log.d("kek", preset.key11)
+        if(preset.key11 != "") {
+            KEY11 = counter
+            loadWavFromFile(preset.key11, KEY11, PAN_KEY11)
+            counter+=1
+        }
+        if(preset.key12 != "") {
+            KEY12 = counter
+            loadWavFromFile(preset.key12, KEY12, PAN_KEY12)
+            counter+=1
+        }
+        if(preset.key13 != "") {
+            KEY13 = counter
+            loadWavFromFile(preset.key13, KEY13, PAN_KEY13)
+            counter+=1
+        }
+        if(preset.key14 != "") {
+            KEY14 = counter
+            loadWavFromFile(preset.key14, KEY14, PAN_KEY14)
+            counter+=1
+        }
+        if(preset.key15 != "") {
+            KEY15 = counter
+            loadWavFromFile(preset.key15, KEY15, PAN_KEY15)
+            counter+=1
+        }
+        if(preset.key21 != "") {
+            KEY21 = counter
+            loadWavFromFile(preset.key21, KEY21, PAN_KEY21)
+            counter+=1
+        }
+        if(preset.key22 != "") {
+            KEY22 = counter
+            loadWavFromFile(preset.key22, KEY22, PAN_KEY22)
+            counter+=1
+        }
+        if(preset.key23 != "") {
+            KEY23 = counter
+            loadWavFromFile(preset.key23, KEY23, PAN_KEY23)
+            counter+=1
+        }
+        if(preset.key24 != "") {
+            KEY24 = counter
+            loadWavFromFile(preset.key24, KEY24, PAN_KEY24)
+            counter+=1
+        }
+        if(preset.key25 != "") {
+            KEY25 = counter
+            loadWavFromFile(preset.key25, KEY25, PAN_KEY25)
+            counter+=1
+        }
+        if(preset.key31 != "") {
+            KEY31 = counter
+            loadWavFromFile(preset.key31, KEY31, PAN_KEY31)
+            counter+=1
+        }
+        if(preset.key32 != "") {
+            KEY32 = counter
+            loadWavFromFile(preset.key32, KEY32, PAN_KEY32)
+            counter+=1
+        }
+        if(preset.key33 != "") {
+            KEY33 = counter
+            loadWavFromFile(preset.key33, KEY33, PAN_KEY33)
+            counter+=1
+        }
+        if(preset.key34 != "") {
+            KEY34 = counter
+            loadWavFromFile(preset.key34, KEY34, PAN_KEY34)
+            counter+=1
+        }
+        if(preset.key35 != "") {
+            KEY35 = counter
+            loadWavFromFile(preset.key35, KEY35, PAN_KEY35)
+            counter+=1
+        }
     }
 
     fun loadWavFromFile(filePath: String, index: Int, pan: Float) {
