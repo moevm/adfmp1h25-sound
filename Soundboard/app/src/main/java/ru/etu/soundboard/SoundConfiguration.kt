@@ -11,7 +11,7 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import ru.etu.soundboard.Adapter.FileManager
 
-class SoundConfiguration : AppCompatActivity(), SideButton.SideButtonListener {
+class SoundConfiguration : AppCompatActivity(), SideButton.SideButtonListener,SideImageButton.SideButtonListener {
     private var mPrefs: SharedPreferences? = null
     private val manager = FileManager
     var presets = manager.getConf()
@@ -53,27 +53,34 @@ class SoundConfiguration : AppCompatActivity(), SideButton.SideButtonListener {
         val key34 = findViewById<ImageButton>(R.id.key_3_4)
         key34.setOnClickListener { cur_set?.let { it1 -> it1.key34 = handleKey(key34, it1.key34) } }
         val key35 = findViewById<ImageButton>(R.id.key_3_5)
-        key35.setOnClickListener { cur_set?.let { it1 -> it1.key35 = handleKey(key35, it1.key35) } }
+//        key35.setOnClickListener { cur_set?.let { it1 -> it1.key35 = handleKey(key35, it1.key35) } }
+        key35.setOnClickListener { val intent = Intent(this, Help::class.java)
+            startActivity(intent) }
         swapImages()
 
-        val set1 = findViewById<ImageButton>(R.id.set1)
-        set1.setOnClickListener{
-            cur_set = presets?.set1
-            set_id = 1
-            swapImages()
-        }
-        val set2 = findViewById<ImageButton>(R.id.set2)
-        set2.setOnClickListener{
-            cur_set = presets?.set2
-            set_id = 2
-            swapImages()
-        }
-        val set3 = findViewById<ImageButton>(R.id.set3)
-        set3.setOnClickListener{
-            cur_set = presets?.set3
-            set_id = 3
-            swapImages()
-        }
+        val set1 = findViewById<SideImageButton>(R.id.set1)
+        set1.addListener(this)
+//        set1.setOnClickListener{
+//            cur_set = presets?.set1
+//            set_id = 1
+//            swapImages()
+//        }
+        val set2 = findViewById<SideImageButton>(R.id.set2)
+        set2.addListener(this)
+//        set2.setOnClickListener{
+//            cur_set = presets?.set2
+//            set_id = 2
+//            swapImages()
+//        }
+        val set3 = findViewById<SideImageButton>(R.id.set3)
+        set3.addListener(this)
+//        set3.setOnClickListener{
+//            cur_set = presets?.set3
+//            set_id = 3
+//            swapImages()
+//        }
+        val saveButton = findViewById<SideImageButton>(R.id.saveButton)
+        saveButton.addListener(this)
 
         val buttonAboutDevs = findViewById<SideButton>(R.id.pageAboutDevs)
         val buttonConfigureSounds = findViewById<SideButton>(R.id.pageConfigureSounds)
@@ -177,6 +184,36 @@ class SoundConfiguration : AppCompatActivity(), SideButton.SideButtonListener {
     }
 
     override fun onButtonUp(button: SideButton) {
+        // Логика при отпускании кнопки (если нужна)
+    }
+
+    override fun onButtonDown(button: SideImageButton) {
+        Log.d("MainActivity", "Button down: ${button.id}")
+        when (button.id) {
+            R.id.set1 -> {
+                cur_set = presets?.set1
+                set_id = 1
+                swapImages()
+            }
+            R.id.set2 -> {
+                cur_set = presets?.set2
+                set_id = 2
+                swapImages()
+            }
+            R.id.set3 -> {
+                cur_set = presets?.set3
+                set_id = 3
+                swapImages()
+            }
+            R.id.saveButton -> {
+                Log.d("MainActivity", "About Devs button pressed")
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+        }
+    }
+
+    override fun onButtonUp(button: SideImageButton) {
         // Логика при отпускании кнопки (если нужна)
     }
 }
