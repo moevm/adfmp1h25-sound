@@ -66,6 +66,7 @@ class SoundPlayer {
 
     // asset-based samples
     fun loadWavAssets(assetMgr: AssetManager, preset: FileManager.Preset) {
+        println(preset.key14)
         var counter = 0
         Log.d("kek", preset.key11)
         if(preset.key11 != "") {
@@ -146,6 +147,21 @@ class SoundPlayer {
     }
 
     fun unloadWavAssets() {
+        KEY11 = 0
+        KEY12 = 0
+        KEY13 = 0
+        KEY14 = 0
+        KEY15 = 0
+        KEY21 = 0
+        KEY22 = 0
+        KEY23 = 0
+        KEY24 = 0
+        KEY25 = 0
+        KEY31 = 0
+        KEY32 = 0
+        KEY33 = 0
+        KEY34 = 0
+        KEY35 = 0
         unloadWavAssetsNative()
     }
 

@@ -10,9 +10,6 @@ import android.content.SharedPreferences.Editor
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
@@ -24,14 +21,14 @@ import kotlin.concurrent.schedule
 
 
 class MainActivity : AppCompatActivity(),
-    TriggerPad.SoundPadTriggerListener,SideButton.SideButtonListener
+    TriggerPad.SoundPadTriggerListener,SideButton.SideButtonListener,SideImageButton.SideButtonListener
 {
 
     private lateinit var binding: ActivityMainBinding
     private var mPrefs: SharedPreferences? = null
     private val manager = FileManager
-    private var presets = manager.getConf()
-    private var cur_set = presets?.drums
+    private var allPresets = manager.getConf()
+    private var cur_set = allPresets?.drums
 
     private val TAG = "MainActivity"
 
@@ -107,9 +104,9 @@ class MainActivity : AppCompatActivity(),
         mPrefs = getPreferences(MODE_PRIVATE)
 
         val manager = FileManager
-        var presets = manager.getConf()
+        allPresets = manager.getConf()
 
-        if(presets == null) {
+        if(allPresets == null) {
             val conf = readConf()
             if (conf == null) {
                 val data: String = manager.readFile(baseContext)
@@ -122,11 +119,12 @@ class MainActivity : AppCompatActivity(),
             else {
                 manager.setConf(conf)
             }
-            presets = manager.getConf()
+            allPresets = manager.getConf()
         } else {
             manager.getConf()?.let { saveConf(it) }
         }
-        cur_set = presets?.drums
+        cur_set = allPresets?.drums
+        Log.d("MainActivity", allPresets.toString())
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -136,11 +134,26 @@ class MainActivity : AppCompatActivity(),
         val buttonMyTracks = findViewById<SideButton>(R.id.pageMyTracks)
         val buttonHelp = findViewById<SideButton>(R.id.pageHelp)
 
+        // Инициализация кнопок верхней и правой панелей
+        val buttonDrums = findViewById<SideImageButton>(R.id.btnDrums)
+        val buttonKeys = findViewById<SideImageButton>(R.id.btnKeys)
+        val buttonSet1 = findViewById<SideImageButton>(R.id.btnSet1)
+        val buttonSet2 = findViewById<SideImageButton>(R.id.btnSet2)
+        val buttonSet3 = findViewById<SideImageButton>(R.id.btnSet3)
+        val buttonDelete = findViewById<SideImageButton>(R.id.btnDelete)
+
         // Добавление обработчиков
         buttonAboutDevs.addListener(this)
         buttonConfigureSounds.addListener(this)
         buttonMyTracks.addListener(this)
         buttonHelp.addListener(this)
+
+        buttonDrums.addListener(this)
+        buttonKeys.addListener(this)
+        buttonSet1.addListener(this)
+        buttonSet2.addListener(this)
+        buttonSet3.addListener(this)
+        buttonDelete.addListener(this)
 
         mAudioMgr = getSystemService(Context.AUDIO_SERVICE) as AudioManager
 
@@ -152,6 +165,8 @@ class MainActivity : AppCompatActivity(),
 
     override fun onStart() {
         super.onStart()
+
+        mSoundPlayer.unloadWavAssets()
 
         mSoundPlayer.setupAudioStream()
 
@@ -176,6 +191,21 @@ class MainActivity : AppCompatActivity(),
         val buttonConfigureSounds = findViewById<SideButton>(R.id.pageConfigureSounds)
         val buttonMyTracks = findViewById<SideButton>(R.id.pageMyTracks)
         val buttonHelp = findViewById<SideButton>(R.id.pageHelp)
+
+        // Инициализация кнопок верхней и правой панелей
+        val buttonDrums = findViewById<SideImageButton>(R.id.btnDrums)
+        val buttonKeys = findViewById<SideImageButton>(R.id.btnKeys)
+        val buttonSet1 = findViewById<SideImageButton>(R.id.btnSet1)
+        val buttonSet2 = findViewById<SideImageButton>(R.id.btnSet2)
+        val buttonSet3 = findViewById<SideImageButton>(R.id.btnSet3)
+        val buttonDelete = findViewById<SideImageButton>(R.id.btnDelete)
+
+        buttonDrums.addListener(this)
+        buttonKeys.addListener(this)
+        buttonSet1.addListener(this)
+        buttonSet2.addListener(this)
+        buttonSet3.addListener(this)
+        buttonDelete.addListener(this)
 
         // Добавление обработчиков
         buttonAboutDevs.addListener(this)
@@ -242,23 +272,23 @@ class MainActivity : AppCompatActivity(),
         // trigger the sound based on the pad
         Log.d("kek", "d")
         when (pad.id) {
-            R.id.key_1_1 -> mSoundPlayer.trigger(SoundPlayer.KEY11)
-            R.id.key_1_2 -> mSoundPlayer.trigger(SoundPlayer.KEY12)
-            R.id.key_1_3 -> mSoundPlayer.trigger(SoundPlayer.KEY13)
-            R.id.key_1_4 -> mSoundPlayer.trigger(SoundPlayer.KEY14)
-            R.id.key_1_5 -> mSoundPlayer.trigger(SoundPlayer.KEY15)
+            R.id.key_1_1 -> if(cur_set!!.key11 != "") mSoundPlayer.trigger(SoundPlayer.KEY11)
+            R.id.key_1_2 -> if(cur_set!!.key12 != "") mSoundPlayer.trigger(SoundPlayer.KEY12)
+            R.id.key_1_3 -> if(cur_set!!.key13 != "") mSoundPlayer.trigger(SoundPlayer.KEY13)
+            R.id.key_1_4 -> if(cur_set!!.key14 != "") mSoundPlayer.trigger(SoundPlayer.KEY14)
+            R.id.key_1_5 -> if(cur_set!!.key15 != "") mSoundPlayer.trigger(SoundPlayer.KEY15)
 
-            R.id.key_2_1 -> mSoundPlayer.trigger(SoundPlayer.KEY21)
-            R.id.key_2_2 -> mSoundPlayer.trigger(SoundPlayer.KEY22)
-            R.id.key_2_3 -> mSoundPlayer.trigger(SoundPlayer.KEY23)
-            R.id.key_2_4 -> mSoundPlayer.trigger(SoundPlayer.KEY24)
-            R.id.key_2_5 -> mSoundPlayer.trigger(SoundPlayer.KEY25)
+            R.id.key_2_1 -> if(cur_set!!.key21 != "") mSoundPlayer.trigger(SoundPlayer.KEY21)
+            R.id.key_2_2 -> if(cur_set!!.key22 != "") mSoundPlayer.trigger(SoundPlayer.KEY22)
+            R.id.key_2_3 -> if(cur_set!!.key23 != "") mSoundPlayer.trigger(SoundPlayer.KEY23)
+            R.id.key_2_4 -> if(cur_set!!.key24 != "") mSoundPlayer.trigger(SoundPlayer.KEY24)
+            R.id.key_2_5 -> if(cur_set!!.key25 != "") mSoundPlayer.trigger(SoundPlayer.KEY25)
 
-            R.id.key_3_1 -> mSoundPlayer.trigger(SoundPlayer.KEY31)
-            R.id.key_3_2 -> mSoundPlayer.trigger(SoundPlayer.KEY32)
-            R.id.key_3_3 -> mSoundPlayer.trigger(SoundPlayer.KEY33)
-            R.id.key_3_4 -> mSoundPlayer.trigger(SoundPlayer.KEY34)
-            R.id.key_3_5 -> mSoundPlayer.trigger(SoundPlayer.KEY35)
+            R.id.key_3_1 -> if(cur_set!!.key31 != "") mSoundPlayer.trigger(SoundPlayer.KEY31)
+            R.id.key_3_2 -> if(cur_set!!.key32 != "") mSoundPlayer.trigger(SoundPlayer.KEY32)
+            R.id.key_3_3 -> if(cur_set!!.key33 != "") mSoundPlayer.trigger(SoundPlayer.KEY33)
+            R.id.key_3_4 -> if(cur_set!!.key34 != "") mSoundPlayer.trigger(SoundPlayer.KEY34)
+            R.id.key_3_5 -> if(cur_set!!.key35 != "") mSoundPlayer.trigger(SoundPlayer.KEY35)
         }
     }
 
@@ -295,7 +325,27 @@ class MainActivity : AppCompatActivity(),
         // Логика при отпускании кнопки (если нужна)
     }
 
+    override fun onButtonDown(button: SideImageButton) {
+        Log.d("MainActivity", "Button down: ${button.id}")
+        when (button.id) {
+            R.id.btnDrums -> {
+                cur_set = allPresets?.drums
+                mSoundPlayer.unloadWavAssets()
+                mSoundPlayer.loadWavAssets(getAssets(), cur_set!!)
+            }
+            R.id.btnKeys -> {
+                cur_set = this.allPresets?.keys
+                mSoundPlayer.unloadWavAssets()
+                mSoundPlayer.loadWavAssets(getAssets(), cur_set!!)
+            }
+            R.id.btnDelete -> {
+//                val intent = Intent(this, Help::class.java)
+//                startActivity(intent)
+            }
+        }
+    }
 
-
-
+    override fun onButtonUp(button: SideImageButton) {
+        // Логика при отпускании кнопки (если нужна)
+    }
 }
