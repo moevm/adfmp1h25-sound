@@ -24,8 +24,8 @@ import kotlin.concurrent.schedule
 
 
 class MainActivity : AppCompatActivity(),
-    TriggerPad.SoundPadTriggerListener
-    {
+    TriggerPad.SoundPadTriggerListener,SideButton.SideButtonListener
+{
 
     private lateinit var binding: ActivityMainBinding
     private var mPrefs: SharedPreferences? = null
@@ -104,7 +104,6 @@ class MainActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         mPrefs = getPreferences(MODE_PRIVATE)
 
         val manager = FileManager
@@ -129,36 +128,22 @@ class MainActivity : AppCompatActivity(),
         }
         cur_set = presets?.drums
 
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-/*
-        val buttonDevs = findViewById<Button>(R.id.pageAboutDevs)
-        buttonDevs.setOnClickListener {
-            val intent = Intent(this, AboutDevs::class.java)
-            startActivity(intent)
-        }
+        // Инициализация боковых кнопок
+        val buttonAboutDevs = findViewById<SideButton>(R.id.pageAboutDevs)
+        val buttonConfigureSounds = findViewById<SideButton>(R.id.pageConfigureSounds)
+        val buttonMyTracks = findViewById<SideButton>(R.id.pageMyTracks)
+        val buttonHelp = findViewById<SideButton>(R.id.pageHelp)
 
-        val buttonConf = findViewById<Button>(R.id.pageConfigureSounds)
-        buttonConf.setOnClickListener {
-            val intent = Intent(this, SoundConfiguration::class.java)
-            startActivity(intent)
-        }
-
-        val buttonMyTracks = findViewById<Button>(R.id.pageMyTracks)
-        buttonMyTracks.setOnClickListener {
-            val intent = Intent(this, MyTracks::class.java)
-            startActivity(intent)
-        }
-        
-        val buttonHelp = findViewById<Button>(R.id.pageHelp)
-        buttonHelp.setOnClickListener {
-            val intent = Intent(this, Help::class.java)
-            startActivity(intent)
-        }*/
+        // Добавление обработчиков
+        buttonAboutDevs.addListener(this)
+        buttonConfigureSounds.addListener(this)
+        buttonMyTracks.addListener(this)
+        buttonHelp.addListener(this)
 
         mAudioMgr = getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        
+
 
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         actionBar?.hide()
@@ -185,6 +170,18 @@ class MainActivity : AppCompatActivity(),
         // UI
         setContentView(R.layout.activity_main)
 
+        // "Kick" drum
+        // Инициализация боковых кнопок
+        val buttonAboutDevs = findViewById<SideButton>(R.id.pageAboutDevs)
+        val buttonConfigureSounds = findViewById<SideButton>(R.id.pageConfigureSounds)
+        val buttonMyTracks = findViewById<SideButton>(R.id.pageMyTracks)
+        val buttonHelp = findViewById<SideButton>(R.id.pageHelp)
+
+        // Добавление обработчиков
+        buttonAboutDevs.addListener(this)
+        buttonConfigureSounds.addListener(this)
+        buttonMyTracks.addListener(this)
+        buttonHelp.addListener(this)
 
         findViewById<TriggerPad>(R.id.key_1_1).addListener(this)
         findViewById<TriggerPad>(R.id.key_1_2).addListener(this)
@@ -243,6 +240,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun triggerDown(pad: TriggerPad) {
         // trigger the sound based on the pad
+        Log.d("kek", "d")
         when (pad.id) {
             R.id.key_1_1 -> mSoundPlayer.trigger(SoundPlayer.KEY11)
             R.id.key_1_2 -> mSoundPlayer.trigger(SoundPlayer.KEY12)
@@ -267,32 +265,37 @@ class MainActivity : AppCompatActivity(),
     override fun triggerUp(pad: TriggerPad) {
 
     }
-
-
-
-    /*override fun onClick(view: View?) {
-        when (view?.id) {
+    override fun onButtonDown(button: SideButton) {
+        Log.d("MainActivity", "Button down: ${button.id}")
+        when (button.id) {
             R.id.pageAboutDevs -> {
-                Log.i(TAG, "ebat'")
-                println("ebat")
+                Log.d("MainActivity", "About Devs button pressed")
                 val intent = Intent(this, AboutDevs::class.java)
                 startActivity(intent)
             }
             R.id.pageConfigureSounds -> {
+                Log.d("MainActivity", "Configure Sounds button pressed")
                 val intent = Intent(this, SoundConfiguration::class.java)
                 startActivity(intent)
             }
             R.id.pageMyTracks -> {
+                Log.d("MainActivity", "My Tracks button pressed")
                 val intent = Intent(this, MyTracks::class.java)
                 startActivity(intent)
             }
             R.id.pageHelp -> {
+                Log.d("MainActivity", "Help button pressed")
                 val intent = Intent(this, Help::class.java)
                 startActivity(intent)
             }
-
         }
-    }*/
+    }
+
+    override fun onButtonUp(button: SideButton) {
+        // Логика при отпускании кнопки (если нужна)
+    }
+
+
 
 
 }

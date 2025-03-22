@@ -64,9 +64,9 @@
                 android:background="@drawable/btns_keypads">
 
                 <ru.etu.soundboard.TriggerPad
-                        android:id="@+id/key_1_4"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp" />
+                    android:id="@+id/key_1_4"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp" />
             </FrameLayout>
 
             <FrameLayout

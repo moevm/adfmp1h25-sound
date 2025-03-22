@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <android.widget.Button
+        <ru.etu.soundboard.SideButton
             android:id="@+id/pageSoundboard"
             android:layout_width="150dp"
             android:layout_height="60dp"
@@ -22,9 +22,11 @@
             android:layout_marginHorizontal="15dp"
             android:backgroundTint="#9B9090"
             android:background="@drawable/btns_menu"
-            android:text="Soundboard"/>
+            android:text="Soundboard"
+            android:clickable="true"
+            android:focusable="true"/>
 
-        <android.widget.Button
+        <ru.etu.soundboard.SideButton
             android:id="@+id/pageMyTracks"
             android:layout_width="150dp"
             android:layout_height="60dp"
@@ -32,9 +34,11 @@
             android:layout_marginHorizontal="15dp"
             android:backgroundTint="#9B9090"
             android:background="@drawable/btns_menu"
-            android:text="My tracks"/>
+            android:text="My tracks"
+            android:clickable="true"
+            android:focusable="true"/>
 
-        <android.widget.Button
+        <ru.etu.soundboard.SideButton
             android:id="@+id/pageConfigureSounds"
             android:layout_width="150dp"
             android:layout_height="60dp"
@@ -44,7 +48,7 @@
             android:background="@drawable/btns_menu"
             android:text="Configure sounds"/>
 
-        <android.widget.Button
+        <ru.etu.soundboard.SideButton
             android:id="@+id/pageHelp"
             android:layout_width="150dp"
             android:layout_height="60dp"
@@ -54,7 +58,7 @@
             android:background="@drawable/btns_menu"
             android:text="Help"/>
 
-        <android.widget.Button
+        <ru.etu.soundboard.SideButton
             android:id="@+id/pageAboutDevs"
             android:layout_width="150dp"
             android:layout_height="60dp"
