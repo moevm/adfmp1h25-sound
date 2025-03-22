@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <android.widget.ImageButton
+        <ru.etu.soundboard.SideImageButton
             android:id="@+id/backButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -27,7 +27,8 @@
             android:contentDescription="back"
             android:src="@drawable/vec_arrow_back"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+        </ru.etu.soundboard.SideImageButton>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
