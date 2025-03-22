@@ -4,6 +4,8 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
+import android.provider.OpenableColumns
 import android.util.Log
 import android.view.View
 import android.view.WindowInsets.Side
@@ -12,6 +14,7 @@ import android.widget.ImageButton
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import ru.etu.soundboard.Adapter.FileManager
+import java.io.File
 
 class SoundConfiguration : AppCompatActivity(), SideButton.SideButtonListener,SideImageButton.SideButtonListener {
     private var mPrefs: SharedPreferences? = null
@@ -21,6 +24,28 @@ class SoundConfiguration : AppCompatActivity(), SideButton.SideButtonListener,Si
     var cur_key = ""
     val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         val path = uri.toString()
+
+        if(uri != null) {
+            uri.path?.let { Log.d("MainActivity", it) }
+//            uri.path
+//            val cursor = contentResolver.query(uri, null, null, null, null)
+//            val nameIndex = cursor?.getColumnIndex(MediaStore.Audio.Media.DATA);
+//            cursor?.moveToFirst()
+//            val fileName = nameIndex?.let { cursor.getString(it) }
+//            if (fileName != null) {
+//                Log.d("MainActivity", fileName)
+//            }
+//            contentResolver.apply {
+//                query(uri, null, null, null, null)?.use { cursor ->
+//                    val nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+//                    cursor.moveToFirst()
+//                    cursor.getString(nameIndex)
+//                }?.let { fileName ->
+//                    Log.d("MainActivity", fileName)
+//                }
+//            }
+        }
+        Log.d("MainActivity", File(path).name)
         if(uri != null){
             setButton!!.setImageResource(R.drawable.vec_trash_big)
             when (cur_key){
@@ -108,7 +133,9 @@ class SoundConfiguration : AppCompatActivity(), SideButton.SideButtonListener,Si
             if(cur_set!!.key34 != ""){ key34.setImageResource(R.drawable.vec_plus); cur_set!!.key34 = ""
             } else { setButton = key34; cur_key = "key34"; getContent.launch("audio/*") } }
         val key35 = findViewById<ImageButton>(R.id.key_3_5)
-        key35.setOnClickListener { cur_set?.let { it1 -> it1.key35 = handleKey(key35, it1.key35) } }
+        key35.setOnClickListener {
+            if(cur_set!!.key35 != ""){ key35.setImageResource(R.drawable.vec_plus); cur_set!!.key35 = ""
+            } else { setButton = key35; cur_key = "key35"; getContent.launch("audio/*") } }
         swapImages()
 
         val set1 = findViewById<SideImageButton>(R.id.set1)
@@ -221,17 +248,14 @@ class SoundConfiguration : AppCompatActivity(), SideButton.SideButtonListener,Si
         when (button.id) {
             R.id.set1 -> {
                 cur_set = presets?.set1
-                set_id = 1
                 swapImages()
             }
             R.id.set2 -> {
                 cur_set = presets?.set2
-                set_id = 2
                 swapImages()
             }
             R.id.set3 -> {
                 cur_set = presets?.set3
-                set_id = 3
                 swapImages()
             }
             R.id.saveButton -> {

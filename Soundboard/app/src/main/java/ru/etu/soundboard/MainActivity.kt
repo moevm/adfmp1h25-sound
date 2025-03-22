@@ -8,13 +8,16 @@ import android.media.AudioManager
 import android.content.SharedPreferences
 import android.content.SharedPreferences.Editor
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import ru.etu.soundboard.Adapter.FileManager
 import ru.etu.soundboard.databinding.ActivityMainBinding
+import java.io.File
 import java.time.LocalDateTime
 import java.util.Timer
 import kotlin.concurrent.schedule
@@ -160,17 +163,6 @@ class MainActivity : AppCompatActivity(),
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         actionBar?.hide()
     }
-
-        val drumsButton = findViewById<ImageButton>(R.id.btnDrums)
-        drumsButton.setOnClickListener { cur_set = presets?.drums }
-        val keysButton = findViewById<ImageButton>(R.id.btnKeys)
-        keysButton.setOnClickListener { cur_set = presets?.keys }
-        val set1Button = findViewById<ImageButton>(R.id.btnSet1)
-        set1Button.setOnClickListener { cur_set = presets?.set1 }
-        val set2Button = findViewById<ImageButton>(R.id.btnSet2)
-        set2Button.setOnClickListener { cur_set = presets?.set2 }
-        val set3Button = findViewById<ImageButton>(R.id.btnSet3)
-        set3Button.setOnClickListener { cur_set = presets?.set3 }
 
     override fun onStart() {
         super.onStart()
@@ -349,6 +341,8 @@ class MainActivity : AppCompatActivity(),
             }
             R.id.btnSet1 -> {
                 cur_set = this.allPresets?.set1
+                Log.d("MainActivity", cur_set.toString())
+                Log.d("MainActivity", MediaStore.Audio.Media.EXTERNAL_CONTENT_URI.toString())
                 mSoundPlayer.unloadWavAssets()
                 mSoundPlayer.loadWavAssetsFromStorage(cur_set!!)
             }
