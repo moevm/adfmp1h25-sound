@@ -42,8 +42,10 @@ class MainActivity : AppCompatActivity(),
     private val manager = FileManager
     private var allPresets = manager.getConf()
     private var cur_set = allPresets?.drums
+
     private lateinit var trackRecorder: TrackRecorder
-    private var isRecording = false
+    private lateinit var macRec_1: TrackRecorder
+
     private val TAG = "MainActivity"
     private var is_custom_preset = false
     private var mAudioMgr: AudioManager? = null
@@ -155,6 +157,8 @@ class MainActivity : AppCompatActivity(),
         val buttonSet3 = findViewById<SideImageButton>(R.id.btnSet3)
         val buttonDelete = findViewById<SideImageButton>(R.id.btnDelete)
 
+        val buttonMacros1 = findViewById<SideImageButton>(R.id.btnMacros1)
+
         // Добавление обработчиков
         buttonAboutDevs.addListener(this)
         buttonConfigureSounds.addListener(this)
@@ -168,7 +172,10 @@ class MainActivity : AppCompatActivity(),
         buttonSet3.addListener(this)
         buttonDelete.addListener(this)
 
+        buttonMacros1.addListener(this)
+
         trackRecorder = TrackRecorder()
+        macRec_1 = TrackRecorder()
 
 
         mAudioMgr = getSystemService(Context.AUDIO_SERVICE) as AudioManager
@@ -218,6 +225,8 @@ class MainActivity : AppCompatActivity(),
         val buttonSet3 = findViewById<SideImageButton>(R.id.btnSet3)
         val buttonDelete = findViewById<SideImageButton>(R.id.btnDelete)
 
+        val buttonMacros1 = findViewById<SideImageButton>(R.id.btnMacros1)
+
         buttonDrums.addListener(this)
         buttonKeys.addListener(this)
         buttonSet1.addListener(this)
@@ -227,6 +236,8 @@ class MainActivity : AppCompatActivity(),
         start.addListener(this)
         stop.addListener(this)
         wav.addListener(this)
+
+        buttonMacros1.addListener(this)
 
         // Добавление обработчиков
         buttonAboutDevs.addListener(this)
@@ -487,67 +498,97 @@ class MainActivity : AppCompatActivity(),
         findViewById<TriggerPad>(pad.id).setBackgroundResource(R.drawable.btns_keypads2)
         when (pad.id) {
             R.id.key_1_1 -> {if(cur_set!!.key11 != "") mSoundPlayer.trigger(SoundPlayer.KEY11)
-                if (isRecording) {
-                trackRecorder.recordEvent(SoundPlayer.KEY11)
-            }}
+                if (trackRecorder.isRec())
+                    trackRecorder.recordEvent(SoundPlayer.KEY11)
+                else if (macRec_1.isRec())
+                    macRec_1.recordEvent(SoundPlayer.KEY11)
+            }
             R.id.key_1_2 -> {if(cur_set!!.key12 != "") mSoundPlayer.trigger(SoundPlayer.KEY12)
-                if (isRecording) {
+                if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY12)
-                }}
+                else if (macRec_1.isRec())
+                    macRec_1.recordEvent(SoundPlayer.KEY12)
+                }
             R.id.key_1_3 -> {if(cur_set!!.key13 != "") mSoundPlayer.trigger(SoundPlayer.KEY13)
-                if (isRecording) {
+                if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY13)
-                }}
+                else if (macRec_1.isRec())
+                    macRec_1.recordEvent(SoundPlayer.KEY13)
+                }
             R.id.key_1_4 -> {if(cur_set!!.key14 != "") mSoundPlayer.trigger(SoundPlayer.KEY14)
-                if (isRecording) {
+                if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY14)
-                }}
+                else if (macRec_1.isRec())
+                    macRec_1.recordEvent(SoundPlayer.KEY14)
+                }
             R.id.key_1_5 -> {if(cur_set!!.key15 != "") mSoundPlayer.trigger(SoundPlayer.KEY15)
-                if (isRecording) {
+                if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY15)
-                }}
+                else if (macRec_1.isRec())
+                    macRec_1.recordEvent(SoundPlayer.KEY15)
+                }
 
             R.id.key_2_1 -> {if(cur_set!!.key21 != "") mSoundPlayer.trigger(SoundPlayer.KEY21)
-                if (isRecording) {
+                if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY21)
-                }}
+                else if (macRec_1.isRec())
+                    macRec_1.recordEvent(SoundPlayer.KEY21)
+                }
             R.id.key_2_2 -> {if(cur_set!!.key22 != "") mSoundPlayer.trigger(SoundPlayer.KEY22)
-                if (isRecording) {
+                if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY22)
-                }}
+                else if (macRec_1.isRec())
+                    macRec_1.recordEvent(SoundPlayer.KEY22)
+                }
             R.id.key_2_3 -> {if(cur_set!!.key23 != "") mSoundPlayer.trigger(SoundPlayer.KEY23)
-                if (isRecording) {
+                if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY23)
-                }}
+                else if (macRec_1.isRec())
+                    macRec_1.recordEvent(SoundPlayer.KEY23)
+                }
             R.id.key_2_4 -> {if(cur_set!!.key24 != "") mSoundPlayer.trigger(SoundPlayer.KEY24)
-                if (isRecording) {
+                if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY24)
-                }}
+                else if (macRec_1.isRec())
+                    macRec_1.recordEvent(SoundPlayer.KEY24)
+                }
             R.id.key_2_5 -> {if(cur_set!!.key25 != "") mSoundPlayer.trigger(SoundPlayer.KEY25)
-                if (isRecording) {
+                if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY25)
-                }}
+                else if (macRec_1.isRec())
+                    macRec_1.recordEvent(SoundPlayer.KEY25)
+                }
 
             R.id.key_3_1 -> {if(cur_set!!.key31 != "") mSoundPlayer.trigger(SoundPlayer.KEY31)
-                if (isRecording) {
+                if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY31)
-                }}
+                else if (macRec_1.isRec())
+                    macRec_1.recordEvent(SoundPlayer.KEY31)
+                }
             R.id.key_3_2 -> {if(cur_set!!.key32 != "") mSoundPlayer.trigger(SoundPlayer.KEY32)
-                if (isRecording) {
+                if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY32)
-                }}
+                else if (macRec_1.isRec())
+                    macRec_1.recordEvent(SoundPlayer.KEY32)
+                }
             R.id.key_3_3 -> {if(cur_set!!.key33 != "") mSoundPlayer.trigger(SoundPlayer.KEY33)
-                if (isRecording) {
+                if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY33)
-                }}
+                else if (macRec_1.isRec())
+                    macRec_1.recordEvent(SoundPlayer.KEY33)
+                }
             R.id.key_3_4 -> {if(cur_set!!.key34 != "") mSoundPlayer.trigger(SoundPlayer.KEY34)
-                if (isRecording) {
+                if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY34)
-                }}
+                else if (macRec_1.isRec())
+                    macRec_1.recordEvent(SoundPlayer.KEY34)
+                }
             R.id.key_3_5 -> {if(cur_set!!.key35 != "") mSoundPlayer.trigger(SoundPlayer.KEY35)
-                if (isRecording) {
+                if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY35)
-                }}
+                else if (macRec_1.isRec())
+                    macRec_1.recordEvent(SoundPlayer.KEY35)
+                }
         }
     }
 
@@ -557,19 +598,19 @@ class MainActivity : AppCompatActivity(),
         return Gson().fromJson(json, type)
     }
 
-    private fun saveTrackToFile() {
-        val trackEvents = trackRecorder.getEvents()
+    private fun saveTrackToFile(tRec: TrackRecorder, fileName: String) {
+        val trackEvents = tRec.getEvents()
         val gson = Gson()
         val json = gson.toJson(trackEvents)
 
-        val file = File(getExternalFilesDir(null), "track.json")
+        val file = File(getExternalFilesDir(null), fileName)
         file.writeText(json)
 
         Log.d("record", "Track saved: ${file.absolutePath}")
     }
 
-    private fun playTrack() {
-        val trackEvents = trackRecorder.getEvents()
+    private fun playTrack(tRec: TrackRecorder) {
+        val trackEvents = tRec.getEvents()
         for (event in trackEvents) {
             Timer().schedule(event.timestamp) {
                 mSoundPlayer.trigger(event.soundId)
@@ -615,7 +656,7 @@ class MainActivity : AppCompatActivity(),
         Log.d("MainActivity", "Button down: ${button.id}")
         when (button.id) {
              R.id.btnRecord -> {
-                 if (!isRecording) {
+                 if (!trackRecorder.isRec()) {
                      // Начало записи
                      Log.d("record", "rec start")
                      Toast.makeText(
@@ -624,21 +665,17 @@ class MainActivity : AppCompatActivity(),
                          Toast.LENGTH_SHORT
                      ).show()
                      trackRecorder.startRecording()
-                     isRecording = true
-                 } else {
-                     // Остановка записи
                  }
             }
             R.id.btnPlayPause -> {
                 Log.d("record", "play") // здесь пример того, как вызвать записанный в json макром (мини тречик)
-                playTrack()
+                playTrack(trackRecorder)
             }
             R.id.btnStop -> {
-                if(isRecording) {
+                if(trackRecorder.isRec()) {
                     Log.d("record", "rec stop")
                     trackRecorder.stopRecording()
-                    isRecording = false
-                    saveTrackToFile() // Сохранение трека в файл
+                    saveTrackToFile(trackRecorder, "track.json") // Сохранение трека в файл
 
                     val jsonFile = File(getExternalFilesDir(null), "track.json")
                     val wavFile = File(getExternalFilesDir(null), "new_track.wav")
@@ -653,6 +690,26 @@ class MainActivity : AppCompatActivity(),
                         "Трек сохранен",
                         Toast.LENGTH_SHORT
                     ).show()
+                }
+            }
+            R.id.btnMacros1 -> {
+                if (macRec_1.isRecEmpty() && !macRec_1.isRec())
+                {
+                    for(n in 1..4) {
+                        Log.d("macros 1", "count " + n.toString())
+                        Thread.sleep(500)
+                    }
+                    Log.d("macros 1", "rec start")
+                    macRec_1.startRecording()
+                } else if (macRec_1.isRec())
+                {
+                    Log.d("macros 1", "rec stop")
+                    macRec_1.stopRecording()
+                    saveTrackToFile(macRec_1, "macros_1.json")
+                } else if (!macRec_1.isRecEmpty())
+                {
+                    Log.d("macros 1", "playing") // здесь пример того, как вызвать записанный в json макром (мини тречик)
+                    playTrack(macRec_1)
                 }
             }
 
