@@ -26,6 +26,7 @@ import java.util.Timer
 import kotlin.concurrent.schedule
 import android.content.ContentResolver
 import android.content.ContentValues
+import android.graphics.Color
 import android.net.Uri
 import android.os.Environment
 import java.io.FileInputStream
@@ -483,6 +484,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun triggerDown(pad: TriggerPad) {
         // trigger the sound based on the pad
+        findViewById<TriggerPad>(pad.id).setBackgroundResource(R.drawable.btns_keypads2)
         when (pad.id) {
             R.id.key_1_1 -> {if(cur_set!!.key11 != "") mSoundPlayer.trigger(SoundPlayer.KEY11)
                 if (isRecording) {
@@ -576,8 +578,9 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun triggerUp(pad: TriggerPad) {
-
+        findViewById<TriggerPad>(pad.id).setBackgroundResource(R.drawable.btns_keypads)
     }
+
     override fun onButtonDown(button: SideButton) {
         Log.d("MainActivity", "Button down: ${button.id}")
         when (button.id) {

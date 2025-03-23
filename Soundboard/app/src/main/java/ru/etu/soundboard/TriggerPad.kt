@@ -58,12 +58,12 @@ class TriggerPad: View {
             mIsDown = true
             triggerDown()
             invalidate()
-            return false
+            return true
         } else if (event.actionMasked == MotionEvent.ACTION_UP) {
             mIsDown = false
             triggerUp()
             invalidate()
-            return false
+            return true
         }
 
         return false
