@@ -289,21 +289,21 @@ class MainActivity : AppCompatActivity(),
     }
 
     fun generateAudioData(trackEvents: List<TrackEvent>, sampleRate: Int): ByteArray {
-        val outputStream = ByteArrayOutputStream()
-
-        // Предположим, что все звуки имеют одинаковую частоту дискретизации и формат (16-битный моно)
         val bytesPerSample = 2 // 16-битный звук
-        val maxTime = trackEvents.maxOfOrNull { it.timestamp } ?: 0
+
+        val maxTime = trackEvents.maxOfOrNull { event ->
+            val soundData = loadSoundData(event.soundId)
+            val soundDuration = (soundData.size / bytesPerSample) * 1000 / sampleRate
+            event.timestamp + soundDuration
+        } ?: 0
+
         val totalSamples = (maxTime * sampleRate / 1000).toInt()
         val audioData = ByteArray(totalSamples * bytesPerSample)
-
-        Log.d("record",trackEvents.size.toString())
 
         for (event in trackEvents) {
             val soundData = loadSoundData(event.soundId)
             val startSample = (event.timestamp * sampleRate / 1000).toInt()
 
-            // Смешиваем звуковые данные с основным аудиопотоком
             for (i in soundData.indices) {
                 val outputIndex = startSample * bytesPerSample + i
                 if (outputIndex < audioData.size) {
@@ -315,6 +315,7 @@ class MainActivity : AppCompatActivity(),
 
         return audioData
     }
+
     fun saveAsWav(audioData: ByteArray, wavFile: File, sampleRate: Int, channels: Int) {
         val wavHeader = createWavHeader(audioData.size, sampleRate, channels)
 
@@ -614,6 +615,11 @@ class MainActivity : AppCompatActivity(),
                  if (!isRecording) {
                      // Начало записи
                      Log.d("record", "rec start")
+                     Toast.makeText(
+                         this,
+                         "Запись начата",
+                         Toast.LENGTH_SHORT
+                     ).show()
                      trackRecorder.startRecording()
                      isRecording = true
                  } else {
@@ -637,7 +643,7 @@ class MainActivity : AppCompatActivity(),
                     val trackEvents = readTrackFromJson(jsonFile)
                     val audioData = generateAudioData(trackEvents, sampleRate = 44100)
                     // saveAsWav(audioData, wavFile, sampleRate = 44100, channels = 1)
-                    saveWavToMediaStore(contentResolver, audioData, "converted_track.wav", 44100, 1)
+                    saveWavToMediaStore(contentResolver, audioData, "new_track.wav", 44100, 1)
 
                     Toast.makeText(
                         this,
