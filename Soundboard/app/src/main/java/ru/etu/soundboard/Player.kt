@@ -238,7 +238,7 @@ class Player : AppCompatActivity(),SideButton.SideButtonListener,SideImageButton
         val shareIntent = Intent().apply {
             this.action = Intent.ACTION_SEND
             this.type = "audio/*"
-            this.putExtra(Intent.EXTRA_STREAM, list[position].songUri)
+            this.putExtra(Intent.EXTRA_STREAM,uri)
         }
 
         startActivity(Intent.createChooser(shareIntent, "Share this file using :"))
@@ -386,5 +386,14 @@ class Player : AppCompatActivity(),SideButton.SideButtonListener,SideImageButton
             position = checkPosition(position, false)
             playMedia(list[position].songUri, null)
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        mediaPlayer!!.stop()
+        mediaPlayer!!.reset()
+        mediaPlayer!!.release()
+        handler.removeCallbacks(runnable)
+        finish()
     }
 }
