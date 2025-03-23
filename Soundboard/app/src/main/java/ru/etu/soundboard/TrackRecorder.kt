@@ -22,7 +22,15 @@ class TrackRecorder {
         isRecording = true
     }
 
+    fun isRecEmpty(): Boolean
+    {
+        return events.isEmpty()
+    }
 
+    fun isRec(): Boolean
+    {
+        return isRecording
+    }
 
     fun stopRecording() {
         isRecording = false
