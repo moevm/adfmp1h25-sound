@@ -12,6 +12,7 @@ import android.view.View
 import android.view.WindowInsets.Side
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import ru.etu.soundboard.Adapter.FileManager
@@ -27,7 +28,10 @@ class SoundConfiguration : AppCompatActivity(), SideButton.SideButtonListener,Si
     val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         if(uri != null){
             val res = getFilePathFromUri(uri)
-            setButton!!.setImageResource(R.drawable.vec_trash_big)
+            if (res != "")
+                setButton!!.setImageResource(R.drawable.vec_trash_big)
+            else
+                Toast.makeText(applicationContext, "File type should be .wav", Toast.LENGTH_LONG).show()
             when (cur_key){
                 "key11" -> cur_set!!.key11 = res
                 "key12" -> cur_set!!.key12 = res
@@ -60,12 +64,20 @@ class SoundConfiguration : AppCompatActivity(), SideButton.SideButtonListener,Si
                 val columnIndex = it.getColumnIndex(MediaStore.Images.Media.DATA)
                 if (columnIndex != -1) {
                     filePath = it.getString(columnIndex)
+                    if (!filePath.contains(".wav", true)){
+                        Log.d("bebra", filePath)
+                        return ""
+                    }
                 } else {
                     // Если путь не найден, используем имя файла
                     val displayNameIndex = it.getColumnIndex(OpenableColumns.DISPLAY_NAME)
                     if (displayNameIndex != -1) {
                         val fileName = it.getString(displayNameIndex)
                         filePath = "${cacheDir.absolutePath}/$fileName"
+                        if (!filePath.contains(".wav", true)){
+                            Log.d("bebra", filePath)
+                            return ""
+                        }
                         // Копируем файл в кэш, если нужно
                         copyFileToCache(uri, filePath)
                     }

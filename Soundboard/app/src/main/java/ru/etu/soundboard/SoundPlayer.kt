@@ -181,7 +181,6 @@ class SoundPlayer {
     //берём файлы из папки music или из любой другой (менять soundDir)
     fun loadWavAssetsFromStorage(preset: FileManager.Preset) {
         var counter = 0
-        Log.d("kek", preset.key11)
         if(preset.key11 != "") {
             KEY11 = counter
             loadWavFromFile(preset.key11, KEY11, PAN_KEY11)
