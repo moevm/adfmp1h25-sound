@@ -16,13 +16,14 @@ import ru.etu.soundboard.Model.SongModel
 import ru.etu.soundboard.Player
 import ru.etu.soundboard.R
 
-class SongsAdapter(private val arrayList: ArrayList<SongModel>, private val context: Context?) :
+class SongsAdapter(private var arrayList: List<SongModel>, private val context: Context?) :
     RecyclerView.Adapter<SongsAdapter.MyViewHolder>() {
 
     class MyViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         val imageView: ImageView = itemView.findViewById(R.id.icon_song_1)
         val songName: TextView = itemView.findViewById(R.id.songName)
         val dateRelease: TextView = itemView.findViewById(R.id.release)
+        val duration: TextView = itemView.findViewById(R.id.duration)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -40,18 +41,27 @@ class SongsAdapter(private val arrayList: ArrayList<SongModel>, private val cont
 
 
         holder.songName.text = arrayList[position].name
-            // holder.dateRelease.text = arrayList[position].date.toString()
+        holder.dateRelease.text = arrayList[position].date
+        holder.duration.text = arrayList[position].duration
 
         holder.itemView.setOnClickListener {
 
             val intent = Intent(context, Player::class.java)
-            intent.putExtra("name", holder.songName.text.toString())
+            intent.putExtra("position", position)
+            intent.putExtra("uri",  arrayList[position].songUri.toString())
+            intent.putExtra("name",  arrayList[position].name)
+            intent.putExtra("uri",  arrayList[position].songUri.toString())
             context!!.startActivity(intent)
         }
     }
 
     override fun getItemCount(): Int {
         return arrayList.size
+    }
+
+    fun updateList(newList: List<SongModel>) {
+        arrayList = newList
+        notifyDataSetChanged() // Обновляем RecyclerView
     }
 
     //AlbumArt - we use metaDataRetriever to retrieve the Image in ByteArray from
