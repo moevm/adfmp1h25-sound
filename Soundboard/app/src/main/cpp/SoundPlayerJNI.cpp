@@ -138,10 +138,8 @@ JNIEXPORT void JNICALL Java_ru_etu_soundboard_SoundPlayer_restartStream(JNIEnv*,
     }
 }
 
-
-
 /*
-JNIEXPORT void JNICALL SoundPlayer.setLoopMode(
+JNIEXPORT void JNICALL Java_ru_etu_soundboard_SoundPlayer_setLoopMode(
         JNIEnv *env, jobject thiz, jint  index, jboolean isLoopMode) {
     sDTPlayer.setLoopMode(index, isLoopMode);
 }*/

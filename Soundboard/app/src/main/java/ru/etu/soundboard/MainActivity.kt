@@ -611,11 +611,29 @@ class MainActivity : AppCompatActivity(),
 
     private fun playTrack(tRec: TrackRecorder) {
         val trackEvents = tRec.getEvents()
+        if (trackEvents.isEmpty()) return // Если трек пустой, ничего не делаем
         for (event in trackEvents) {
             Timer().schedule(event.timestamp) {
                 mSoundPlayer.trigger(event.soundId)
             }
         }
+
+        fun play() {
+            for (event in trackEvents) {
+                Timer().schedule(event.timestamp) {
+                    mSoundPlayer.trigger(event.soundId)
+                }
+            }
+
+            // Если включено циклическое воспроизведение, перезапускаем трек
+            if (tRec.loop()) {
+                Timer().schedule(trackEvents.last().timestamp) { // Ждем окончания трека + 1 секунда
+                    play()
+                }
+            }
+        }
+
+        play()
     }
 
     override fun triggerUp(pad: TriggerPad) {
@@ -708,8 +726,15 @@ class MainActivity : AppCompatActivity(),
                     saveTrackToFile(macRec_1, "macros_1.json")
                 } else if (!macRec_1.isRecEmpty())
                 {
-                    Log.d("macros 1", "playing") // здесь пример того, как вызвать записанный в json макром (мини тречик)
-                    playTrack(macRec_1)
+                    if (macRec_1.loop())
+                    {
+                        macRec_1.chLoop()
+                        Log.d("macros 1", "stop loop playing")
+                    } else {
+                        macRec_1.chLoop()
+                        Log.d("macros 1", "playing") // здесь пример того, как вызвать записанный в json макром (мини тречик)
+                        playTrack(macRec_1)
+                    }
                 }
             }
 

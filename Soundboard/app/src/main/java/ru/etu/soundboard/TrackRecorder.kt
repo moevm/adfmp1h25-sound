@@ -15,6 +15,7 @@ class TrackRecorder {
     private val events = mutableListOf<TrackEvent>()
     private var startTime: Long = 0
     private var isRecording = false
+    private var isLooping = false
 
     fun startRecording() {
         events.clear()
@@ -25,6 +26,16 @@ class TrackRecorder {
     fun isRecEmpty(): Boolean
     {
         return events.isEmpty()
+    }
+
+    fun loop(): Boolean
+    {
+        return isLooping
+    }
+
+    fun chLoop()
+    {
+        isLooping = !isLooping
     }
 
     fun isRec(): Boolean
