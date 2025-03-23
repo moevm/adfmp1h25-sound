@@ -148,7 +148,6 @@
                 android:layout_marginHorizontal="14dp"
                 android:layout_marginVertical="10dp"
                 android:background="@drawable/btns_macros"
-                android:backgroundTint="#D9D9D9"
                 android:contentDescription="macros1"
                 android:src="@drawable/vec_macros_1" />
 
@@ -159,7 +158,6 @@
                 android:layout_marginHorizontal="14dp"
                 android:layout_marginVertical="10dp"
                 android:background="@drawable/btns_macros"
-                android:backgroundTint="#D9D9D9"
                 android:contentDescription="macros2"
                 android:src="@drawable/vec_macros_1" />
 
@@ -170,7 +168,6 @@
                 android:layout_marginHorizontal="14dp"
                 android:layout_marginVertical="10dp"
                 android:background="@drawable/btns_macros"
-                android:backgroundTint="#D9D9D9"
                 android:contentDescription="macros3"
                 android:src="@drawable/vec_macros_1" />
 
@@ -181,7 +178,6 @@
                 android:layout_marginHorizontal="14dp"
                 android:layout_marginVertical="10dp"
                 android:background="@drawable/btns_macros"
-                android:backgroundTint="#D9D9D9"
                 android:contentDescription="macros4"
                 android:src="@drawable/vec_macros_1" />
 
@@ -192,7 +188,6 @@
                 android:layout_marginHorizontal="14dp"
                 android:layout_marginVertical="10dp"
                 android:background="@drawable/btns_macros"
-                android:backgroundTint="#D9D9D9"
                 android:contentDescription="macros5"
                 android:src="@drawable/vec_macros_1" />
         </LinearLayout>
