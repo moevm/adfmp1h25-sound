@@ -116,13 +116,7 @@ class Player : AppCompatActivity(),SideButton.SideButtonListener,SideImageButton
                 if (mediaPlayer != null && fromUser) {
                     val x = progress / 1000
                     mediaPlayer!!.seekTo(x)
-
-
-        val buttonAboutDevs = findViewById<SideButton>(R.id.pageAboutDevs)
-        val buttonConfigureSounds = findViewById<SideButton>(R.id.pageConfigureSounds)
-        val buttonMyTracks = findViewById<SideButton>(R.id.pageMyTracks)
-        val buttonHelp = findViewById<SideButton>(R.id.pageHelp)
-        val buttonMain = findViewById<SideButton>(R.id.pageSoundboard)
+                }}
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
                 if (mediaPlayer!!.isPlaying) {
@@ -138,6 +132,12 @@ class Player : AppCompatActivity(),SideButton.SideButtonListener,SideImageButton
             }
 
         })
+
+                val buttonAboutDevs = findViewById<SideButton>(R.id.pageAboutDevs)
+                val buttonConfigureSounds = findViewById<SideButton>(R.id.pageConfigureSounds)
+                val buttonMyTracks = findViewById<SideButton>(R.id.pageMyTracks)
+                val buttonHelp = findViewById<SideButton>(R.id.pageHelp)
+                val buttonMain = findViewById<SideButton>(R.id.pageSoundboard)
 
         buttonAboutDevs.addListener(this)
         buttonConfigureSounds.addListener(this)

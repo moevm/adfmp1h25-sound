@@ -64,10 +64,10 @@ class SoundPlayer {
         teardownAudioStreamNative()
     }
 
+
     // asset-based samples
     fun loadWavAssets(assetMgr: AssetManager, preset: FileManager.Preset) {
         var counter = 0
-        Log.d("kek", preset.key11)
         if(preset.key11 != "") {
             KEY11 = counter
             loadWavAsset(assetMgr, preset.key11, KEY11, PAN_KEY11)
