@@ -2,46 +2,101 @@ package ru.etu.soundboard
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
+import android.provider.OpenableColumns
+import android.util.Log
 import android.view.View
+import android.view.WindowInsets.Side
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import ru.etu.soundboard.Adapter.FileManager
+import java.io.File
+import java.io.FileOutputStream
 
-class SoundConfiguration : AppCompatActivity() {
+class SoundConfiguration : AppCompatActivity(), SideButton.SideButtonListener,SideImageButton.SideButtonListener {
     private var mPrefs: SharedPreferences? = null
     private val manager = FileManager
     var presets = manager.getConf()
     var cur_set = presets?.set1
     var cur_key = ""
     val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        val path = uri.toString()
         if(uri != null){
-            setButton!!.setImageResource(R.drawable.vec_trash_big)
+            val res = getFilePathFromUri(uri)
+            if (res != "")
+                setButton!!.setImageResource(R.drawable.vec_trash_big)
+            else
+                Toast.makeText(applicationContext, "File type should be .wav", Toast.LENGTH_LONG).show()
             when (cur_key){
-                "key11" -> cur_set!!.key11 = path
-                "key12" -> cur_set!!.key12 = path
-                "key13" -> cur_set!!.key13 = path
-                "key14" -> cur_set!!.key14 = path
-                "key15" -> cur_set!!.key15 = path
-                "key21" -> cur_set!!.key21 = path
-                "key22" -> cur_set!!.key22 = path
-                "key23" -> cur_set!!.key23 = path
-                "key24" -> cur_set!!.key24 = path
-                "key25" -> cur_set!!.key25 = path
-                "key31" -> cur_set!!.key31 = path
-                "key32" -> cur_set!!.key32 = path
-                "key33" -> cur_set!!.key33 = path
-                "key34" -> cur_set!!.key34 = path
-                "key35" -> cur_set!!.key35 = path
+                "key11" -> cur_set!!.key11 = res
+                "key12" -> cur_set!!.key12 = res
+                "key13" -> cur_set!!.key13 = res
+                "key14" -> cur_set!!.key14 = res
+                "key15" -> cur_set!!.key15 = res
+                "key21" -> cur_set!!.key21 = res
+                "key22" -> cur_set!!.key22 = res
+                "key23" -> cur_set!!.key23 = res
+                "key24" -> cur_set!!.key24 = res
+                "key25" -> cur_set!!.key25 = res
+                "key31" -> cur_set!!.key31 = res
+                "key32" -> cur_set!!.key32 = res
+                "key33" -> cur_set!!.key33 = res
+                "key34" -> cur_set!!.key34 = res
+                "key35" -> cur_set!!.key35 = res
             }
         }
         cur_key = ""
     }
     var setButton: ImageButton? = null
+
+    // Функция для получения пути к файлу из Uri
+    private fun getFilePathFromUri(uri: Uri): String {
+        var filePath = ""
+        val cursor = contentResolver.query(uri, null, null, null, null)
+        cursor?.use {
+            if (it.moveToFirst()) {
+                // Попробуем получить путь из MediaStore
+                val columnIndex = it.getColumnIndex(MediaStore.Images.Media.DATA)
+                if (columnIndex != -1) {
+                    filePath = it.getString(columnIndex)
+                    if (!filePath.contains(".wav", true)){
+                        Log.d("bebra", filePath)
+                        return ""
+                    }
+                } else {
+                    // Если путь не найден, используем имя файла
+                    val displayNameIndex = it.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                    if (displayNameIndex != -1) {
+                        val fileName = it.getString(displayNameIndex)
+                        filePath = "${cacheDir.absolutePath}/$fileName"
+                        if (!filePath.contains(".wav", true)){
+                            Log.d("bebra", filePath)
+                            return ""
+                        }
+                        // Копируем файл в кэш, если нужно
+                        copyFileToCache(uri, filePath)
+                    }
+                }
+            }
+        }
+        return filePath
+    }
+
+    // Функция для копирования файла в кэш
+    private fun copyFileToCache(uri: Uri, destinationPath: String) {
+        val inputStream = contentResolver.openInputStream(uri)
+        val outputStream = FileOutputStream(destinationPath)
+        inputStream?.use { input ->
+            outputStream.use { output ->
+                input.copyTo(output)
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -111,51 +166,28 @@ class SoundConfiguration : AppCompatActivity() {
             } else { setButton = key35; cur_key = "key35"; getContent.launch("audio/*") } }
         swapImages()
 
-        val set1 = findViewById<ImageButton>(R.id.set1)
-        set1.setOnClickListener{
-            cur_set = presets?.set1
-            swapImages()
-        }
-        val set2 = findViewById<ImageButton>(R.id.set2)
-        set2.setOnClickListener{
-            cur_set = presets?.set2
-            swapImages()
-        }
-        val set3 = findViewById<ImageButton>(R.id.set3)
-        set3.setOnClickListener{
-            cur_set = presets?.set3
-            swapImages()
-        }
+        val set1 = findViewById<SideImageButton>(R.id.set1)
+        set1.addListener(this)
+        val set2 = findViewById<SideImageButton>(R.id.set2)
+        set2.addListener(this)
+        val set3 = findViewById<SideImageButton>(R.id.set3)
+        set3.addListener(this)
 
-        val saveButton = findViewById<ImageButton>(R.id.saveButton)
-        saveButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
+        val saveButton = findViewById<SideImageButton>(R.id.saveButton)
+        saveButton.addListener(this)
 
-        val buttonPlayer = findViewById<Button>(R.id.pageSoundboard)
-        buttonPlayer.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
+        val buttonAboutDevs = findViewById<SideButton>(R.id.pageAboutDevs)
+        val buttonConfigureSounds = findViewById<SideButton>(R.id.pageConfigureSounds)
+        val buttonMyTracks = findViewById<SideButton>(R.id.pageMyTracks)
+        val buttonHelp = findViewById<SideButton>(R.id.pageHelp)
+        val buttonMain = findViewById<SideButton>(R.id.pageSoundboard)
 
-        val buttonDevs = findViewById<Button>(R.id.pageAboutDevs)
-        buttonDevs.setOnClickListener {
-            val intent = Intent(this, AboutDevs::class.java)
-            startActivity(intent)
-        }
-
-        val buttonMyTracks = findViewById<Button>(R.id.pageMyTracks)
-        buttonMyTracks.setOnClickListener {
-            val intent = Intent(this, MyTracks::class.java)
-            startActivity(intent)
-        }
-
-        val buttonHelp = findViewById<Button>(R.id.pageHelp)
-        buttonHelp.setOnClickListener {
-            val intent = Intent(this, Help::class.java)
-            startActivity(intent)
-        }
+        // Добавление обработчиков
+        buttonAboutDevs.addListener(this)
+        buttonConfigureSounds.addListener(this)
+        buttonMyTracks.addListener(this)
+        buttonHelp.addListener(this)
+        buttonMain.addListener(this)
 
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         actionBar?.hide()
@@ -203,5 +235,66 @@ class SoundConfiguration : AppCompatActivity() {
         else{
             key.setImageResource(R.drawable.vec_trash_big)
         }
+    }
+    override fun onButtonDown(button: SideButton) {
+        Log.d("MainActivity", "Button down: ${button.id}")
+        when (button.id) {
+            R.id.pageAboutDevs -> {
+                Log.d("MainActivity", "About Devs button pressed")
+                val intent = Intent(this, AboutDevs::class.java)
+                startActivity(intent)
+            }
+            R.id.pageConfigureSounds -> {
+                Log.d("MainActivity", "Configure Sounds button pressed")
+                val intent = Intent(this, SoundConfiguration::class.java)
+                startActivity(intent)
+            }
+            R.id.pageMyTracks -> {
+                Log.d("MainActivity", "My Tracks button pressed")
+                val intent = Intent(this, MyTracks::class.java)
+                startActivity(intent)
+            }
+            R.id.pageSoundboard -> {
+                Log.d("MainActivity", "About Devs button pressed")
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.pageHelp -> {
+                Log.d("MainActivity", "Help button pressed")
+                val intent = Intent(this, Help::class.java)
+                startActivity(intent)
+            }
+        }
+    }
+
+    override fun onButtonUp(button: SideButton) {
+        // Логика при отпускании кнопки (если нужна)
+    }
+
+    override fun onButtonDown(button: SideImageButton) {
+        Log.d("MainActivity", "Button down: ${button.id}")
+        when (button.id) {
+            R.id.set1 -> {
+                cur_set = presets?.set1
+                swapImages()
+            }
+            R.id.set2 -> {
+                cur_set = presets?.set2
+                swapImages()
+            }
+            R.id.set3 -> {
+                cur_set = presets?.set3
+                swapImages()
+            }
+            R.id.saveButton -> {
+                Log.d("MainActivity", "About Devs button pressed")
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+        }
+    }
+
+    override fun onButtonUp(button: SideImageButton) {
+        // Логика при отпускании кнопки (если нужна)
     }
 }

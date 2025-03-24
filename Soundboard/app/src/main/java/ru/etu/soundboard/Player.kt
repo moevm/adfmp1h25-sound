@@ -29,7 +29,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class Player : AppCompatActivity() {
+class Player : AppCompatActivity(),SideButton.SideButtonListener,SideImageButton.SideButtonListener {
     var position: Int = -1
     var uri: Uri = Uri.EMPTY
     var list: ArrayList<SongModel> = ArrayList()
@@ -116,9 +116,7 @@ class Player : AppCompatActivity() {
                 if (mediaPlayer != null && fromUser) {
                     val x = progress / 1000
                     mediaPlayer!!.seekTo(x)
-
-                }
-            }
+                }}
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
                 if (mediaPlayer!!.isPlaying) {
@@ -135,49 +133,77 @@ class Player : AppCompatActivity() {
 
         })
 
-        val buttonMain = findViewById<Button>(R.id.pageSoundboard)
-        buttonMain.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
+                val buttonAboutDevs = findViewById<SideButton>(R.id.pageAboutDevs)
+                val buttonConfigureSounds = findViewById<SideButton>(R.id.pageConfigureSounds)
+                val buttonMyTracks = findViewById<SideButton>(R.id.pageMyTracks)
+                val buttonHelp = findViewById<SideButton>(R.id.pageHelp)
+                val buttonMain = findViewById<SideButton>(R.id.pageSoundboard)
 
-        val buttonTracks = findViewById<Button>(R.id.pageMyTracks)
-        buttonTracks.setOnClickListener {
-            val intent = Intent(this, MyTracks::class.java)
-            startActivity(intent)
-        }
+        buttonAboutDevs.addListener(this)
+        buttonConfigureSounds.addListener(this)
+        buttonMyTracks.addListener(this)
+        buttonHelp.addListener(this)
+        buttonMain.addListener(this)
 
-        val buttonConf = findViewById<Button>(R.id.pageConfigureSounds)
-        buttonConf.setOnClickListener {
-            val intent = Intent(this, SoundConfiguration::class.java)
-            startActivity(intent)
-        }
-
-        val buttonDevs = findViewById<Button>(R.id.pageAboutDevs)
-        buttonDevs.setOnClickListener {
-            val intent = Intent(this, AboutDevs::class.java)
-            startActivity(intent)
-        }
-
-        val buttonBack = findViewById<ImageButton>(R.id.backButton)
-        buttonBack.setOnClickListener {
-            mediaPlayer!!.stop()
-            mediaPlayer!!.reset()
-            mediaPlayer!!.release()
-            handler.removeCallbacks(runnable)
-            finish()
-            val intent = Intent(this, MyTracks::class.java)
-            startActivity(intent)
-        }
-
-        val buttonHelp = findViewById<Button>(R.id.pageHelp)
-        buttonHelp.setOnClickListener {
-            val intent = Intent(this, Help::class.java)
-            startActivity(intent)
-        }
+        val buttonBack = findViewById<SideImageButton>(R.id.backButton)
+        buttonBack.addListener(this)
 
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         actionBar?.hide()
+    }
+
+    override fun onButtonDown(button: SideButton) {
+        Log.d("MainActivity", "Button down: ${button.id}")
+        when (button.id) {
+            R.id.pageAboutDevs -> {
+                Log.d("MainActivity", "About Devs button pressed")
+                val intent = Intent(this, AboutDevs::class.java)
+                startActivity(intent)
+            }
+            R.id.pageSoundboard -> {
+                Log.d("MainActivity", "About Devs button pressed")
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.pageConfigureSounds -> {
+                Log.d("MainActivity", "Configure Sounds button pressed")
+                val intent = Intent(this, SoundConfiguration::class.java)
+                startActivity(intent)
+            }
+            R.id.pageMyTracks -> {
+                Log.d("MainActivity", "My Tracks button pressed")
+                val intent = Intent(this, MyTracks::class.java)
+                startActivity(intent)
+            }
+            R.id.pageHelp -> {
+                Log.d("MainActivity", "Help button pressed")
+                val intent = Intent(this, Help::class.java)
+                startActivity(intent)
+            }
+        }
+    }
+
+    override fun onButtonUp(button: SideButton) {
+        // Логика при отпускании кнопки (если нужна)
+    }
+
+    override fun onButtonDown(button: SideImageButton) {
+        Log.d("MainActivity", "Button down: ${button.id}")
+        when (button.id) {
+            R.id.backButton -> {
+              mediaPlayer!!.stop()
+              mediaPlayer!!.reset()
+              mediaPlayer!!.release()
+              handler.removeCallbacks(runnable)
+              finish()
+                val intent = Intent(this, MyTracks::class.java)
+                startActivity(intent)
+            }
+        }
+    }
+
+    override fun onButtonUp(button: SideImageButton) {
+        // Логика при отпускании кнопки (если нужна)
     }
 
     private fun deleteFileByPath(filePath: String) {
@@ -212,7 +238,7 @@ class Player : AppCompatActivity() {
         val shareIntent = Intent().apply {
             this.action = Intent.ACTION_SEND
             this.type = "audio/*"
-            this.putExtra(Intent.EXTRA_STREAM, list[position].songUri)
+            this.putExtra(Intent.EXTRA_STREAM,uri)
         }
 
         startActivity(Intent.createChooser(shareIntent, "Share this file using :"))
@@ -360,5 +386,14 @@ class Player : AppCompatActivity() {
             position = checkPosition(position, false)
             playMedia(list[position].songUri, null)
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        mediaPlayer!!.stop()
+        mediaPlayer!!.reset()
+        mediaPlayer!!.release()
+        handler.removeCallbacks(runnable)
+        finish()
     }
 }

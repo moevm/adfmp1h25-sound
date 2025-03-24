@@ -20,40 +20,66 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/key_1_1"
+            <FrameLayout
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginHorizontal="25dp"
-                android:background="@drawable/btns_keypads"/>
+                android:background="@drawable/btns_keypads">
 
-            <TextView
-                android:id="@+id/key_1_2"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginHorizontal="25dp"
-                android:background="@drawable/btns_keypads"/>
+                <ru.etu.soundboard.TriggerPad
+                    android:id="@+id/key_1_1"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"/>
 
-            <TextView
-                android:id="@+id/key_1_3"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginHorizontal="25dp"
-                android:background="@drawable/btns_keypads" />
+            </FrameLayout>
 
-            <TextView
-                android:id="@+id/key_1_4"
+            <FrameLayout
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginHorizontal="25dp"
-                android:background="@drawable/btns_keypads" />
+                android:background="@drawable/btns_keypads">
 
-            <TextView
-                android:id="@+id/key_1_5"
+                <ru.etu.soundboard.TriggerPad
+                    android:id="@+id/key_1_2"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"/>
+            </FrameLayout>
+
+            <FrameLayout
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginHorizontal="25dp"
-                android:background="@drawable/btns_keypads"/>
+                android:background="@drawable/btns_keypads">
+
+                <ru.etu.soundboard.TriggerPad
+                    android:id="@+id/key_1_3"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"/>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/btns_keypads">
+
+                <ru.etu.soundboard.TriggerPad
+                    android:id="@+id/key_1_4"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/btns_keypads">
+
+                <ru.etu.soundboard.TriggerPad
+                    android:id="@+id/key_1_5"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"/>
+            </FrameLayout>
 
         </LinearLayout>
 
@@ -66,40 +92,65 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/key_2_1"
+            <FrameLayout
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginHorizontal="25dp"
-                android:background="@drawable/btns_keypads" />
+                android:background="@drawable/btns_keypads">
 
-            <TextView
-                android:id="@+id/key_2_2"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginHorizontal="25dp"
-                android:background="@drawable/btns_keypads" />
+                <ru.etu.soundboard.TriggerPad
+                    android:id="@+id/key_2_1"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"/>
+            </FrameLayout>
 
-            <TextView
-                android:id="@+id/key_2_3"
+            <FrameLayout
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginHorizontal="25dp"
-                android:background="@drawable/btns_keypads" />
+                android:background="@drawable/btns_keypads">
 
-            <TextView
-                android:id="@+id/key_2_4"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginHorizontal="25dp"
-                android:background="@drawable/btns_keypads" />
+                <ru.etu.soundboard.TriggerPad
+                    android:id="@+id/key_2_2"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"/>
+            </FrameLayout>
 
-            <TextView
-                android:id="@+id/key_2_5"
+            <FrameLayout
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginHorizontal="25dp"
-                android:background="@drawable/btns_keypads" />
+                android:background="@drawable/btns_keypads">
+
+                <ru.etu.soundboard.TriggerPad
+                    android:id="@+id/key_2_3"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"/>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/btns_keypads">
+
+                <ru.etu.soundboard.TriggerPad
+                    android:id="@+id/key_2_4"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"/>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/btns_keypads">
+
+                <ru.etu.soundboard.TriggerPad
+                    android:id="@+id/key_2_5"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"/>
+            </FrameLayout>
 
         </LinearLayout>
 
@@ -112,40 +163,66 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <TextView
-                android:id="@+id/key_3_1"
+            <FrameLayout
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginHorizontal="25dp"
-                android:background="@drawable/btns_keypads" />
+                android:background="@drawable/btns_keypads">
 
-            <TextView
-                android:id="@+id/key_3_2"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginHorizontal="25dp"
-                android:background="@drawable/btns_keypads" />
+                <ru.etu.soundboard.TriggerPad
+                    android:id="@+id/key_3_1"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"/>
+            </FrameLayout>
 
-            <TextView
-                android:id="@+id/key_3_3"
+            <FrameLayout
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginHorizontal="25dp"
-                android:background="@drawable/btns_keypads" />
+                android:background="@drawable/btns_keypads">
 
-            <TextView
-                android:id="@+id/key_3_4"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginHorizontal="25dp"
-                android:background="@drawable/btns_keypads" />
+                <ru.etu.soundboard.TriggerPad
+                    android:id="@+id/key_3_2"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"/>
+            </FrameLayout>
 
-            <TextView
-                android:id="@+id/key_3_5"
+
+            <FrameLayout
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginHorizontal="25dp"
-                android:background="@drawable/btns_keypads" />
+                android:background="@drawable/btns_keypads">
+
+                <ru.etu.soundboard.TriggerPad
+                    android:id="@+id/key_3_3"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"/>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/btns_keypads">
+
+                <ru.etu.soundboard.TriggerPad
+                    android:id="@+id/key_3_4"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"/>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/btns_keypads">
+
+                <ru.etu.soundboard.TriggerPad
+                    android:id="@+id/key_3_5"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"/>
+            </FrameLayout>
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

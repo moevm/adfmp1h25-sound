@@ -27,7 +27,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <android.widget.ImageButton
+            <ru.etu.soundboard.SideImageButton
                 android:id="@+id/set1"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
@@ -38,7 +38,7 @@
                 android:contentDescription="set_1"
                 android:src="@drawable/vec_number_one" />
 
-            <android.widget.ImageButton
+            <ru.etu.soundboard.SideImageButton
                 android:id="@+id/set2"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
@@ -49,7 +49,7 @@
                 android:contentDescription="set_2"
                 android:src="@drawable/vec_number_two" />
 
-            <android.widget.ImageButton
+            <ru.etu.soundboard.SideImageButton
                 android:id="@+id/set3"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
@@ -60,7 +60,7 @@
                 android:contentDescription="set_3"
                 android:src="@drawable/vec_number_three" />
 
-            <android.widget.ImageButton
+            <ru.etu.soundboard.SideImageButton
                 android:id="@+id/saveButton"
                 android:layout_width="60dp"
                 android:layout_height="50dp"

@@ -17,17 +17,29 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
             android:id="@+id/help_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="20dp"
-            android:text="Здесь будет находиться краткое руководство по использованию приложения."
+            android:text="1. На странице “Soundboard” пользователю доступен функционал проигрывания семплов и записи собственных треков. Кнопки на верхней панели позволяют начать и завершить запись музыкальной дорожки.
+Кнопки с изображением пианино и клавиш позволяют выбрать стандартные ударный и клавишный пресеты. Кнопки с цифрами 1, 2 и 3 позволяют выбрать пресеты, которые пользователь может настроить самостоятельно на странице “Sound configuration”. Кнопка с рисунком мусорки включает режим удаления макросов по нажатию.
+На правой панели находятся кнопки макросов (по умолчанию серые). Нажатие на серую клавишу сделает её красной и начнёт запись выбранного макроса, играйте во время записи. Нажатие на красную кнопку остановит запись и зафиксирует макрос, перекрасив кнопку в желтый. Нажатие на желтую кнопку начнет воспроизведение макроса. Повторное нажатие остановит воспроизведение.
+\n\n2. На странице “My tracks” пользователю представлены все аудиозаписи с возможностью поиска по названию и выбора для прослушивания. Выбранный трек можно удалить или отправить через стандартный интерфейс.
+\n\n3. Страница “Sound configuration” позволяет пользователю настроить собственные пресеты, разместив на кнопках семплы, сохраненные на устройстве. Всего возможно создать 3 пресета. Для сохранения изменений необходимо нажать на соответствующую кнопку на верхней панели. Добавлять следует только .wav файлы, иначе вы обрекаете себя на то, что что-то может где-то не заработать.\n"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
