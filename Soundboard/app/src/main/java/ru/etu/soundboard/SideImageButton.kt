@@ -26,12 +26,12 @@ class SideImageButton : androidx.appcompat.widget.AppCompatImageButton {
             MotionEvent.ACTION_DOWN -> {
                 mIsDown = true
                 triggerDown()
-                return false
+                return true
             }
             MotionEvent.ACTION_UP -> {
                 mIsDown = false
                 triggerUp()
-                return false
+                return true
             }
         }
         return super.onTouchEvent(event)
