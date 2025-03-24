@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity(),
 
     private val TAG = "MainActivity"
     private var is_custom_preset = false
+    private var deleteMode = false
     private var mAudioMgr: AudioManager? = null
 
     private var mSoundPlayer = SoundPlayer()
@@ -246,6 +247,32 @@ class MainActivity : AppCompatActivity(),
         val buttonMacros3 = findViewById<SideImageButton>(R.id.btnMacros3)
         val buttonMacros4 = findViewById<SideImageButton>(R.id.btnMacros4)
         val buttonMacros5 = findViewById<SideImageButton>(R.id.btnMacros5)
+
+        val fileMac1 = File(getExternalFilesDir(null), "macros_1.json")
+        if (fileMac1.exists()) {
+            buttonMacros1.setBackgroundResource(R.drawable.btns_macros_green)
+            macRec_1.setEvent(readTrackFromJson(fileMac1))
+        }
+        val fileMac2 = File(getExternalFilesDir(null), "macros_2.json")
+        if (fileMac2.exists()) {
+            buttonMacros2.setBackgroundResource(R.drawable.btns_macros_green)
+            macRec_2.setEvent(readTrackFromJson(fileMac2))
+        }
+        val fileMac3 = File(getExternalFilesDir(null), "macros_3.json")
+        if (fileMac3.exists()) {
+            buttonMacros3.setBackgroundResource(R.drawable.btns_macros_green)
+            macRec_3.setEvent(readTrackFromJson(fileMac3))
+        }
+        val fileMac4 = File(getExternalFilesDir(null), "macros_4.json")
+        if (fileMac4.exists()) {
+            buttonMacros4.setBackgroundResource(R.drawable.btns_macros_green)
+            macRec_4.setEvent(readTrackFromJson(fileMac4))
+        }
+        val fileMac5 = File(getExternalFilesDir(null), "macros_5.json")
+        if (fileMac5.exists()) {
+            buttonMacros5.setBackgroundResource(R.drawable.btns_macros_green)
+            macRec_5.setEvent(readTrackFromJson(fileMac5))
+        }
 
         buttonDrums.addListener(this)
         buttonKeys.addListener(this)
@@ -818,6 +845,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun onButtonDown(button: SideImageButton) {
         Log.d("MainActivity", "Button down: ${button.id}")
+        val btn = findViewById<SideImageButton>(button.id)
         when (button.id) {
              R.id.btnRecord -> {
                  if (!trackRecorder.isRec()) {
@@ -859,6 +887,7 @@ class MainActivity : AppCompatActivity(),
             R.id.btnMacros1 -> {
                 if (macRec_1.isRecEmpty() && !macRec_1.isRec())
                 {
+                    btn.setBackgroundResource(R.drawable.btns_macros_red)
                     for(n in 1..4) {
                         Log.d("macros 1", "count " + n.toString())
                         Thread.sleep(500)
@@ -867,6 +896,7 @@ class MainActivity : AppCompatActivity(),
                     macRec_1.startRecording()
                 } else if (macRec_1.isRec())
                 {
+                    btn.setBackgroundResource(R.drawable.btns_macros_green)
                     Log.d("macros 1", "rec stop")
                     macRec_1.stopRecording()
                     saveTrackToFile(macRec_1, "macros_1.json")
@@ -874,9 +904,11 @@ class MainActivity : AppCompatActivity(),
                 {
                     if (macRec_1.loop())
                     {
+                        btn.setBackgroundResource(R.drawable.btns_macros_green)
                         macRec_1.chLoop()
                         Log.d("macros 1", "stop loop playing")
                     } else {
+                        btn.setBackgroundResource(R.drawable.btns_macros_yellow)
                         macRec_1.chLoop()
                         Log.d("macros 1", "playing") // здесь пример того, как вызвать записанный в json макром (мини тречик)
                         playTrack(macRec_1)
@@ -886,6 +918,7 @@ class MainActivity : AppCompatActivity(),
             R.id.btnMacros2 -> {
                 if (macRec_2.isRecEmpty() && !macRec_2.isRec())
                 {
+                    btn.setBackgroundResource(R.drawable.btns_macros_red)
                     for(n in 1..4) {
                         Log.d("macros 2", "count " + n.toString())
                         Thread.sleep(500)
@@ -894,6 +927,7 @@ class MainActivity : AppCompatActivity(),
                     macRec_2.startRecording()
                 } else if (macRec_2.isRec())
                 {
+                    btn.setBackgroundResource(R.drawable.btns_macros_green)
                     Log.d("macros 2", "rec stop")
                     macRec_2.stopRecording()
                     saveTrackToFile(macRec_2, "macros_2.json")
@@ -901,9 +935,11 @@ class MainActivity : AppCompatActivity(),
                 {
                     if (macRec_2.loop())
                     {
+                        btn.setBackgroundResource(R.drawable.btns_macros_green)
                         macRec_2.chLoop()
                         Log.d("macros 2", "stop loop playing")
                     } else {
+                        btn.setBackgroundResource(R.drawable.btns_macros_yellow)
                         macRec_2.chLoop()
                         Log.d("macros 2", "playing") // здесь пример того, как вызвать записанный в json макром (мини тречик)
                         playTrack(macRec_2)
@@ -912,6 +948,7 @@ class MainActivity : AppCompatActivity(),
             }
             R.id.btnMacros3 -> {
                 if (macRec_3.isRecEmpty() && !macRec_3.isRec()) {
+                    btn.setBackgroundResource(R.drawable.btns_macros_red)
                     for (n in 1..4) {
                         Log.d("macros 3", "count " + n.toString())
                         Thread.sleep(500)
@@ -919,14 +956,17 @@ class MainActivity : AppCompatActivity(),
                     Log.d("macros 3", "rec start")
                     macRec_3.startRecording()
                 } else if (macRec_3.isRec()) {
+                    btn.setBackgroundResource(R.drawable.btns_macros_green)
                     Log.d("macros 3", "rec stop")
                     macRec_3.stopRecording()
                     saveTrackToFile(macRec_3, "macros_3.json")
                 } else if (!macRec_3.isRecEmpty()) {
                     if (macRec_3.loop()) {
+                        btn.setBackgroundResource(R.drawable.btns_macros_green)
                         macRec_3.chLoop()
                         Log.d("macros 3", "stop loop playing")
                     } else {
+                        btn.setBackgroundResource(R.drawable.btns_macros_yellow)
                         macRec_3.chLoop()
                         Log.d(
                             "macros 3",
@@ -938,6 +978,7 @@ class MainActivity : AppCompatActivity(),
             }
             R.id.btnMacros4 -> {
                 if (macRec_4.isRecEmpty() && !macRec_4.isRec()) {
+                    btn.setBackgroundResource(R.drawable.btns_macros_red)
                     for (n in 1..4) {
                         Log.d("macros 4", "count " + n.toString())
                         Thread.sleep(500)
@@ -945,14 +986,17 @@ class MainActivity : AppCompatActivity(),
                     Log.d("macros 4", "rec start")
                     macRec_4.startRecording()
                 } else if (macRec_4.isRec()) {
+                    btn.setBackgroundResource(R.drawable.btns_macros_green)
                     Log.d("macros 4", "rec stop")
                     macRec_4.stopRecording()
                     saveTrackToFile(macRec_4, "macros_4.json")
                 } else if (!macRec_4.isRecEmpty()) {
                     if (macRec_4.loop()) {
+                        btn.setBackgroundResource(R.drawable.btns_macros_green)
                         macRec_4.chLoop()
                         Log.d("macros 4", "stop loop playing")
                     } else {
+                        btn.setBackgroundResource(R.drawable.btns_macros_yellow)
                         macRec_4.chLoop()
                         Log.d(
                             "macros 4",
@@ -964,6 +1008,7 @@ class MainActivity : AppCompatActivity(),
             }
             R.id.btnMacros5 -> {
                 if (macRec_5.isRecEmpty() && !macRec_5.isRec()) {
+                    btn.setBackgroundResource(R.drawable.btns_macros_red)
                     for (n in 1..4) {
                         Log.d("macros 5", "count " + n.toString())
                         Thread.sleep(500)
@@ -971,14 +1016,17 @@ class MainActivity : AppCompatActivity(),
                     Log.d("macros 5", "rec start")
                     macRec_5.startRecording()
                 } else if (macRec_5.isRec()) {
+                    btn.setBackgroundResource(R.drawable.btns_macros_green)
                     Log.d("macros 5", "rec stop")
                     macRec_5.stopRecording()
                     saveTrackToFile(macRec_5, "macros_5.json")
                 } else if (!macRec_5.isRecEmpty()) {
                     if (macRec_5.loop()) {
+                        btn.setBackgroundResource(R.drawable.btns_macros_green)
                         macRec_5.chLoop()
                         Log.d("macros 5", "stop loop playing")
                     } else {
+                        btn.setBackgroundResource(R.drawable.btns_macros_yellow)
                         macRec_5.chLoop()
                         Log.d(
                             "macros 5",
@@ -1022,7 +1070,13 @@ class MainActivity : AppCompatActivity(),
                 mSoundPlayer.loadWavAssetsFromStorage(cur_set!!)
             }
             R.id.btnDelete -> {
-
+                if(deleteMode){
+                    deleteMode = false
+                    btn.setBackgroundResource(R.drawable.btns_menu)
+                } else {
+                    deleteMode = true
+                    btn.setBackgroundResource(R.drawable.btns_menu2)
+                }
             }
         }
     }

@@ -12,7 +12,7 @@ data class TrackEvent(
 
 class TrackRecorder {
 
-    private val events = mutableListOf<TrackEvent>()
+    private var events = mutableListOf<TrackEvent>()
     private var startTime: Long = 0
     private var isRecording = false
     private var isLooping = false
@@ -45,6 +45,14 @@ class TrackRecorder {
 
     fun stopRecording() {
         isRecording = false
+    }
+
+    fun setEvent(buf: List<TrackEvent>) {
+        events = buf.toMutableList()
+    }
+
+    fun DeleteEvent() {
+        events.clear()
     }
 
     fun recordEvent(soundId: Int) {

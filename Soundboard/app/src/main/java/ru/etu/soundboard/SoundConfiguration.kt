@@ -65,7 +65,6 @@ class SoundConfiguration : AppCompatActivity(), SideButton.SideButtonListener,Si
                 if (columnIndex != -1) {
                     filePath = it.getString(columnIndex)
                     if (!filePath.contains(".wav", true)){
-                        Log.d("bebra", filePath)
                         return ""
                     }
                 } else {
@@ -75,7 +74,6 @@ class SoundConfiguration : AppCompatActivity(), SideButton.SideButtonListener,Si
                         val fileName = it.getString(displayNameIndex)
                         filePath = "${cacheDir.absolutePath}/$fileName"
                         if (!filePath.contains(".wav", true)){
-                            Log.d("bebra", filePath)
                             return ""
                         }
                         // Копируем файл в кэш, если нужно
