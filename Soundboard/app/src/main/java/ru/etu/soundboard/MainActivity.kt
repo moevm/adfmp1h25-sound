@@ -758,8 +758,6 @@ class MainActivity : AppCompatActivity(),
         if (trackEvents.isEmpty()) return // Если трек пустой, ничего не делаем
         for (event in trackEvents) {
             Timer().schedule(event.timestamp) {
-                if (trackRecorder.isRec())
-                    trackRecorder.recordEvent(event.soundId)
                 mSoundPlayer.trigger(event.soundId)
             }
         }
@@ -767,6 +765,8 @@ class MainActivity : AppCompatActivity(),
         fun play() {
             for (event in trackEvents) {
                 Timer().schedule(event.timestamp) {
+                    if (trackRecorder.isRec())
+                        trackRecorder.recordEvent(event.soundId)
                     mSoundPlayer.trigger(event.soundId)
                 }
             }
