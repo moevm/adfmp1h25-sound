@@ -35,7 +35,6 @@
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginVertical="12dp"
                 android:background="@drawable/btns_menu"
-                android:backgroundTint="#787878"
                 android:contentDescription="play pause"
                 android:src="@drawable/vec_play_pause" />
 
@@ -46,7 +45,6 @@
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginVertical="12dp"
                 android:background="@drawable/btns_menu"
-                android:backgroundTint="#787878"
                 android:contentDescription="stop"
                 android:src="@drawable/vec_stop" />
 
@@ -57,7 +55,6 @@
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginVertical="12dp"
                 android:background="@drawable/btns_menu"
-                android:backgroundTint="#787878"
                 android:contentDescription="record"
                 android:src="@drawable/vec_record" />
 
@@ -68,7 +65,6 @@
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginVertical="12dp"
                 android:background="@drawable/btns_menu"
-                android:backgroundTint="#787878"
                 android:contentDescription="drums"
                 android:src="@drawable/vec_drums" />
 
@@ -79,7 +75,6 @@
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginVertical="12dp"
                 android:background="@drawable/btns_menu"
-                android:backgroundTint="#787878"
                 android:contentDescription="keys"
                 android:src="@drawable/vec_piano" />
 
@@ -90,7 +85,6 @@
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginVertical="12dp"
                 android:background="@drawable/btns_menu"
-                android:backgroundTint="#787878"
                 android:contentDescription="set1"
                 android:src="@drawable/vec_number_one" />
 
@@ -101,7 +95,6 @@
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginVertical="12dp"
                 android:background="@drawable/btns_menu"
-                android:backgroundTint="#787878"
                 android:contentDescription="set2"
                 android:src="@drawable/vec_number_two" />
 
@@ -112,7 +105,6 @@
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginVertical="12dp"
                 android:background="@drawable/btns_menu"
-                android:backgroundTint="#787878"
                 android:contentDescription="set3"
                 android:src="@drawable/vec_number_three" />
 

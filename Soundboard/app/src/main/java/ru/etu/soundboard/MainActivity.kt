@@ -330,6 +330,12 @@ class MainActivity : AppCompatActivity(),
         macRec_4.chLoop()
         macRec_5.chLoop()
 
+        macRec_1.stopRecording()
+        macRec_2.stopRecording()
+        macRec_3.stopRecording()
+        macRec_4.stopRecording()
+        macRec_5.stopRecording()
+
         super.onStop()
     }
 
@@ -863,10 +869,12 @@ class MainActivity : AppCompatActivity(),
                      ).show()
                      trackRecorder.startRecording()
                  }
+                 btn.setBackgroundResource(R.drawable.btns_menu2)
             }
             R.id.btnPlayPause -> {
                 Log.d("record", "play") // здесь пример того, как вызвать записанный в json макром (мини тречик)
                 playTrack(trackRecorder)
+                btn.setBackgroundResource(R.drawable.btns_menu2)
             }
             R.id.btnStop -> {
                 if(trackRecorder.isRec()) {
@@ -888,6 +896,7 @@ class MainActivity : AppCompatActivity(),
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+                btn.setBackgroundResource(R.drawable.btns_menu2)
             }
             R.id.btnMacros1 -> {
                 if (deleteMode && !macRec_1.isRecEmpty()){
@@ -1083,18 +1092,21 @@ class MainActivity : AppCompatActivity(),
             }
 
             R.id.btnDrums -> {
+                btn.setBackgroundResource(R.drawable.btns_menu2)
                 is_custom_preset = false
                 cur_set = allPresets?.drums
                 mSoundPlayer.unloadWavAssets()
                 mSoundPlayer.loadWavAssets(getAssets(), cur_set!!)
             }
             R.id.btnKeys -> {
+                btn.setBackgroundResource(R.drawable.btns_menu2)
                 is_custom_preset = false
                 cur_set = this.allPresets?.keys
                 mSoundPlayer.unloadWavAssets()
                 mSoundPlayer.loadWavAssets(getAssets(), cur_set!!)
             }
             R.id.btnSet1 -> {
+                btn.setBackgroundResource(R.drawable.btns_menu2)
                 is_custom_preset = true
                 cur_set = this.allPresets?.set1
                 Log.d("MainActivity", cur_set.toString())
@@ -1103,12 +1115,14 @@ class MainActivity : AppCompatActivity(),
                 mSoundPlayer.loadWavAssetsFromStorage(cur_set!!)
             }
             R.id.btnSet2 -> {
+                btn.setBackgroundResource(R.drawable.btns_menu2)
                 is_custom_preset = true
                 cur_set = this.allPresets?.set2
                 mSoundPlayer.unloadWavAssets()
                 mSoundPlayer.loadWavAssetsFromStorage(cur_set!!)
             }
             R.id.btnSet3 -> {
+                btn.setBackgroundResource(R.drawable.btns_menu2)
                 is_custom_preset = true
                 cur_set = this.allPresets?.set3
                 mSoundPlayer.unloadWavAssets()
@@ -1127,6 +1141,17 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onButtonUp(button: SideImageButton) {
-        // Логика при отпускании кнопки (если нужна)
+        Log.d("daunblya", "zrobiu")
+        val btn = findViewById<SideImageButton>(button.id)
+        when (button.id) {
+            R.id.btnRecord -> btn.setBackgroundResource(R.drawable.btns_menu)
+            R.id.btnPlayPause -> btn.setBackgroundResource(R.drawable.btns_menu)
+            R.id.btnStop -> btn.setBackgroundResource(R.drawable.btns_menu)
+            R.id.btnDrums -> btn.setBackgroundResource(R.drawable.btns_menu)
+            R.id.btnKeys -> btn.setBackgroundResource(R.drawable.btns_menu)
+            R.id.btnSet1 -> btn.setBackgroundResource(R.drawable.btns_menu)
+            R.id.btnSet2 -> btn.setBackgroundResource(R.drawable.btns_menu)
+            R.id.btnSet3 -> btn.setBackgroundResource(R.drawable.btns_menu)
+        }
     }
 }
