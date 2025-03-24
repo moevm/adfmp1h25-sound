@@ -45,6 +45,10 @@ class MainActivity : AppCompatActivity(),
 
     private lateinit var trackRecorder: TrackRecorder
     private lateinit var macRec_1: TrackRecorder
+    private lateinit var macRec_2: TrackRecorder
+    private lateinit var macRec_3: TrackRecorder
+    private lateinit var macRec_4: TrackRecorder
+    private lateinit var macRec_5: TrackRecorder
 
     private val TAG = "MainActivity"
     private var is_custom_preset = false
@@ -158,6 +162,10 @@ class MainActivity : AppCompatActivity(),
         val buttonDelete = findViewById<SideImageButton>(R.id.btnDelete)
 
         val buttonMacros1 = findViewById<SideImageButton>(R.id.btnMacros1)
+        val buttonMacros2 = findViewById<SideImageButton>(R.id.btnMacros2)
+        val buttonMacros3 = findViewById<SideImageButton>(R.id.btnMacros3)
+        val buttonMacros4 = findViewById<SideImageButton>(R.id.btnMacros4)
+        val buttonMacros5 = findViewById<SideImageButton>(R.id.btnMacros5)
 
         // Добавление обработчиков
         buttonAboutDevs.addListener(this)
@@ -173,9 +181,17 @@ class MainActivity : AppCompatActivity(),
         buttonDelete.addListener(this)
 
         buttonMacros1.addListener(this)
+        buttonMacros2.addListener(this)
+        buttonMacros3.addListener(this)
+        buttonMacros4.addListener(this)
+        buttonMacros5.addListener(this)
 
         trackRecorder = TrackRecorder()
         macRec_1 = TrackRecorder()
+        macRec_2 = TrackRecorder()
+        macRec_3 = TrackRecorder()
+        macRec_4 = TrackRecorder()
+        macRec_5 = TrackRecorder()
 
 
         mAudioMgr = getSystemService(Context.AUDIO_SERVICE) as AudioManager
@@ -226,6 +242,10 @@ class MainActivity : AppCompatActivity(),
         val buttonDelete = findViewById<SideImageButton>(R.id.btnDelete)
 
         val buttonMacros1 = findViewById<SideImageButton>(R.id.btnMacros1)
+        val buttonMacros2 = findViewById<SideImageButton>(R.id.btnMacros2)
+        val buttonMacros3 = findViewById<SideImageButton>(R.id.btnMacros3)
+        val buttonMacros4 = findViewById<SideImageButton>(R.id.btnMacros4)
+        val buttonMacros5 = findViewById<SideImageButton>(R.id.btnMacros5)
 
         buttonDrums.addListener(this)
         buttonKeys.addListener(this)
@@ -238,6 +258,10 @@ class MainActivity : AppCompatActivity(),
         wav.addListener(this)
 
         buttonMacros1.addListener(this)
+        buttonMacros2.addListener(this)
+        buttonMacros3.addListener(this)
+        buttonMacros4.addListener(this)
+        buttonMacros5.addListener(this)
 
         // Добавление обработчиков
         buttonAboutDevs.addListener(this)
@@ -502,30 +526,70 @@ class MainActivity : AppCompatActivity(),
                     trackRecorder.recordEvent(SoundPlayer.KEY11)
                 else if (macRec_1.isRec())
                     macRec_1.recordEvent(SoundPlayer.KEY11)
+                else if (macRec_2.isRec())
+                    macRec_2.recordEvent(SoundPlayer.KEY11)
+                else if (macRec_3.isRec())
+                    macRec_3.recordEvent(SoundPlayer.KEY11)
+                else if (macRec_4.isRec())
+                    macRec_4.recordEvent(SoundPlayer.KEY11)
+                else if (macRec_5.isRec())
+                    macRec_5.recordEvent(SoundPlayer.KEY11)
             }
             R.id.key_1_2 -> {if(cur_set!!.key12 != "") mSoundPlayer.trigger(SoundPlayer.KEY12)
                 if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY12)
                 else if (macRec_1.isRec())
                     macRec_1.recordEvent(SoundPlayer.KEY12)
-                }
+                else if (macRec_2.isRec())
+                    macRec_2.recordEvent(SoundPlayer.KEY12)
+                else if (macRec_3.isRec())
+                    macRec_3.recordEvent(SoundPlayer.KEY12)
+                else if (macRec_4.isRec())
+                    macRec_4.recordEvent(SoundPlayer.KEY12)
+                else if (macRec_5.isRec())
+                    macRec_5.recordEvent(SoundPlayer.KEY12)
+            }
             R.id.key_1_3 -> {if(cur_set!!.key13 != "") mSoundPlayer.trigger(SoundPlayer.KEY13)
                 if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY13)
                 else if (macRec_1.isRec())
                     macRec_1.recordEvent(SoundPlayer.KEY13)
+                else if (macRec_2.isRec())
+                    macRec_2.recordEvent(SoundPlayer.KEY13)
+                else if (macRec_3.isRec())
+                    macRec_3.recordEvent(SoundPlayer.KEY13)
+                else if (macRec_4.isRec())
+                    macRec_4.recordEvent(SoundPlayer.KEY13)
+                else if (macRec_5.isRec())
+                    macRec_5.recordEvent(SoundPlayer.KEY13)
                 }
             R.id.key_1_4 -> {if(cur_set!!.key14 != "") mSoundPlayer.trigger(SoundPlayer.KEY14)
                 if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY14)
                 else if (macRec_1.isRec())
                     macRec_1.recordEvent(SoundPlayer.KEY14)
+                else if (macRec_2.isRec())
+                    macRec_2.recordEvent(SoundPlayer.KEY14)
+                else if (macRec_3.isRec())
+                    macRec_3.recordEvent(SoundPlayer.KEY14)
+                else if (macRec_4.isRec())
+                    macRec_4.recordEvent(SoundPlayer.KEY14)
+                else if (macRec_5.isRec())
+                    macRec_5.recordEvent(SoundPlayer.KEY14)
                 }
             R.id.key_1_5 -> {if(cur_set!!.key15 != "") mSoundPlayer.trigger(SoundPlayer.KEY15)
                 if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY15)
                 else if (macRec_1.isRec())
                     macRec_1.recordEvent(SoundPlayer.KEY15)
+                else if (macRec_2.isRec())
+                    macRec_2.recordEvent(SoundPlayer.KEY15)
+                else if (macRec_3.isRec())
+                    macRec_3.recordEvent(SoundPlayer.KEY15)
+                else if (macRec_4.isRec())
+                    macRec_4.recordEvent(SoundPlayer.KEY15)
+                else if (macRec_5.isRec())
+                    macRec_5.recordEvent(SoundPlayer.KEY15)
                 }
 
             R.id.key_2_1 -> {if(cur_set!!.key21 != "") mSoundPlayer.trigger(SoundPlayer.KEY21)
@@ -533,30 +597,70 @@ class MainActivity : AppCompatActivity(),
                     trackRecorder.recordEvent(SoundPlayer.KEY21)
                 else if (macRec_1.isRec())
                     macRec_1.recordEvent(SoundPlayer.KEY21)
+                else if (macRec_2.isRec())
+                    macRec_2.recordEvent(SoundPlayer.KEY21)
+                else if (macRec_3.isRec())
+                    macRec_3.recordEvent(SoundPlayer.KEY21)
+                else if (macRec_4.isRec())
+                    macRec_4.recordEvent(SoundPlayer.KEY21)
+                else if (macRec_5.isRec())
+                    macRec_5.recordEvent(SoundPlayer.KEY21)
                 }
             R.id.key_2_2 -> {if(cur_set!!.key22 != "") mSoundPlayer.trigger(SoundPlayer.KEY22)
                 if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY22)
                 else if (macRec_1.isRec())
                     macRec_1.recordEvent(SoundPlayer.KEY22)
+                else if (macRec_2.isRec())
+                    macRec_2.recordEvent(SoundPlayer.KEY22)
+                else if (macRec_3.isRec())
+                    macRec_3.recordEvent(SoundPlayer.KEY22)
+                else if (macRec_4.isRec())
+                    macRec_4.recordEvent(SoundPlayer.KEY22)
+                else if (macRec_5.isRec())
+                    macRec_5.recordEvent(SoundPlayer.KEY22)
                 }
             R.id.key_2_3 -> {if(cur_set!!.key23 != "") mSoundPlayer.trigger(SoundPlayer.KEY23)
                 if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY23)
                 else if (macRec_1.isRec())
                     macRec_1.recordEvent(SoundPlayer.KEY23)
+                else if (macRec_2.isRec())
+                    macRec_2.recordEvent(SoundPlayer.KEY23)
+                else if (macRec_3.isRec())
+                    macRec_3.recordEvent(SoundPlayer.KEY23)
+                else if (macRec_4.isRec())
+                    macRec_4.recordEvent(SoundPlayer.KEY23)
+                else if (macRec_5.isRec())
+                    macRec_5.recordEvent(SoundPlayer.KEY23)
                 }
             R.id.key_2_4 -> {if(cur_set!!.key24 != "") mSoundPlayer.trigger(SoundPlayer.KEY24)
                 if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY24)
                 else if (macRec_1.isRec())
                     macRec_1.recordEvent(SoundPlayer.KEY24)
+                else if (macRec_2.isRec())
+                    macRec_2.recordEvent(SoundPlayer.KEY24)
+                else if (macRec_3.isRec())
+                    macRec_3.recordEvent(SoundPlayer.KEY24)
+                else if (macRec_4.isRec())
+                    macRec_4.recordEvent(SoundPlayer.KEY24)
+                else if (macRec_5.isRec())
+                    macRec_5.recordEvent(SoundPlayer.KEY24)
                 }
             R.id.key_2_5 -> {if(cur_set!!.key25 != "") mSoundPlayer.trigger(SoundPlayer.KEY25)
                 if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY25)
                 else if (macRec_1.isRec())
                     macRec_1.recordEvent(SoundPlayer.KEY25)
+                else if (macRec_2.isRec())
+                    macRec_2.recordEvent(SoundPlayer.KEY25)
+                else if (macRec_3.isRec())
+                    macRec_3.recordEvent(SoundPlayer.KEY25)
+                else if (macRec_4.isRec())
+                    macRec_4.recordEvent(SoundPlayer.KEY25)
+                else if (macRec_5.isRec())
+                    macRec_5.recordEvent(SoundPlayer.KEY25)
                 }
 
             R.id.key_3_1 -> {if(cur_set!!.key31 != "") mSoundPlayer.trigger(SoundPlayer.KEY31)
@@ -564,30 +668,70 @@ class MainActivity : AppCompatActivity(),
                     trackRecorder.recordEvent(SoundPlayer.KEY31)
                 else if (macRec_1.isRec())
                     macRec_1.recordEvent(SoundPlayer.KEY31)
+                else if (macRec_2.isRec())
+                    macRec_2.recordEvent(SoundPlayer.KEY31)
+                else if (macRec_3.isRec())
+                    macRec_3.recordEvent(SoundPlayer.KEY31)
+                else if (macRec_4.isRec())
+                    macRec_4.recordEvent(SoundPlayer.KEY31)
+                else if (macRec_5.isRec())
+                    macRec_5.recordEvent(SoundPlayer.KEY31)
                 }
             R.id.key_3_2 -> {if(cur_set!!.key32 != "") mSoundPlayer.trigger(SoundPlayer.KEY32)
                 if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY32)
                 else if (macRec_1.isRec())
                     macRec_1.recordEvent(SoundPlayer.KEY32)
+                else if (macRec_2.isRec())
+                    macRec_2.recordEvent(SoundPlayer.KEY32)
+                else if (macRec_3.isRec())
+                    macRec_3.recordEvent(SoundPlayer.KEY32)
+                else if (macRec_4.isRec())
+                    macRec_4.recordEvent(SoundPlayer.KEY32)
+                else if (macRec_5.isRec())
+                    macRec_5.recordEvent(SoundPlayer.KEY32)
                 }
             R.id.key_3_3 -> {if(cur_set!!.key33 != "") mSoundPlayer.trigger(SoundPlayer.KEY33)
                 if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY33)
                 else if (macRec_1.isRec())
                     macRec_1.recordEvent(SoundPlayer.KEY33)
+                else if (macRec_2.isRec())
+                    macRec_2.recordEvent(SoundPlayer.KEY33)
+                else if (macRec_3.isRec())
+                    macRec_3.recordEvent(SoundPlayer.KEY33)
+                else if (macRec_4.isRec())
+                    macRec_4.recordEvent(SoundPlayer.KEY33)
+                else if (macRec_5.isRec())
+                    macRec_5.recordEvent(SoundPlayer.KEY33)
                 }
             R.id.key_3_4 -> {if(cur_set!!.key34 != "") mSoundPlayer.trigger(SoundPlayer.KEY34)
                 if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY34)
                 else if (macRec_1.isRec())
                     macRec_1.recordEvent(SoundPlayer.KEY34)
+                else if (macRec_2.isRec())
+                    macRec_2.recordEvent(SoundPlayer.KEY34)
+                else if (macRec_3.isRec())
+                    macRec_3.recordEvent(SoundPlayer.KEY34)
+                else if (macRec_4.isRec())
+                    macRec_4.recordEvent(SoundPlayer.KEY34)
+                else if (macRec_5.isRec())
+                    macRec_5.recordEvent(SoundPlayer.KEY34)
                 }
             R.id.key_3_5 -> {if(cur_set!!.key35 != "") mSoundPlayer.trigger(SoundPlayer.KEY35)
                 if (trackRecorder.isRec())
                     trackRecorder.recordEvent(SoundPlayer.KEY35)
                 else if (macRec_1.isRec())
                     macRec_1.recordEvent(SoundPlayer.KEY35)
+                else if (macRec_2.isRec())
+                    macRec_2.recordEvent(SoundPlayer.KEY35)
+                else if (macRec_3.isRec())
+                    macRec_3.recordEvent(SoundPlayer.KEY35)
+                else if (macRec_4.isRec())
+                    macRec_4.recordEvent(SoundPlayer.KEY35)
+                else if (macRec_5.isRec())
+                    macRec_5.recordEvent(SoundPlayer.KEY35)
                 }
         }
     }
@@ -614,6 +758,8 @@ class MainActivity : AppCompatActivity(),
         if (trackEvents.isEmpty()) return // Если трек пустой, ничего не делаем
         for (event in trackEvents) {
             Timer().schedule(event.timestamp) {
+                if (trackRecorder.isRec())
+                    trackRecorder.recordEvent(event.soundId)
                 mSoundPlayer.trigger(event.soundId)
             }
         }
@@ -734,6 +880,111 @@ class MainActivity : AppCompatActivity(),
                         macRec_1.chLoop()
                         Log.d("macros 1", "playing") // здесь пример того, как вызвать записанный в json макром (мини тречик)
                         playTrack(macRec_1)
+                    }
+                }
+            }
+            R.id.btnMacros2 -> {
+                if (macRec_2.isRecEmpty() && !macRec_2.isRec())
+                {
+                    for(n in 1..4) {
+                        Log.d("macros 2", "count " + n.toString())
+                        Thread.sleep(500)
+                    }
+                    Log.d("macros 2", "rec start")
+                    macRec_2.startRecording()
+                } else if (macRec_2.isRec())
+                {
+                    Log.d("macros 2", "rec stop")
+                    macRec_2.stopRecording()
+                    saveTrackToFile(macRec_2, "macros_2.json")
+                } else if (!macRec_2.isRecEmpty())
+                {
+                    if (macRec_2.loop())
+                    {
+                        macRec_2.chLoop()
+                        Log.d("macros 2", "stop loop playing")
+                    } else {
+                        macRec_2.chLoop()
+                        Log.d("macros 2", "playing") // здесь пример того, как вызвать записанный в json макром (мини тречик)
+                        playTrack(macRec_2)
+                    }
+                }
+            }
+            R.id.btnMacros3 -> {
+                if (macRec_3.isRecEmpty() && !macRec_3.isRec()) {
+                    for (n in 1..4) {
+                        Log.d("macros 3", "count " + n.toString())
+                        Thread.sleep(500)
+                    }
+                    Log.d("macros 3", "rec start")
+                    macRec_3.startRecording()
+                } else if (macRec_3.isRec()) {
+                    Log.d("macros 3", "rec stop")
+                    macRec_3.stopRecording()
+                    saveTrackToFile(macRec_3, "macros_3.json")
+                } else if (!macRec_3.isRecEmpty()) {
+                    if (macRec_3.loop()) {
+                        macRec_3.chLoop()
+                        Log.d("macros 3", "stop loop playing")
+                    } else {
+                        macRec_3.chLoop()
+                        Log.d(
+                            "macros 3",
+                            "playing"
+                        ) // здесь пример того, как вызвать записанный в json макром (мини тречик)
+                        playTrack(macRec_3)
+                    }
+                }
+            }
+            R.id.btnMacros4 -> {
+                if (macRec_4.isRecEmpty() && !macRec_4.isRec()) {
+                    for (n in 1..4) {
+                        Log.d("macros 4", "count " + n.toString())
+                        Thread.sleep(500)
+                    }
+                    Log.d("macros 4", "rec start")
+                    macRec_4.startRecording()
+                } else if (macRec_4.isRec()) {
+                    Log.d("macros 4", "rec stop")
+                    macRec_4.stopRecording()
+                    saveTrackToFile(macRec_4, "macros_4.json")
+                } else if (!macRec_4.isRecEmpty()) {
+                    if (macRec_4.loop()) {
+                        macRec_4.chLoop()
+                        Log.d("macros 4", "stop loop playing")
+                    } else {
+                        macRec_4.chLoop()
+                        Log.d(
+                            "macros 4",
+                            "playing"
+                        ) // здесь пример того, как вызвать записанный в json макром (мини тречик)
+                        playTrack(macRec_4)
+                    }
+                }
+            }
+            R.id.btnMacros5 -> {
+                if (macRec_5.isRecEmpty() && !macRec_5.isRec()) {
+                    for (n in 1..4) {
+                        Log.d("macros 5", "count " + n.toString())
+                        Thread.sleep(500)
+                    }
+                    Log.d("macros 5", "rec start")
+                    macRec_5.startRecording()
+                } else if (macRec_5.isRec()) {
+                    Log.d("macros 5", "rec stop")
+                    macRec_5.stopRecording()
+                    saveTrackToFile(macRec_5, "macros_5.json")
+                } else if (!macRec_5.isRecEmpty()) {
+                    if (macRec_5.loop()) {
+                        macRec_5.chLoop()
+                        Log.d("macros 5", "stop loop playing")
+                    } else {
+                        macRec_5.chLoop()
+                        Log.d(
+                            "macros 5",
+                            "playing"
+                        ) // здесь пример того, как вызвать записанный в json макром (мини тречик)
+                        playTrack(macRec_5)
                     }
                 }
             }
