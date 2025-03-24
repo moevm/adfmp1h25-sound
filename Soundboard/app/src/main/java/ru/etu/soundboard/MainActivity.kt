@@ -324,6 +324,11 @@ class MainActivity : AppCompatActivity(),
         mSoundPlayer.teardownAudioStream()
 
         mSoundPlayer.unloadWavAssets()
+        macRec_1.chLoop()
+        macRec_2.chLoop()
+        macRec_3.chLoop()
+        macRec_4.chLoop()
+        macRec_5.chLoop()
 
         super.onStop()
     }
@@ -885,7 +890,15 @@ class MainActivity : AppCompatActivity(),
                 }
             }
             R.id.btnMacros1 -> {
-                if (macRec_1.isRecEmpty() && !macRec_1.isRec())
+                if (deleteMode && !macRec_1.isRecEmpty()){
+                    macRec_1.deleteEvent()
+                    val file = File(getExternalFilesDir(null), "macros_1.json")
+                    if (file.exists()) {
+                        file.delete()
+                    }
+                    btn.setBackgroundResource(R.drawable.btns_macros)
+                }
+                else if (macRec_1.isRecEmpty() && !macRec_1.isRec())
                 {
                     btn.setBackgroundResource(R.drawable.btns_macros_red)
                     for(n in 1..4) {
@@ -916,7 +929,15 @@ class MainActivity : AppCompatActivity(),
                 }
             }
             R.id.btnMacros2 -> {
-                if (macRec_2.isRecEmpty() && !macRec_2.isRec())
+                if (deleteMode && !macRec_2.isRecEmpty()){
+                    macRec_2.deleteEvent()
+                    val file = File(getExternalFilesDir(null), "macros_2.json")
+                    if (file.exists()) {
+                        file.delete()
+                    }
+                    btn.setBackgroundResource(R.drawable.btns_macros)
+                }
+                else if (macRec_2.isRecEmpty() && !macRec_2.isRec())
                 {
                     btn.setBackgroundResource(R.drawable.btns_macros_red)
                     for(n in 1..4) {
@@ -947,7 +968,15 @@ class MainActivity : AppCompatActivity(),
                 }
             }
             R.id.btnMacros3 -> {
-                if (macRec_3.isRecEmpty() && !macRec_3.isRec()) {
+                if (deleteMode && !macRec_3.isRecEmpty()){
+                    macRec_3.deleteEvent()
+                    val file = File(getExternalFilesDir(null), "macros_3.json")
+                    if (file.exists()) {
+                        file.delete()
+                    }
+                    btn.setBackgroundResource(R.drawable.btns_macros)
+                }
+                else if (macRec_3.isRecEmpty() && !macRec_3.isRec()) {
                     btn.setBackgroundResource(R.drawable.btns_macros_red)
                     for (n in 1..4) {
                         Log.d("macros 3", "count " + n.toString())
@@ -977,7 +1006,15 @@ class MainActivity : AppCompatActivity(),
                 }
             }
             R.id.btnMacros4 -> {
-                if (macRec_4.isRecEmpty() && !macRec_4.isRec()) {
+                if (deleteMode && !macRec_4.isRecEmpty()){
+                    macRec_4.deleteEvent()
+                    val file = File(getExternalFilesDir(null), "macros_4.json")
+                    if (file.exists()) {
+                        file.delete()
+                    }
+                    btn.setBackgroundResource(R.drawable.btns_macros)
+                }
+                else if (macRec_4.isRecEmpty() && !macRec_4.isRec()) {
                     btn.setBackgroundResource(R.drawable.btns_macros_red)
                     for (n in 1..4) {
                         Log.d("macros 4", "count " + n.toString())
@@ -1007,7 +1044,15 @@ class MainActivity : AppCompatActivity(),
                 }
             }
             R.id.btnMacros5 -> {
-                if (macRec_5.isRecEmpty() && !macRec_5.isRec()) {
+                if (deleteMode && !macRec_5.isRecEmpty()){
+                    macRec_5.deleteEvent()
+                    val file = File(getExternalFilesDir(null), "macros_5.json")
+                    if (file.exists()) {
+                        file.delete()
+                    }
+                    btn.setBackgroundResource(R.drawable.btns_macros)
+                }
+                else if (macRec_5.isRecEmpty() && !macRec_5.isRec()) {
                     btn.setBackgroundResource(R.drawable.btns_macros_red)
                     for (n in 1..4) {
                         Log.d("macros 5", "count " + n.toString())

@@ -73,7 +73,8 @@ class SoundConfiguration : AppCompatActivity(), SideButton.SideButtonListener,Si
                     if (displayNameIndex != -1) {
                         val fileName = it.getString(displayNameIndex)
                         filePath = "${cacheDir.absolutePath}/$fileName"
-                        if (!filePath.contains(".wav", true)){
+                        val len = filePath.count()
+                        if(filePath.takeLast(4) != ".wav"){
                             return ""
                         }
                         // Копируем файл в кэш, если нужно

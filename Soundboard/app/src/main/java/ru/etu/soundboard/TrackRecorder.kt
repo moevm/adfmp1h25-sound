@@ -51,8 +51,11 @@ class TrackRecorder {
         events = buf.toMutableList()
     }
 
-    fun DeleteEvent() {
+    fun deleteEvent() {
         events.clear()
+        startTime = 0
+        isRecording = false
+        isLooping = false
     }
 
     fun recordEvent(soundId: Int) {

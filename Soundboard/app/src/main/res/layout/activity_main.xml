@@ -123,7 +123,6 @@
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginVertical="12dp"
                 android:background="@drawable/btns_menu"
-                android:backgroundTint="#787878"
                 android:contentDescription="delete"
                 android:src="@drawable/vec_trash_small" />
 
