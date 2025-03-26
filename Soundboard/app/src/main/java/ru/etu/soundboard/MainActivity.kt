@@ -187,6 +187,8 @@ class MainActivity : AppCompatActivity(),
         buttonMacros4.addListener(this)
         buttonMacros5.addListener(this)
 
+        buttonDrums.setBackgroundResource(R.drawable.btns_menu2)
+
         trackRecorder = TrackRecorder()
         macRec_1 = TrackRecorder()
         macRec_2 = TrackRecorder()
@@ -247,6 +249,8 @@ class MainActivity : AppCompatActivity(),
         val buttonMacros3 = findViewById<SideImageButton>(R.id.btnMacros3)
         val buttonMacros4 = findViewById<SideImageButton>(R.id.btnMacros4)
         val buttonMacros5 = findViewById<SideImageButton>(R.id.btnMacros5)
+
+        buttonDrums.setBackgroundResource(R.drawable.btns_menu2)
 
         val fileMac1 = File(getExternalFilesDir(null), "macros_1.json")
         if (fileMac1.exists()) {
@@ -330,6 +334,7 @@ class MainActivity : AppCompatActivity(),
         macRec_4.chLoop()
         macRec_5.chLoop()
 
+        trackRecorder.stopRecording()
         macRec_1.stopRecording()
         macRec_2.stopRecording()
         macRec_3.stopRecording()
@@ -854,11 +859,25 @@ class MainActivity : AppCompatActivity(),
         // Логика при отпускании кнопки (если нужна)
     }
 
+    private fun resetBackRes() {
+        val buttonDrums = findViewById<SideImageButton>(R.id.btnDrums)
+        val buttonKeys = findViewById<SideImageButton>(R.id.btnKeys)
+        val buttonSet1 = findViewById<SideImageButton>(R.id.btnSet1)
+        val buttonSet2 = findViewById<SideImageButton>(R.id.btnSet2)
+        val buttonSet3 = findViewById<SideImageButton>(R.id.btnSet3)
+
+        buttonDrums.setBackgroundResource(R.drawable.btns_menu)
+        buttonKeys.setBackgroundResource(R.drawable.btns_menu)
+        buttonSet1.setBackgroundResource(R.drawable.btns_menu)
+        buttonSet2.setBackgroundResource(R.drawable.btns_menu)
+        buttonSet3.setBackgroundResource(R.drawable.btns_menu)
+    }
+
     override fun onButtonDown(button: SideImageButton) {
         Log.d("MainActivity", "Button down: ${button.id}")
         val btn = findViewById<SideImageButton>(button.id)
         when (button.id) {
-             R.id.btnRecord -> {
+            R.id.btnRecord -> {
                  if (!trackRecorder.isRec()) {
                      // Начало записи
                      Log.d("record", "rec start")
@@ -867,6 +886,7 @@ class MainActivity : AppCompatActivity(),
                          "Запись начата",
                          Toast.LENGTH_SHORT
                      ).show()
+                     btn.setBackgroundResource(R.drawable.btns_menu2)
                      trackRecorder.startRecording()
                  }
                  btn.setBackgroundResource(R.drawable.btns_menu2)
@@ -896,6 +916,7 @@ class MainActivity : AppCompatActivity(),
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+                findViewById<SideImageButton>(R.id.btnRecord).setBackgroundResource(R.drawable.btns_menu)
                 btn.setBackgroundResource(R.drawable.btns_menu2)
             }
             R.id.btnMacros1 -> {
@@ -1092,6 +1113,7 @@ class MainActivity : AppCompatActivity(),
             }
 
             R.id.btnDrums -> {
+                resetBackRes()
                 btn.setBackgroundResource(R.drawable.btns_menu2)
                 is_custom_preset = false
                 cur_set = allPresets?.drums
@@ -1099,6 +1121,7 @@ class MainActivity : AppCompatActivity(),
                 mSoundPlayer.loadWavAssets(getAssets(), cur_set!!)
             }
             R.id.btnKeys -> {
+                resetBackRes()
                 btn.setBackgroundResource(R.drawable.btns_menu2)
                 is_custom_preset = false
                 cur_set = this.allPresets?.keys
@@ -1106,6 +1129,7 @@ class MainActivity : AppCompatActivity(),
                 mSoundPlayer.loadWavAssets(getAssets(), cur_set!!)
             }
             R.id.btnSet1 -> {
+                resetBackRes()
                 btn.setBackgroundResource(R.drawable.btns_menu2)
                 is_custom_preset = true
                 cur_set = this.allPresets?.set1
@@ -1115,6 +1139,7 @@ class MainActivity : AppCompatActivity(),
                 mSoundPlayer.loadWavAssetsFromStorage(cur_set!!)
             }
             R.id.btnSet2 -> {
+                resetBackRes()
                 btn.setBackgroundResource(R.drawable.btns_menu2)
                 is_custom_preset = true
                 cur_set = this.allPresets?.set2
@@ -1122,6 +1147,7 @@ class MainActivity : AppCompatActivity(),
                 mSoundPlayer.loadWavAssetsFromStorage(cur_set!!)
             }
             R.id.btnSet3 -> {
+                resetBackRes()
                 btn.setBackgroundResource(R.drawable.btns_menu2)
                 is_custom_preset = true
                 cur_set = this.allPresets?.set3
@@ -1144,14 +1170,14 @@ class MainActivity : AppCompatActivity(),
         Log.d("daunblya", "zrobiu")
         val btn = findViewById<SideImageButton>(button.id)
         when (button.id) {
-            R.id.btnRecord -> btn.setBackgroundResource(R.drawable.btns_menu)
+//            R.id.btnRecord -> btn.setBackgroundResource(R.drawable.btns_menu)
             R.id.btnPlayPause -> btn.setBackgroundResource(R.drawable.btns_menu)
             R.id.btnStop -> btn.setBackgroundResource(R.drawable.btns_menu)
-            R.id.btnDrums -> btn.setBackgroundResource(R.drawable.btns_menu)
-            R.id.btnKeys -> btn.setBackgroundResource(R.drawable.btns_menu)
-            R.id.btnSet1 -> btn.setBackgroundResource(R.drawable.btns_menu)
-            R.id.btnSet2 -> btn.setBackgroundResource(R.drawable.btns_menu)
-            R.id.btnSet3 -> btn.setBackgroundResource(R.drawable.btns_menu)
+//            R.id.btnDrums -> btn.setBackgroundResource(R.drawable.btns_menu)
+//            R.id.btnKeys -> btn.setBackgroundResource(R.drawable.btns_menu)
+//            R.id.btnSet1 -> btn.setBackgroundResource(R.drawable.btns_menu)
+//            R.id.btnSet2 -> btn.setBackgroundResource(R.drawable.btns_menu)
+//            R.id.btnSet3 -> btn.setBackgroundResource(R.drawable.btns_menu)
         }
     }
 }
